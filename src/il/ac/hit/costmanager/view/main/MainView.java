@@ -10,10 +10,6 @@ import il.ac.hit.costmanager.view.cost.CostView;
 import il.ac.hit.costmanager.view.piechart.PieChartView;
 import il.ac.hit.costmanager.view.reports.ReportsView;
 
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  * @author Birbal
  */
@@ -160,11 +156,7 @@ public class MainView extends javax.swing.JFrame {
         jPanel2.setVisible(false);
         jPanel2.setVisible(true);
         PieChartView pa3 = null;
-        try {
-            pa3 = new PieChartView();
-        } catch (SQLException ex) {
-            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        pa3 = new PieChartView();
         pa3.pack();
         jPanel2.add(pa3.getContentPane());
     }//GEN-LAST:event_jButton4ActionPerformed
