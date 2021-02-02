@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/lib/DateChooser.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/derbynet.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/derby.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/derbyclient.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/jfreechart-1.0.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/jcommon-1.0.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/derby-driver.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

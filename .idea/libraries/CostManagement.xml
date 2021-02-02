@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="CostManagement">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/CostManagement.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
