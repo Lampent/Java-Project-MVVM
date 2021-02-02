@@ -1,12 +1,10 @@
 package il.ac.hit.costmanager.view.piechart;
 
-import il.ac.hit.costmanager.model.category.Category;
-import il.ac.hit.costmanager.view.IView;
+import java.util.HashMap;
 
-import java.util.ArrayList;
+public interface IPieChartView {
 
-public interface IPieChartView extends IView {
+    public void setViewModel(IPieChartViewModel vm);
 
-    public void createChart(ArrayList<Category> catModel);
-
+    public void showCategoriesData(HashMap<String, Double> categoryMap);
 }

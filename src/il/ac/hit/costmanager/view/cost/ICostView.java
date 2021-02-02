@@ -1,12 +1,12 @@
 package il.ac.hit.costmanager.view.cost;
 
 import il.ac.hit.costmanager.model.category.Category;
-import il.ac.hit.costmanager.view.IView;
 
 import java.util.ArrayList;
 
-public interface ICostView extends IView {
+public interface ICostView {
 
-    public void setCostData(ArrayList<Category> catModel);
+    public void setViewModel(CostViewModel vm);
 
+    public void showCosts(ArrayList<Category> categories);
 }

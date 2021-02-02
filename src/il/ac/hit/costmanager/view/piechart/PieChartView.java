@@ -5,19 +5,14 @@
  */
 package il.ac.hit.costmanager.view.piechart;
 
-import il.ac.hit.costmanager.model.category.Category;
-import il.ac.hit.costmanager.view.IView;
-import il.ac.hit.costmanager.viewmodel.ViewModel;
+import il.ac.hit.costmanager.view.Initializable;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -25,164 +20,157 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.general.PieDataset;
 
 /**
  * @author Birbal
  */
-public class PieChartView extends javax.swing.JFrame implements IView {
+public class PieChartView extends javax.swing.JFrame implements IPieChartView, Initializable {
 
-    private ViewModel viewModel;
+
+    private IPieChartViewModel viewModel;
+    private PieChartUi pieChartUi;
+
+    public PieChartView() {
+        this.pieChartUi = new PieChartUi();
+    }
+
 
     @Override
-    public void setViewModel(ViewModel vm) {
+    public void setViewModel(IPieChartViewModel vm) {
         this.viewModel = vm;
     }
 
-    /**
-     * Creates new form PieChart
-     *
-     * @throws java.sql.SQLException
-     */
-    public PieChartView() {
-        this.setViewModel(new ViewModel());
-        initComponents();
-        createChart();
+    @Override
+    public void initialize() {
+        this.viewModel.showCategoriesData();
     }
 
-    private void createChart() {
+    public void showCategoriesData(HashMap<String, Double> categoryMap) {
+        this.pieChartUi.createChart(categoryMap);
+    }
 
-        ArrayList<Category> catModel = viewModel.getCategories();
-        final DefaultPieDataset dataset = new DefaultPieDataset();
-        for (Category category : catModel) {
-            dataset.setValue(category.getCategoryName(), viewModel.getTotalCost(category.getCategoryName()));
+    public class PieChartUi {
+        private javax.swing.JPanel jPanel2;
+
+        public PieChartUi() {
+            initComponents();
         }
-        final JFreeChart chart = ChartFactory.createPieChart(
-                "Cost Pie Chart", // chart title
-                dataset, // dataset
-                true, // include legend
-                true,
-                true
-        );
-        final PiePlot plot = (PiePlot) chart.getPlot();
-        plot.setNoDataMessage("No data available");
-        plot.setExplodePercent(0, 0.20);
-        Font font = new Font("Times New Roman", Font.PLAIN, 12);
-        plot.setLabelFont(font);
-        for (Category category : catModel) {
-            Random randomGenerator = new Random();
-            int red = randomGenerator.nextInt(256);
-            int green = randomGenerator.nextInt(256);
-            int blue = randomGenerator.nextInt(256);
-            Color randomColour = new Color(red, green, blue);
-            plot.setSectionPaint(category.getCategoryName(), randomColour);
+
+        private void createChart(HashMap<String, Double> categoryMap) {
+
+            final DefaultPieDataset dataset = new DefaultPieDataset();
+            categoryMap.forEach(dataset::setValue);
+
+
+            final JFreeChart chart = ChartFactory.createPieChart(
+                    "Cost Pie Chart",
+                    dataset,
+                    true,
+                    true,
+                    true
+            );
+            final PiePlot plot = (PiePlot) chart.getPlot();
+            plot.setNoDataMessage("No data available");
+            plot.setExplodePercent(0, 0.20);
+            Font font = new Font("Times New Roman", Font.PLAIN, 12);
+            plot.setLabelFont(font);
+
+            categoryMap.keySet().forEach(categoryName -> {
+                Random randomGenerator = new Random();
+                int red = randomGenerator.nextInt(256);
+                int green = randomGenerator.nextInt(256);
+                int blue = randomGenerator.nextInt(256);
+                Color randomColour = new Color(red, green, blue);
+                plot.setSectionPaint(categoryName, randomColour);
+            });
+
+            plot.setBackgroundPaint(Color.WHITE);
+
+            plot.setOutlinePaint(Color.WHITE);
+
+            plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0}" + " " + "{2}"));
+
+            chart.setBorderVisible(true);
+
+            chart.getTitle().setHeight(25);
+            chart.getTitle().setPaint(new Color(255, 255, 255));
+            chart.getTitle().setExpandToFitSpace(true);
+            chart.getTitle().setBackgroundPaint(new Color(45, 181, 209));
+            chart.getTitle().setFont(new Font("Times New Roman", Font.BOLD, 22));
+
+            chart.setBorderPaint(new Color(145, 141, 62));
+
+            chart.setBackgroundPaint(Color.WHITE);
+
+            ChartPanel chartPanel = new ChartPanel(chart);
+
+            chartPanel.setPreferredSize(new Dimension(300, 220));
+
+            jPanel2.setLayout(new BorderLayout());
+            jPanel2.add(chartPanel, BorderLayout.CENTER); //BorderLayout.CENTER
+            jPanel2.validate();
         }
-        plot.setBackgroundPaint(Color.WHITE);
 
-        plot.setOutlinePaint(Color.WHITE);
+        /**
+         * This method is called from within the constructor to initialize the form.
+         * WARNING: Do NOT modify this code. The content of this method is always
+         * regenerated by the Form Editor.
+         */
+        private void initComponents() {
 
-        plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0}" + " " + "{2}"));
+            javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
+            javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
+            jPanel2 = new javax.swing.JPanel();
 
-        chart.setBorderVisible(true);
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        chart.getTitle().setHeight(25);
-        chart.getTitle().setPaint(new Color(255, 255, 255));
-        chart.getTitle().setExpandToFitSpace(true);
-        chart.getTitle().setBackgroundPaint(new Color(45, 181, 209));
-        chart.getTitle().setFont(new Font("Times New Roman", Font.BOLD, 22));
+            jPanel1.setBackground(new java.awt.Color(102, 102, 255));
 
-        chart.setBorderPaint(new Color(145, 141, 62));
+            jLabel1.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 24)); // NOI18N
+            jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+            jLabel1.setText("Show Pie Chart");
 
-        chart.setBackgroundPaint(Color.WHITE);
+            javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+            jPanel1.setLayout(jPanel1Layout);
+            jPanel1Layout.setHorizontalGroup(
+                    jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
+            );
+            jPanel1Layout.setVerticalGroup(
+                    jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(jLabel1)
+                                    .addContainerGap(19, Short.MAX_VALUE))
+            );
 
-        ChartPanel chartPanel = new ChartPanel(chart);
+            javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+            jPanel2.setLayout(jPanel2Layout);
+            jPanel2Layout.setHorizontalGroup(
+                    jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGap(0, 0, Short.MAX_VALUE)
+            );
+            jPanel2Layout.setVerticalGroup(
+                    jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGap(0, 281, Short.MAX_VALUE)
+            );
 
-        chartPanel.setPreferredSize(new Dimension(300, 220));
-
-        jPanel2.setLayout(new BorderLayout());
-        jPanel2.add(chartPanel, BorderLayout.CENTER); //BorderLayout.CENTER
-        jPanel2.validate();
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+            getContentPane().setLayout(layout);
+            layout.setHorizontalGroup(
+                    layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            );
+            layout.setVerticalGroup(
+                    layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addContainerGap())
+            );
+            pack();
+        }
     }
-
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
-
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Show Pie Chart");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel1)
-                                .addContainerGap(19, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 281, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())
-        );
-
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PieChartView().setVisible(true);
-            }
-        });
-    }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    // End of variables declaration//GEN-END:variables
 }
