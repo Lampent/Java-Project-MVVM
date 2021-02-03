@@ -6,12 +6,12 @@
 package il.ac.hit.costmanager.database;
 
 import il.ac.hit.costmanager.exeptions.CostManagerException;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 /**
- *
  * @author Birbal
  */
 public class DBAdapter {
@@ -21,17 +21,17 @@ public class DBAdapter {
             Connection connection = DBConnection.dbconnector();
             Statement stmt = connection.createStatement();
             return stmt.executeQuery(query);
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             throw new CostManagerException("Error accourd when execioting a query");
         }
     }
-    
+
     public static void executeUpdate(String sql) throws CostManagerException {
         try {
             Connection connection = DBConnection.dbconnector();
             Statement stmt1 = connection.createStatement();
             stmt1.executeUpdate(sql);
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             throw new CostManagerException("Error accourd when execioting an update query");
         }
     }

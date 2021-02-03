@@ -4,15 +4,15 @@ import il.ac.hit.costmanager.model.IModel;
 
 
 public interface ICategoryViewModel {
-    public void setModel(IModel model);
+    void setModel(IModel model);
 
-    public void setCategoryView(CategoryView costView);
+    void setCategoryView(CategoryView costView);
 
-    public void initializeView();
+    void initializeView();
 
-    public void insertCategory(String categoryName);
+    void insertCategory(String categoryName);
 
-    public void deleteCategory(int id);
+    void deleteCategory(int id);
 
-    public void showCategories();
+    void showCategories();
 }

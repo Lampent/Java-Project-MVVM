@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public interface ICategoryView {
 
-    public void setViewModel(ICategoryViewModel categoryViewModel);
+    void setViewModel(ICategoryViewModel categoryViewModel);
 
-    public void showCategories(ArrayList<Category> catModel);
+    void showCategories(ArrayList<Category> catModel);
 
 }

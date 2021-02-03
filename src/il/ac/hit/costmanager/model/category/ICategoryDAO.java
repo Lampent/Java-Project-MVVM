@@ -6,29 +6,25 @@
 package il.ac.hit.costmanager.model.category;
 
 import il.ac.hit.costmanager.exeptions.CostManagerException;
+
 import java.util.ArrayList;
 
 /**
- *
  * @author ron
  */
 public interface ICategoryDAO {
-    
+
     /**
-     *
      * @param catName
-     *
      */
     void InsertCategory(String catName) throws CostManagerException;
-    
+
     /**
-     *
      * @return
      */
     ArrayList<Category> getCategories() throws CostManagerException;
-    
+
     /**
-     *
      * @param catId
      */
     void deleteCategory(int catId) throws CostManagerException;

@@ -7,14 +7,14 @@ import java.util.ArrayList;
 
 public interface ICostViewModel {
 
-    public void setModel(IModel model);
+    void setModel(IModel model);
 
-    public void setCostView(CostView costView);
+    void setCostView(CostView costView);
 
-    public void initializeView();
+    void initializeView();
 
-    public void InsertCost(double cost, String date, String dec, String catName);
+    void InsertCost(double cost, String date, String dec, String catName);
 
-    public ArrayList<Category> showCategories();
+    ArrayList<Category> showCategories();
 
 }

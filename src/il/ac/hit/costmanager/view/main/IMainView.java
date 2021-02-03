@@ -4,6 +4,6 @@ import il.ac.hit.costmanager.model.IModel;
 
 public interface IMainView {
 
-    public void setModel(IModel model);
+    void setModel(IModel model);
 
 }

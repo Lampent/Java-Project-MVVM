@@ -4,11 +4,11 @@ import il.ac.hit.costmanager.model.IModel;
 
 public interface IPieChartViewModel {
 
-    public void setModel(IModel model);
+    void setModel(IModel model);
 
-    public void setPieChartView(IPieChartView costView);
+    void setPieChartView(IPieChartView costView);
 
-    public void initializeView();
+    void initializeView();
 
-    public void showCategoriesData();
+    void showCategoriesData();
 }

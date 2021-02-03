@@ -6,11 +6,11 @@
 package il.ac.hit.costmanager.database;
 
 import il.ac.hit.costmanager.exeptions.CostManagerException;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 /**
- *
  * @author Birbal
  */
 public class DBConnection {
@@ -19,7 +19,6 @@ public class DBConnection {
     static String error = "Sorry for inconvenience.Internal error.";
 
     /**
-     *
      * @return Connection
      */
     public static Connection dbconnector() throws CostManagerException {

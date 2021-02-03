@@ -6,16 +6,15 @@
 package il.ac.hit.costmanager.model.cost;
 
 import il.ac.hit.costmanager.exeptions.CostManagerException;
+
 import java.util.ArrayList;
 
 /**
- *
  * @author ron
  */
 public interface ICostDAO {
-    
-     /**
-     *
+
+    /**
      * @param cost
      * @param date
      * @param dec
@@ -24,20 +23,17 @@ public interface ICostDAO {
     void InsertCost(double cost, String date, String dec, String catName) throws CostManagerException;
 
     /**
-     *
      * @param catName
      * @return
      */
     double getTotalCost(String catName) throws CostManagerException;
-    
+
     /**
-     *
      * @return
      */
     ArrayList<Cost> getCosts() throws CostManagerException;
-    
+
     /**
-     *
      * @param startDate
      * @param endDate
      * @return

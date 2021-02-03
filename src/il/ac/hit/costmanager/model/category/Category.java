@@ -9,19 +9,18 @@ import il.ac.hit.costmanager.exeptions.CostManagerException;
 
 
 /**
- *
  * @author Birbal
  */
 public class Category {
 
     private String categoryName = "";
     private int catId = 0;
-    
+
     public Category(String categoryName, int catId) throws CostManagerException {
         this.setCategoryName(categoryName);
         this.setCatId(catId);
     }
-    
+
     /**
      * @return
      */
@@ -31,7 +30,6 @@ public class Category {
 
     /**
      * @param catId
-     * @throws exeptions.CostManagerExeption
      */
     public void setCatId(int catId) throws CostManagerException {
         if (catId < 0) {
@@ -39,6 +37,7 @@ public class Category {
         }
         this.catId = catId;
     }
+
     /**
      * @return
      */
@@ -48,7 +47,6 @@ public class Category {
 
     /**
      * @param categoryName
-     * @throws exeptions.CostManagerExeption
      */
     public void setCategoryName(String categoryName) throws CostManagerException {
         if (categoryName == null) {

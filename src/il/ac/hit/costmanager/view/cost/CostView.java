@@ -8,11 +8,11 @@ package il.ac.hit.costmanager.view.cost;
 import il.ac.hit.costmanager.model.category.Category;
 import il.ac.hit.costmanager.view.builders.ButtonBuilder;
 
+import javax.swing.*;
 import java.awt.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  * @author Birbal

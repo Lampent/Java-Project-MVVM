@@ -2,6 +2,7 @@ package il.ac.hit.costmanager.model.cost;
 
 import il.ac.hit.costmanager.database.DBAdapter;
 import il.ac.hit.costmanager.exeptions.CostManagerException;
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -12,14 +13,12 @@ import java.util.ArrayList;
  */
 
 /**
- *
  * @author ron
  */
 public class CostDAO implements ICostDAO {
-        
-    
-     /**
-     *
+
+
+    /**
      * @param cost
      * @param date
      * @param dec
@@ -45,7 +44,6 @@ public class CostDAO implements ICostDAO {
 
 
     /**
-     *
      * @param catName
      * @return catTotal
      */
@@ -66,7 +64,6 @@ public class CostDAO implements ICostDAO {
 
 
     /**
-     *
      * @return ArrayList<CostItems>
      * @throws il.ac.hit.costmanager.exeptions.CostManagerException
      */
@@ -80,14 +77,13 @@ public class CostDAO implements ICostDAO {
                 Cost ad = new Cost(res.getString("catName"), res.getString("date"), res.getString("description"), res.getDouble("cost"));
                 costs.add(ad);
             }
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             throw new CostManagerException("Failed to get costs from DB");
         }
         return costs;
     }
 
     /**
-     *
      * @param startDate
      * @param endDate
      * @return ArrayList<CostItems>

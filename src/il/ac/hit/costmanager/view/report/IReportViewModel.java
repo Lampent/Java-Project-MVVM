@@ -4,13 +4,13 @@ import il.ac.hit.costmanager.model.IModel;
 
 public interface IReportViewModel {
 
-    public void setModel(IModel model);
+    void setModel(IModel model);
 
-    public void setReportView(IReportView reportView);
+    void setReportView(IReportView reportView);
 
-    public void initializeView();
+    void initializeView();
 
-    public void showCosts();
+    void showCosts();
 
-    public void showCosts(String startDate, String endDate);
+    void showCosts(String startDate, String endDate);
 }

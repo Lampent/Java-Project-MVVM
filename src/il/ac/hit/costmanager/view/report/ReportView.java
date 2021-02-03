@@ -6,7 +6,6 @@
 package il.ac.hit.costmanager.view.report;
 
 import il.ac.hit.costmanager.model.cost.Cost;
-import il.ac.hit.costmanager.view.Initializable;
 import il.ac.hit.costmanager.view.builders.ButtonBuilder;
 
 import javax.swing.table.DefaultTableModel;
@@ -19,10 +18,9 @@ import java.util.ArrayList;
  * @author Birbal
  */
 public class ReportView extends javax.swing.JFrame implements IReportView {
+    private final DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
     private IReportViewModel viewModel;
     private ReportUI reportUI;
-
-    private final DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
     /**
      * Creates new form ReportGenerate

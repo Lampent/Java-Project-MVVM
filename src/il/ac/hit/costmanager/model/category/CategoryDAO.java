@@ -7,17 +7,16 @@ package il.ac.hit.costmanager.model.category;
 
 import il.ac.hit.costmanager.database.DBAdapter;
 import il.ac.hit.costmanager.exeptions.CostManagerException;
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
- *
  * @author ron
  */
 public class CategoryDAO implements ICategoryDAO {
-    
+
     /**
-     *
      * @param catName
      */
     @Override
@@ -39,7 +38,6 @@ public class CategoryDAO implements ICategoryDAO {
     }
 
     /**
-     *
      * @return ArrayList<CategoryItems>
      */
     @Override
@@ -59,7 +57,6 @@ public class CategoryDAO implements ICategoryDAO {
     }
 
     /**
-     *
      * @param catId
      */
     @Override

@@ -6,7 +6,6 @@
 package il.ac.hit.costmanager.view.category;
 
 import il.ac.hit.costmanager.model.category.Category;
-import il.ac.hit.costmanager.view.Initializable;
 import il.ac.hit.costmanager.view.builders.ButtonBuilder;
 
 import javax.swing.*;

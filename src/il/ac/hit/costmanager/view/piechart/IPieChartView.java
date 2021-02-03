@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public interface IPieChartView {
 
-    public void setViewModel(IPieChartViewModel vm);
+    void setViewModel(IPieChartViewModel vm);
 
-    public void showCategoriesData(HashMap<String, Double> categoryMap);
+    void showCategoriesData(HashMap<String, Double> categoryMap);
 }

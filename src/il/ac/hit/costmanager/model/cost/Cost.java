@@ -9,7 +9,6 @@ import il.ac.hit.costmanager.exeptions.CostManagerException;
 
 
 /**
- *
  * @author Birbal
  */
 public class Cost {
@@ -27,7 +26,6 @@ public class Cost {
     }
 
     /**
-     *
      * @return
      */
     public String getCategory() {
@@ -35,19 +33,17 @@ public class Cost {
     }
 
     /**
-     *
      * @param category
      * @throws exeptions.CostManagerExeption
      */
     public void setCategory(String category) throws CostManagerException {
-         if (category == null) {
+        if (category == null) {
             throw new CostManagerException("Category can not be null");
         }
         this.category = category;
     }
 
     /**
-     *
      * @return
      */
     public String getDate() {
@@ -55,7 +51,6 @@ public class Cost {
     }
 
     /**
-     *
      * @param date
      * @throws exeptions.CostManagerExeption
      */
@@ -67,7 +62,6 @@ public class Cost {
     }
 
     /**
-     *
      * @return
      */
     public String getDesc() {
@@ -75,11 +69,10 @@ public class Cost {
     }
 
     /**
-     *
      * @param desc
      * @throws exeptions.CostManagerExeption
      */
-    public void setDesc(String desc) throws CostManagerException  {
+    public void setDesc(String desc) throws CostManagerException {
         if (desc == null) {
             throw new CostManagerException("Descriptionc can not be null");
         }
@@ -87,7 +80,6 @@ public class Cost {
     }
 
     /**
-     *
      * @return
      */
     public double getCost() {
@@ -95,7 +87,6 @@ public class Cost {
     }
 
     /**
-     *
      * @param cost
      * @throws exeptions.CostManagerExeption
      */
