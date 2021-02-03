@@ -5,6 +5,7 @@
  */
 package il.ac.hit.costmanager.view.piechart;
 
+import il.ac.hit.costmanager.view.builders.LabelBuilder;
 import il.ac.hit.costmanager.view.builders.TitleLayoutBuilder;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -49,18 +50,16 @@ public class PieChartView extends javax.swing.JFrame implements IPieChartView {
         private void initComponents() {
 
             javax.swing.JPanel titlePanel = new javax.swing.JPanel();
-            javax.swing.JLabel titleLabel = new javax.swing.JLabel();
-            containerPanel = new javax.swing.JPanel();
+            javax.swing.JLabel titleLabel =  new LabelBuilder("Chart Menu").setHorizontalAlignment(javax.swing.SwingConstants.CENTER)
+                    .setFontSize(24).build();
 
 
             titlePanel.setBackground(new java.awt.Color(102, 102, 255));
-            titleLabel.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 24));
-            titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-            titleLabel.setText("Chart Menu");
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
             javax.swing.GroupLayout titleLayout = new TitleLayoutBuilder(titleLabel, titlePanel).build();
 
+            containerPanel = new javax.swing.JPanel();
             javax.swing.GroupLayout containerPanelLayout = new javax.swing.GroupLayout(containerPanel);
             containerPanel.setLayout(containerPanelLayout);
             containerPanelLayout.setHorizontalGroup(

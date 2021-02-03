@@ -7,6 +7,7 @@ package il.ac.hit.costmanager.view.report;
 
 import il.ac.hit.costmanager.model.cost.Cost;
 import il.ac.hit.costmanager.view.builders.ButtonBuilder;
+import il.ac.hit.costmanager.view.builders.LabelBuilder;
 import il.ac.hit.costmanager.view.builders.TitleLayoutBuilder;
 
 import javax.swing.table.DefaultTableModel;
@@ -69,16 +70,18 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
         private void initComponents() {
 
             javax.swing.JPanel titlePanel = new javax.swing.JPanel();
-            javax.swing.JLabel titleLabel = new javax.swing.JLabel();
+            javax.swing.JLabel titleLabel = new LabelBuilder("Report Menu").setFontSize(24)
+                    .setHorizontalAlignment(javax.swing.SwingConstants.CENTER).build();
 
             dateStart = new datechooser.beans.DateChooserCombo();
-            javax.swing.JLabel dateStartLabel = new javax.swing.JLabel();
+            javax.swing.JLabel dateStartLabel = new LabelBuilder("From Data :").build();
 
             dateEnd = new datechooser.beans.DateChooserCombo();
-            javax.swing.JLabel dateEndLabel = new javax.swing.JLabel();
+            javax.swing.JLabel dateEndLabel =  new LabelBuilder("To Data :").build();
 
             javax.swing.JButton showButton = new ButtonBuilder("Show").build();
-            showButton.addActionListener(event -> showSpecifiedCosts());
+            showButton.addActionListener(event -> viewModel.showCosts(dateFormat.format(dateStart.getSelectedDate().getTime()),
+                    dateFormat.format(dateEnd.getSelectedDate().getTime())));
 
             javax.swing.JSeparator separator = new javax.swing.JSeparator();
             javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane();
@@ -86,19 +89,9 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-
             titlePanel.setBackground(new java.awt.Color(102, 102, 255));
-            titleLabel.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 24));
-            titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-            titleLabel.setText("Report Menu");
+
             javax.swing.GroupLayout titleLayout = new TitleLayoutBuilder(titleLabel, titlePanel).build();
-
-            dateStartLabel.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 12));
-            dateStartLabel.setText("From Data :");
-
-            dateEndLabel.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 12));
-            dateEndLabel.setText("To  Data :");
-
 
             costsTable.setModel(new javax.swing.table.DefaultTableModel(
                     new Object[][]{
@@ -164,10 +157,5 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
 
             pack();
         }
-
-        private void showSpecifiedCosts() {
-            viewModel.showCosts(dateFormat.format(dateStart.getSelectedDate().getTime()), dateFormat.format(dateEnd.getSelectedDate().getTime()));
-        }
-
     }
 }

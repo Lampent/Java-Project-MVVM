@@ -104,7 +104,7 @@ public class CostView extends javax.swing.JFrame implements ICostView {
                                                             .addComponent(costTextField)
                                                             .addComponent(costTextAreaScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
                                                             .addComponent(dateChooserCombo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                    .addContainerGap(76, Short.MAX_VALUE))
+                                    .addContainerGap(44, Short.MAX_VALUE))
             );
             layout.setVerticalGroup(
                     layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

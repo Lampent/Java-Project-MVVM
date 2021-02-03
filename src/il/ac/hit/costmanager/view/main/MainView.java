@@ -74,7 +74,7 @@ public class MainView extends javax.swing.JFrame {
                                     .addComponent(reportMenuButton)
                                     .addGap(18, 18, 18)
                                     .addComponent(chartMenuButton)
-                                    .addContainerGap(130, Short.MAX_VALUE))
+                                    .addContainerGap(113, Short.MAX_VALUE))
             );
             navigatorPanelLayout.setVerticalGroup(
                     navigatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,7 +96,7 @@ public class MainView extends javax.swing.JFrame {
             );
             ContainerPanelLayout.setVerticalGroup(
                     ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGap(0, 407, Short.MAX_VALUE)
+                            .addGap(0, 370, Short.MAX_VALUE)
             );
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -6,11 +6,8 @@
             <file>file:/C:/devel/netbeans/CostManagement/src/il/ac/hit/costmanager/model/category/CategoryDAO.java</file>
             <file>file:/C:/devel/netbeans/CostManagement/src/il/ac/hit/costmanager/view/piechart/IPieChartView.java</file>
             <file>file:/C:/devel/netbeans/CostManagement/src/il/ac/hit/costmanager/application/Application.java</file>
-            <file>file:/C:/devel/netbeans/CostManagement/src/il/ac/hit/costmanager/view/IView.java</file>
             <file>file:/C:/devel/netbeans/CostManagement/src/il/ac/hit/costmanager/database/DBConnection.java</file>
-            <file>file:/C:/devel/netbeans/CostManagement/src/il/ac/hit/costmanager/viewmodel/ViewModel.java</file>
             <file>file:/C:/devel/netbeans/CostManagement/src/il/ac/hit/costmanager/view/category/CategoryView.java</file>
-            <file>file:/C:/devel/netbeans/CostManagement/src/il/ac/hit/costmanager/view/main/MainView.java</file>
         </group>
     </open-files>
 </project-private>
