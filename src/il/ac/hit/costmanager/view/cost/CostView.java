@@ -9,6 +9,8 @@ import il.ac.hit.costmanager.exeptions.CostManagerException;
 import il.ac.hit.costmanager.model.category.Category;
 import il.ac.hit.costmanager.model.cost.Cost;
 import il.ac.hit.costmanager.view.builders.ButtonBuilder;
+import il.ac.hit.costmanager.view.builders.LabelBuilder;
+import il.ac.hit.costmanager.view.builders.TitleLayoutBuilder;
 
 import javax.swing.*;
 import java.awt.*;
@@ -49,63 +51,37 @@ public class CostView extends javax.swing.JFrame implements ICostView {
         private void initComponents() {
 
             JPanel titlePanel = new JPanel();
-            JLabel titleLabel = new JLabel();
+            titlePanel.setBackground(new java.awt.Color(102, 102, 255));
+
+            JLabel titleLabel = new LabelBuilder("Cost Menu").setHorizontalAlignment(javax.swing.SwingConstants.CENTER)
+                    .setFontSize(24)
+                    .build();
 
             categoriesComboBox = new javax.swing.JComboBox<>();
-            JLabel comboBoxLabel = new JLabel();
+            JLabel comboBoxLabel = new LabelBuilder("Select Cost Categories :").build();
 
             costTextField = new javax.swing.JTextField();
-            JLabel costTextFieldLabel = new JLabel();
+            JLabel costTextFieldLabel = new LabelBuilder("Enter Cost :").build();
 
-            costTextArea = new javax.swing.JTextArea();
-            JLabel costTextAreaLabel = new JLabel();
+            JLabel costTextAreaLabel = new LabelBuilder("Enter Cost Description :").build();
             JScrollPane costTextAreaScrollPane = new JScrollPane();
 
             JButton btnSubmit = new ButtonBuilder("Submit").build();
             btnSubmit.addActionListener(event -> submitCost());
 
-            JLabel jLabel5 = new JLabel();
+            JLabel selectDateLabel = new LabelBuilder("Select Date :").build();
             dateChooserCombo1 = new datechooser.beans.DateChooserCombo();
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-            titlePanel.setBackground(new java.awt.Color(102, 102, 255));
-            titleLabel.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 24));
-            titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-            titleLabel.setText("Cost Menu");
-
-            javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(titlePanel);
-            titlePanel.setLayout(jPanel1Layout);
-            jPanel1Layout.setHorizontalGroup(
-                    jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            );
-            jPanel1Layout.setVerticalGroup(
-                    jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            );
-
-            comboBoxLabel.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 12));
-            comboBoxLabel.setText("Select Cost Categorie :");
+            javax.swing.GroupLayout titleLayout = new TitleLayoutBuilder(titleLabel, titlePanel).build();
 
             categoriesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
 
-            costTextFieldLabel.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 12));
-            costTextFieldLabel.setText("Enter Cost :");
-
-            costTextAreaLabel.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 12));
-            costTextAreaLabel.setText("Enter Cost Describing :");
-
+            costTextArea = new javax.swing.JTextArea();
             costTextArea.setColumns(20);
             costTextArea.setRows(5);
             costTextAreaScrollPane.setViewportView(costTextArea);
 
-
-            jLabel5.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 12));
-            jLabel5.setText("Select Date :");
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
@@ -121,7 +97,7 @@ public class CostView extends javax.swing.JFrame implements ICostView {
                                                             .addComponent(comboBoxLabel)
                                                             .addComponent(costTextFieldLabel)
                                                             .addComponent(costTextAreaLabel)
-                                                            .addComponent(jLabel5))
+                                                            .addComponent(selectDateLabel))
                                                     .addGap(69, 69, 69)
                                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                             .addComponent(categoriesComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -144,7 +120,7 @@ public class CostView extends javax.swing.JFrame implements ICostView {
                                             .addComponent(costTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
+                                            .addComponent(selectDateLabel)
                                             .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

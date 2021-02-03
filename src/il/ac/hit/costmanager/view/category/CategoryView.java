@@ -8,6 +8,7 @@ package il.ac.hit.costmanager.view.category;
 import il.ac.hit.costmanager.exeptions.CostManagerException;
 import il.ac.hit.costmanager.model.category.Category;
 import il.ac.hit.costmanager.view.builders.ButtonBuilder;
+import il.ac.hit.costmanager.view.builders.TitleLayoutBuilder;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -62,27 +63,14 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
             JButton deleteCategoryButton = new ButtonBuilder("Delete").setDefaultCapable(false).build();
             deleteCategoryButton.addActionListener(event -> deleteCategory());
 
-            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
             titlePanel.setBackground(new java.awt.Color(102, 102, 255));
 
             titleLabel.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 24));
             titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
             titleLabel.setText("Categories Menu");
-
-            javax.swing.GroupLayout titleLayout = new javax.swing.GroupLayout(titlePanel);
-            titlePanel.setLayout(titleLayout);
-            titleLayout.setHorizontalGroup(
-                    titleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
-            );
-            titleLayout.setVerticalGroup(
-                    titleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(titleLayout.createSequentialGroup()
-                                    .addGap(19, 19, 19)
-                                    .addComponent(titleLabel)
-                                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            );
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+            javax.swing.GroupLayout titleLayout = new TitleLayoutBuilder(titleLabel, titlePanel).build();
 
             addCategoryTextFieldLabel.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 12));
             addCategoryTextFieldLabel.setText("Add New Categorie :");

@@ -18,7 +18,6 @@ public class ReportViewModel implements IReportViewModel {
 
     public ReportViewModel() {
         pool = Executors.newFixedThreadPool(10);
-
     }
 
     @Override
