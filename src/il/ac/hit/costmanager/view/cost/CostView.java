@@ -73,7 +73,7 @@ public class CostView extends javax.swing.JFrame implements ICostView {
             dateChooserCombo1 = new datechooser.beans.DateChooserCombo();
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-            javax.swing.GroupLayout titleLayout = new TitleLayoutBuilder(titleLabel, titlePanel).build();
+            new TitleLayoutBuilder(titleLabel, titlePanel).build();
 
             categoriesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
 

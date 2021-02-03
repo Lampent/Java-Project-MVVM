@@ -91,7 +91,7 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
 
             titlePanel.setBackground(new java.awt.Color(102, 102, 255));
 
-            javax.swing.GroupLayout titleLayout = new TitleLayoutBuilder(titleLabel, titlePanel).build();
+            new TitleLayoutBuilder(titleLabel, titlePanel).build();
 
             costsTable.setModel(new javax.swing.table.DefaultTableModel(
                     new Object[][]{

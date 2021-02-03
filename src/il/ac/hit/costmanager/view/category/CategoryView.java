@@ -68,7 +68,7 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
             titlePanel.setBackground(new java.awt.Color(102, 102, 255));
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-            javax.swing.GroupLayout titleLayout = new TitleLayoutBuilder(titleLabel, titlePanel).build();
+            new TitleLayoutBuilder(titleLabel, titlePanel).build();
 
             categoriesTable.setModel(new javax.swing.table.DefaultTableModel(
                     new Object[][]{
