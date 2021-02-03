@@ -14,7 +14,12 @@ import il.ac.hit.costmanager.exeptions.CostManagerException;
 public class Category {
 
     private String categoryName = "";
-    private int catId = 0;
+    private int catId = -1;
+
+
+    public Category(String categoryName) throws CostManagerException {
+        this.setCategoryName(categoryName);
+    }
 
     public Category(String categoryName, int catId) throws CostManagerException {
         this.setCategoryName(categoryName);
@@ -51,6 +56,8 @@ public class Category {
     public void setCategoryName(String categoryName) throws CostManagerException {
         if (categoryName == null) {
             throw new CostManagerException("Category name can not be null");
+        } if (categoryName.length() == 0) {
+            throw new CostManagerException("Category name can not be empty");
         }
         this.categoryName = categoryName;
     }

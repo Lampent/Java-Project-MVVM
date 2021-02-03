@@ -3,6 +3,7 @@ package il.ac.hit.costmanager.view.cost;
 import il.ac.hit.costmanager.exeptions.CostManagerException;
 import il.ac.hit.costmanager.model.IModel;
 import il.ac.hit.costmanager.model.category.Category;
+import il.ac.hit.costmanager.model.cost.Cost;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
@@ -48,11 +49,10 @@ public class CostViewModel implements ICostViewModel {
     }
 
     @Override
-    public void InsertCost(double cost, String date, String dec, String catName) {
+    public void insertCost(Cost cost) {
         pool.submit(() -> {
             try {
-                model.InsertCost(cost, date, dec, catName);
-                // view should shoe message
+                model.insertCost(cost);
             } catch (CostManagerException ex) {
                 Logger.getLogger(CostViewModel.class.getName()).log(Level.SEVERE, null, ex);
             }

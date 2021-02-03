@@ -14,13 +14,7 @@ import java.util.ArrayList;
  */
 public interface ICostDAO {
 
-    /**
-     * @param cost
-     * @param date
-     * @param dec
-     * @param catName
-     */
-    void InsertCost(double cost, String date, String dec, String catName) throws CostManagerException;
+    void insertCost(Cost cost) throws CostManagerException;
 
     /**
      * @param catName

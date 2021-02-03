@@ -17,10 +17,10 @@ import java.util.ArrayList;
 public class CategoryDAO implements ICategoryDAO {
 
     /**
-     * @param catName
+     * @param category
      */
     @Override
-    public void InsertCategory(String catName) throws CostManagerException {
+    public void insertCategory(Category category) throws CostManagerException {
         try {
             int catId = 0;
             String query = "Select * from APP.Category";
@@ -28,12 +28,13 @@ public class CategoryDAO implements ICategoryDAO {
             while (res.next()) {
                 catId = (res.getInt("catId"));
             }
+            category.setCatId(catId + 1);
             String sql = "INSERT INTO APP.Category (catId,catName) "
-                    + "VALUES (" + (catId + 1) + ",'" + catName + "')";
+                    + "VALUES (" + category.getCatId() + ",'" + category.getCategoryName() + "')";
             DBAdapter.executeUpdate(sql);
 
         } catch (Exception e) {
-            throw new CostManagerException("Failed to category to DB");
+            throw new CostManagerException("Failed to insert category to DB");
         }
     }
 
@@ -51,7 +52,7 @@ public class CategoryDAO implements ICategoryDAO {
                 catModel.add(ad);
             }
         } catch (Exception e) {
-            throw new CostManagerException("Failed to get caregories from DB");
+            throw new CostManagerException("Failed to get categories from DB");
         }
         return catModel;
     }
@@ -65,7 +66,7 @@ public class CategoryDAO implements ICategoryDAO {
             String query = "DELETE FROM APP.Category WHERE catId=" + catId + "";
             DBAdapter.executeUpdate(query);
         } catch (Exception e) {
-            throw new CostManagerException("Failed to delete caregory from DB");
+            throw new CostManagerException("Failed to delete category from DB");
         }
     }
 }

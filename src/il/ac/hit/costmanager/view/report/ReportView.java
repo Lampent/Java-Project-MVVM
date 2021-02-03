@@ -92,9 +92,9 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
 
             jPanel1.setBackground(new java.awt.Color(102, 102, 255));
 
-            jLabel1.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 24)); // NOI18N
+            jLabel1.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 24));
             jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-            jLabel1.setText("Show Report");
+            jLabel1.setText("Report Menu");
 
             javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
             jPanel1.setLayout(jPanel1Layout);
@@ -110,10 +110,10 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
                                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
 
-            jLabel2.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 12)); // NOI18N
+            jLabel2.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 12));
             jLabel2.setText("From Data :");
 
-            jLabel3.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 12)); // NOI18N
+            jLabel3.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 12));
             jLabel3.setText("To  Data :");
 
 

@@ -39,6 +39,8 @@ public class Cost {
     public void setCategory(String category) throws CostManagerException {
         if (category == null) {
             throw new CostManagerException("Category can not be null");
+        } if (category.length() == 0) {
+            throw new CostManagerException("Category can not be empty");
         }
         this.category = category;
     }
@@ -74,7 +76,9 @@ public class Cost {
      */
     public void setDesc(String desc) throws CostManagerException {
         if (desc == null) {
-            throw new CostManagerException("Descriptionc can not be null");
+            throw new CostManagerException("Description can not be null");
+        } else if (desc.length() == 0) {
+            throw new CostManagerException("Description can not empty");
         }
         this.desc = desc;
     }
@@ -93,6 +97,8 @@ public class Cost {
     public void setCost(double cost) throws CostManagerException {
         if (Double.isNaN(cost)) {
             throw new CostManagerException("Cost must be a number");
+        } else if (cost <= 0) {
+            throw new CostManagerException("Cost must be greater then 0");
         }
         this.cost = cost;
     }

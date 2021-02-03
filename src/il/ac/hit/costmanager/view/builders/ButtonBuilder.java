@@ -18,12 +18,18 @@ public class ButtonBuilder implements IBuilder<javax.swing.JButton> {
         button.setOpaque(true);
     }
 
-    public void setButtonText(String text) {
+    public ButtonBuilder setButtonText(String text) {
         if (text != null) {
             button.setText(text);
         } else {
             button.setText("");
         }
+        return this;
+    }
+
+    public ButtonBuilder setDefaultCapable(boolean capable) {
+        this.button.setDefaultCapable(capable);
+        return this;
     }
 
     public javax.swing.JButton build() {

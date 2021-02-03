@@ -48,10 +48,10 @@ public class CategoryViewModel implements ICategoryViewModel {
     }
 
     @Override
-    public void insertCategory(String categoryName) {
+    public void insertCategory(Category category) {
         pool.submit(() -> {
             try {
-                model.InsertCategory(categoryName);
+                model.insertCategory(category);
                 categoryView.showCategories(model.getCategories());
             } catch (CostManagerException ex) {
                 Logger.getLogger(CategoryViewModel.class.getName()).log(Level.SEVERE, null, ex);

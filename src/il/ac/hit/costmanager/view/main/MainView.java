@@ -5,7 +5,7 @@
  */
 package il.ac.hit.costmanager.view.main;
 
-import il.ac.hit.costmanager.model.IModel;
+import il.ac.hit.costmanager.model.DerbyDBModel;
 import il.ac.hit.costmanager.view.builders.ButtonBuilder;
 import il.ac.hit.costmanager.view.category.CategoryView;
 import il.ac.hit.costmanager.view.category.CategoryViewModel;
@@ -23,23 +23,18 @@ import il.ac.hit.costmanager.view.report.ReportViewModel;
 /**
  * @author Birbal
  */
-public class MainView extends javax.swing.JFrame implements IMainView {
+public class MainView extends javax.swing.JFrame {
 
-    ApplicationUI ui;
-    IModel model;
+    private ApplicationUI ui;
 
     public MainView() {
         this.ui = new ApplicationUI();
-    }
-
-    public void setModel(IModel model) {
-        this.model = model;
+        this.ui.navigateCostMenu();
     }
 
     public class ApplicationUI {
 
         private javax.swing.JPanel containerPanel;
-
 
         public ApplicationUI() {
             initComponents();
@@ -49,21 +44,21 @@ public class MainView extends javax.swing.JFrame implements IMainView {
             javax.swing.JPanel navigatorPanel = new javax.swing.JPanel();
             containerPanel = new javax.swing.JPanel();
 
-            javax.swing.JButton addCostButton = new ButtonBuilder("Add Cost").build();
-            addCostButton.addActionListener(this::navigateCostMenu);
+            javax.swing.JButton costMenuButton = new ButtonBuilder("Cost Menu").build();
+            costMenuButton.addActionListener(event -> navigateCostMenu());
 
-            javax.swing.JButton addCategoriesButton = new ButtonBuilder("Add Categories").build();
-            addCategoriesButton.addActionListener(this::navigateCategoriesMenu);
+            javax.swing.JButton categoriesMenuButton = new ButtonBuilder("Categories Menu").build();
+            categoriesMenuButton.addActionListener(event -> navigateCategoriesMenu());
 
-            javax.swing.JButton reportCategoryButton = new ButtonBuilder("Report Generate").build();
-            reportCategoryButton.addActionListener(this::navigateReportGenerator);
+            javax.swing.JButton reportMenuButton = new ButtonBuilder("Reports Menu").build();
+            reportMenuButton.addActionListener(event -> navigateReportMenu());
 
-            javax.swing.JButton pieChartButton = new ButtonBuilder("Pie Chart").build();
-            pieChartButton.addActionListener(this::navigatePieChart);
+            javax.swing.JButton chartMenuButton = new ButtonBuilder("Chart Menu").build();
+            chartMenuButton.addActionListener(event -> navigateChartMenu());
 
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-            setTitle("Cost Manahement");
+            setTitle("Cost Managment");
 
 
             javax.swing.GroupLayout navigatorPanelLayout = new javax.swing.GroupLayout(navigatorPanel);
@@ -72,13 +67,13 @@ public class MainView extends javax.swing.JFrame implements IMainView {
                     navigatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(navigatorPanelLayout.createSequentialGroup()
                                     .addGap(25, 25, 25)
-                                    .addComponent(addCostButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(costMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(addCategoriesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(categoriesMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(reportCategoryButton)
+                                    .addComponent(reportMenuButton)
                                     .addGap(18, 18, 18)
-                                    .addComponent(pieChartButton)
+                                    .addComponent(chartMenuButton)
                                     .addContainerGap(130, Short.MAX_VALUE))
             );
             navigatorPanelLayout.setVerticalGroup(
@@ -86,10 +81,10 @@ public class MainView extends javax.swing.JFrame implements IMainView {
                             .addGroup(navigatorPanelLayout.createSequentialGroup()
                                     .addGap(20, 20, 20)
                                     .addGroup(navigatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(addCostButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(addCategoriesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(reportCategoryButton)
-                                            .addComponent(pieChartButton))
+                                            .addComponent(costMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(categoriesMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(reportMenuButton)
+                                            .addComponent(chartMenuButton))
                                     .addContainerGap(27, Short.MAX_VALUE))
             );
 
@@ -122,14 +117,14 @@ public class MainView extends javax.swing.JFrame implements IMainView {
             setLocationRelativeTo(null);
         }
 
-        private void navigatePieChart(java.awt.event.ActionEvent evt) {
+        private void navigateChartMenu() {
             this.clearContainerPanel();
 
             IPieChartViewModel viewModel = new PieChartViewModel();
             PieChartView view = new PieChartView();
 
             view.setViewModel(viewModel);
-            viewModel.setModel(model);
+            viewModel.setModel(new DerbyDBModel());
             viewModel.setPieChartView(view);
             viewModel.initializeView();
 
@@ -138,14 +133,14 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         }
 
         // this button click add Cost view add in container panel
-        private void navigateCostMenu(java.awt.event.ActionEvent evt) {
+        private void navigateCostMenu() {
             this.clearContainerPanel();
 
             CostViewModel viewModel = new CostViewModel();
             CostView view = new CostView();
 
             view.setViewModel(viewModel);
-            viewModel.setModel(model);
+            viewModel.setModel(new DerbyDBModel());
             viewModel.setCostView(view);
             viewModel.initializeView();
 
@@ -154,14 +149,14 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         }
 
         // this button click add Category view add in container panel
-        private void navigateCategoriesMenu(java.awt.event.ActionEvent evt) {
+        private void navigateCategoriesMenu() {
             this.clearContainerPanel();
 
             ICategoryViewModel viewModel = new CategoryViewModel();
             CategoryView view = new CategoryView();
 
             view.setViewModel(viewModel);
-            viewModel.setModel(model);
+            viewModel.setModel(new DerbyDBModel());
             viewModel.setCategoryView(view);
             viewModel.initializeView();
 
@@ -170,14 +165,14 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         }
 
         // this button click Report view add in container panel
-        private void navigateReportGenerator(java.awt.event.ActionEvent evt) {
+        private void navigateReportMenu() {
             this.clearContainerPanel();
 
             IReportViewModel viewModel = new ReportViewModel();
             ReportView view = new ReportView();
 
             view.setViewModel(viewModel);
-            viewModel.setModel(model);
+            viewModel.setModel(new DerbyDBModel());
             viewModel.setReportView(view);
             viewModel.initializeView();
 

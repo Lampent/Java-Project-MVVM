@@ -18,14 +18,8 @@ import java.util.ArrayList;
 public class CostDAO implements ICostDAO {
 
 
-    /**
-     * @param cost
-     * @param date
-     * @param dec
-     * @param catName
-     */
     @Override
-    public void InsertCost(double cost, String date, String dec, String catName) throws CostManagerException {
+    public void insertCost(Cost cost) throws CostManagerException {
         try {
             int costId = 0;
             String query = "Select * from APP.Cost";
@@ -35,7 +29,7 @@ public class CostDAO implements ICostDAO {
             }
             costId = costId + 1;
             String sql = "INSERT INTO APP.Cost (costId,catName,cost,date,description) "
-                    + "VALUES (" + costId + ",'" + catName + "'," + cost + ",'" + date + "','" + dec + "')";
+                    + "VALUES (" + costId + ",'" + cost.getCategory() + "'," + cost.getCost() + ",'" + cost.getDate() + "','" + cost.getDesc() + "')";
             DBAdapter.executeUpdate(sql);
         } catch (Exception e) {
             throw new CostManagerException("Failed to insert cost to DB");

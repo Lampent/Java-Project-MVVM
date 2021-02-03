@@ -16,8 +16,8 @@ public class DerbyDBModel implements IModel {
 
 
     @Override
-    public void InsertCategory(String catName) throws CostManagerException {
-        categoryDAO.InsertCategory(catName);
+    public void insertCategory(Category category) throws CostManagerException {
+        categoryDAO.insertCategory(category);
     }
 
     @Override
@@ -31,8 +31,8 @@ public class DerbyDBModel implements IModel {
     }
 
     @Override
-    public void InsertCost(double cost, String date, String dec, String catName) throws CostManagerException {
-        costDAO.InsertCost(cost, date, dec, catName);
+    public void insertCost(Cost cost) throws CostManagerException {
+        costDAO.insertCost(cost);
     }
 
     @Override

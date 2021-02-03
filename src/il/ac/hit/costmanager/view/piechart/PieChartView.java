@@ -115,9 +115,9 @@ public class PieChartView extends javax.swing.JFrame implements IPieChartView {
 
             jPanel1.setBackground(new java.awt.Color(102, 102, 255));
 
-            jLabel1.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 24)); // NOI18N
+            jLabel1.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 24));
             jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-            jLabel1.setText("Show Pie Chart");
+            jLabel1.setText("Chart Menu");
 
             javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
             jPanel1.setLayout(jPanel1Layout);
