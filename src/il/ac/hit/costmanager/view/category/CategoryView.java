@@ -7,6 +7,7 @@ package il.ac.hit.costmanager.view.category;
 
 import il.ac.hit.costmanager.model.category.Category;
 import il.ac.hit.costmanager.view.Initializable;
+import il.ac.hit.costmanager.view.builders.ButtonBuilder;
 import il.ac.hit.costmanager.view.main.MainView;
 
 import javax.swing.*;
@@ -68,7 +69,10 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView, I
             jLabel1 = new javax.swing.JLabel();
             jLabel2 = new javax.swing.JLabel();
             txtAddNewCat = new javax.swing.JTextField();
-            btnSubmit = new javax.swing.JButton();
+
+            btnSubmit = new ButtonBuilder("Submit").build();
+            btnSubmit.addActionListener(this::btnSubmitActionPerformed);
+
             jSeparator1 = new javax.swing.JSeparator();
             jScrollPane1 = new javax.swing.JScrollPane();
             tabShowCategories = new javax.swing.JTable();
@@ -99,8 +103,6 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView, I
             jLabel2.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 12)); // NOI18N
             jLabel2.setText("Add New Categorie :");
 
-            MainView.createNavigationButton(btnSubmit, "Submit");
-            btnSubmit.addActionListener(this::btnSubmitActionPerformed);
 
             tabShowCategories.setModel(new javax.swing.table.DefaultTableModel(
                     new Object[][]{

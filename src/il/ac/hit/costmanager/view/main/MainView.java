@@ -7,6 +7,7 @@ package il.ac.hit.costmanager.view.main;
 
 import il.ac.hit.costmanager.model.DerbyDBModel;
 import il.ac.hit.costmanager.model.IModel;
+import il.ac.hit.costmanager.view.builders.ButtonBuilder;
 import il.ac.hit.costmanager.view.category.CategoryView;
 import il.ac.hit.costmanager.view.category.CategoryViewModel;
 import il.ac.hit.costmanager.view.category.ICategoryViewModel;
@@ -19,20 +20,17 @@ import il.ac.hit.costmanager.view.report.IReportViewModel;
 import il.ac.hit.costmanager.view.report.ReportView;
 import il.ac.hit.costmanager.view.report.ReportViewModel;
 
-import javax.swing.*;
-import java.awt.*;
-
 /**
  * @author Birbal
  */
 public class MainView extends javax.swing.JFrame {
 
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton addCostButton;
+    private javax.swing.JButton addCategoriesButton;
+    private javax.swing.JButton reportCategoryButton;
+    private javax.swing.JButton pieChartButton;
+    private javax.swing.JPanel navigatorPanel;
+    private javax.swing.JPanel containerPanel;
     /**
      * Creates new form MainFrame
      */
@@ -47,78 +45,61 @@ public class MainView extends javax.swing.JFrame {
      */
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        navigatorPanel = new javax.swing.JPanel();
+        containerPanel = new javax.swing.JPanel();
+
+        addCostButton = new ButtonBuilder("Add Cost").build();
+        addCostButton.addActionListener(this::navigateCostMenu);
+
+        addCategoriesButton = new ButtonBuilder("Add Categories").build();
+        addCategoriesButton.addActionListener(this::navigateCategoriesMenu);
+
+        reportCategoryButton = new ButtonBuilder("Report Generate").build();
+        reportCategoryButton.addActionListener(this::navigateReportGenerator);
+
+        pieChartButton = new ButtonBuilder("Pie Chart").build();
+        pieChartButton.addActionListener(this::navigatePieChart);
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cost Manahement");
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
-        jButton1.setBackground(new java.awt.Color(102, 102, 255));
-        jButton1.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 12)); // NOI18N
-        jButton1.setText("Add Cost");
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setMaximumSize(new java.awt.Dimension(119, 23));
-        jButton1.setMinimumSize(new java.awt.Dimension(119, 23));
-        jButton1.setOpaque(true);
-        jButton1.addActionListener(this::jButton1ActionPerformed);
-
-        jButton2.setBackground(new java.awt.Color(102, 102, 255));
-        jButton2.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 12)); // NOI18N
-        jButton2.setText("Add Categories");
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setMaximumSize(new java.awt.Dimension(119, 23));
-        jButton2.setOpaque(true);
-        jButton2.addActionListener(this::jButton2ActionPerformed);
-
-        createNavigationButton(jButton3, "Report Generate");
-        jButton3.addActionListener(this::jButton3ActionPerformed);
-
-        createNavigationButton(jButton4, "Pie Chart");
-        jButton4.addActionListener(this::jButton4ActionPerformed);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout navigatorPanelLayout = new javax.swing.GroupLayout(navigatorPanel);
+        navigatorPanel.setLayout(navigatorPanelLayout);
+        navigatorPanelLayout.setHorizontalGroup(
+                navigatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(navigatorPanelLayout.createSequentialGroup()
                                 .addGap(25, 25, 25)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(addCostButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(addCategoriesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3)
+                                .addComponent(reportCategoryButton)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton4)
+                                .addComponent(pieChartButton)
                                 .addContainerGap(130, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+        navigatorPanelLayout.setVerticalGroup(
+                navigatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(navigatorPanelLayout.createSequentialGroup()
                                 .addGap(20, 20, 20)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton3)
-                                        .addComponent(jButton4))
+                                .addGroup(navigatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(addCostButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(addCategoriesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(reportCategoryButton)
+                                        .addComponent(pieChartButton))
                                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout ContainerPanelLayout = new javax.swing.GroupLayout(containerPanel);
+        containerPanel.setLayout(ContainerPanelLayout);
+        ContainerPanelLayout.setHorizontalGroup(
+                ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        ContainerPanelLayout.setVerticalGroup(
+                ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGap(0, 407, Short.MAX_VALUE)
         );
 
@@ -126,34 +107,22 @@ public class MainView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(navigatorPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(navigatorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }
 
-    public static void createNavigationButton(JButton jButton3, String s) {
-        jButton3.setBackground(new java.awt.Color(102, 102, 255));
-        jButton3.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 12)); // NOI18N
-        jButton3.setText(s);
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setOpaque(true);
-    }
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        jPanel2.removeAll();
-        jPanel2.setVisible(false);
-        jPanel2.setVisible(true);
+    private void navigatePieChart(java.awt.event.ActionEvent evt) {
+        this.clearContainerPanel();
 
         IPieChartViewModel pieChartViewModel = new PieChartViewModel();
         PieChartView pieChartView = new PieChartView();
@@ -166,15 +135,12 @@ public class MainView extends javax.swing.JFrame {
         pieChartView.initialize();
 
         pieChartView.pack();
-        jPanel2.add(pieChartView.getContentPane());
+        containerPanel.add(pieChartView.getContentPane());
     }
 
-    // this button click add Cost view add in jpanel2
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        jPanel2.removeAll();
-        jPanel2.setVisible(false);
-        jPanel2.setVisible(true);
-
+    // this button click add Cost view add in container panel
+    private void navigateCostMenu(java.awt.event.ActionEvent evt) {
+        this.clearContainerPanel();
 
         CostViewModel viewModel = new CostViewModel();
         CostView costView = new CostView();
@@ -188,14 +154,12 @@ public class MainView extends javax.swing.JFrame {
 
         costView.pack();
 
-        jPanel2.add(costView.getContentPane());
+        containerPanel.add(costView.getContentPane());
     }
 
-    // this button click add Category view add in jpanel2
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        jPanel2.removeAll();
-        jPanel2.setVisible(false);
-        jPanel2.setVisible(true);
+    // this button click add Category view add in container panel
+    private void navigateCategoriesMenu(java.awt.event.ActionEvent evt) {
+        this.clearContainerPanel();
 
         IModel model = new DerbyDBModel();
         ICategoryViewModel categoryViewModel = new CategoryViewModel();
@@ -208,14 +172,12 @@ public class MainView extends javax.swing.JFrame {
         categoryView.initialize();
 
         categoryView.pack();
-        jPanel2.add(categoryView.getContentPane());
+        containerPanel.add(categoryView.getContentPane());
     }
 
-    // this button click Report view add in jpanel2
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        jPanel2.removeAll();
-        jPanel2.setVisible(false);
-        jPanel2.setVisible(true);
+    // this button click Report view add in container panel
+    private void navigateReportGenerator(java.awt.event.ActionEvent evt) {
+        this.clearContainerPanel();
 
         IModel model = new DerbyDBModel();
         ReportView reportView = new ReportView();
@@ -228,9 +190,12 @@ public class MainView extends javax.swing.JFrame {
         reportView.initialize();
 
         reportView.pack();
-        jPanel2.add(reportView.getContentPane());
+        containerPanel.add(reportView.getContentPane());
     }
 
-
-
+    private void clearContainerPanel() {
+        containerPanel.removeAll();
+        containerPanel.setVisible(false);
+        containerPanel.setVisible(true);
+    }
 }

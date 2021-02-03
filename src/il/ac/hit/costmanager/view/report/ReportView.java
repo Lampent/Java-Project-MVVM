@@ -7,6 +7,7 @@ package il.ac.hit.costmanager.view.report;
 
 import il.ac.hit.costmanager.model.cost.Cost;
 import il.ac.hit.costmanager.view.Initializable;
+import il.ac.hit.costmanager.view.builders.ButtonBuilder;
 import il.ac.hit.costmanager.view.main.MainView;
 
 import java.awt.*;
@@ -87,7 +88,10 @@ public class ReportView extends javax.swing.JFrame implements IReportView, Initi
             jLabel2 = new javax.swing.JLabel();
             jLabel3 = new javax.swing.JLabel();
             dateEnd = new datechooser.beans.DateChooserCombo();
-            btnShow = new javax.swing.JButton();
+
+            btnShow = new ButtonBuilder("Show").build();
+            btnShow.addActionListener(this::btnShowActionPerformed);
+
             jSeparator1 = new javax.swing.JSeparator();
             jScrollPane1 = new javax.swing.JScrollPane();
             tabShowData = new javax.swing.JTable();
@@ -120,8 +124,6 @@ public class ReportView extends javax.swing.JFrame implements IReportView, Initi
             jLabel3.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 12)); // NOI18N
             jLabel3.setText("To  Data :");
 
-            MainView.createNavigationButton(btnShow, "Show");
-            btnShow.addActionListener(this::btnShowActionPerformed);
 
             tabShowData.setModel(new javax.swing.table.DefaultTableModel(
                     new Object[][]{

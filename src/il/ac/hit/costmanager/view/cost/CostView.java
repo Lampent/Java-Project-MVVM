@@ -7,6 +7,7 @@ package il.ac.hit.costmanager.view.cost;
 
 import il.ac.hit.costmanager.model.category.Category;
 import il.ac.hit.costmanager.view.Initializable;
+import il.ac.hit.costmanager.view.builders.ButtonBuilder;
 import il.ac.hit.costmanager.view.main.MainView;
 
 import java.awt.*;
@@ -81,7 +82,10 @@ public class CostView extends javax.swing.JFrame implements ICostView, Initializ
             jLabel4 = new javax.swing.JLabel();
             jScrollPane1 = new javax.swing.JScrollPane();
             txtDec = new javax.swing.JTextArea();
-            btnSubmit = new javax.swing.JButton();
+
+            btnSubmit = new ButtonBuilder("Submit").build();
+            btnSubmit.addActionListener(this::btnSubmitActionPerformed);
+
             jLabel5 = new javax.swing.JLabel();
             dateChooserCombo1 = new datechooser.beans.DateChooserCombo();
 
@@ -122,8 +126,6 @@ public class CostView extends javax.swing.JFrame implements ICostView, Initializ
             txtDec.setRows(5);
             jScrollPane1.setViewportView(txtDec);
 
-            MainView.createNavigationButton(btnSubmit, "Submit");
-            btnSubmit.addActionListener(this::btnSubmitActionPerformed);
 
             jLabel5.setFont(new java.awt.Font("Times New Roman", Font.BOLD, 12)); // NOI18N
             jLabel5.setText("Select Date :");
