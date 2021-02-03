@@ -8,18 +8,17 @@ package il.ac.hit.costmanager.view.report;
 import il.ac.hit.costmanager.model.cost.Cost;
 import il.ac.hit.costmanager.view.Initializable;
 import il.ac.hit.costmanager.view.builders.ButtonBuilder;
-import il.ac.hit.costmanager.view.main.MainView;
 
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
 
 /**
  * @author Birbal
  */
-public class ReportView extends javax.swing.JFrame implements IReportView, Initializable {
+public class ReportView extends javax.swing.JFrame implements IReportView {
     private IReportViewModel viewModel;
     private ReportUI reportUI;
 
@@ -40,11 +39,6 @@ public class ReportView extends javax.swing.JFrame implements IReportView, Initi
     @Override
     public void showCosts(ArrayList<Cost> costs) {
         this.reportUI.showCosts(costs);
-    }
-
-    @Override
-    public void initialize() {
-        this.viewModel.showCosts();
     }
 
     public class ReportUI {

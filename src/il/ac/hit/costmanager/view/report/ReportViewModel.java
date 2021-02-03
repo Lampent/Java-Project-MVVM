@@ -22,6 +22,11 @@ public class ReportViewModel implements IReportViewModel {
     }
 
     @Override
+    public void initializeView() {
+        this.showCosts();
+    }
+
+    @Override
     public void setModel(IModel model) {
         this.model = model;
     }

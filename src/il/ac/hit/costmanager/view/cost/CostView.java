@@ -6,9 +6,7 @@
 package il.ac.hit.costmanager.view.cost;
 
 import il.ac.hit.costmanager.model.category.Category;
-import il.ac.hit.costmanager.view.Initializable;
 import il.ac.hit.costmanager.view.builders.ButtonBuilder;
-import il.ac.hit.costmanager.view.main.MainView;
 
 import java.awt.*;
 import java.text.DateFormat;
@@ -19,7 +17,7 @@ import javax.swing.JOptionPane;
 /**
  * @author Birbal
  */
-public class CostView extends javax.swing.JFrame implements ICostView, Initializable {
+public class CostView extends javax.swing.JFrame implements ICostView {
 
     private CostViewModel viewModel;
     private CostUI costUI;
@@ -37,11 +35,6 @@ public class CostView extends javax.swing.JFrame implements ICostView, Initializ
     @Override
     public void showCosts(ArrayList<Category> categories) {
         this.costUI.showCategories(categories);
-    }
-
-    @Override
-    public void initialize() {
-        viewModel.showCategories();
     }
 
     public class CostUI {

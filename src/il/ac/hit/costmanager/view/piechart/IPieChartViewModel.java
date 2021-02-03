@@ -8,5 +8,7 @@ public interface IPieChartViewModel {
 
     public void setPieChartView(IPieChartView costView);
 
+    public void initializeView();
+
     public void showCategoriesData();
 }

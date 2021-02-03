@@ -17,18 +17,13 @@ import java.util.ArrayList;
 /**
  * @author Birbal
  */
-public class CategoryView extends javax.swing.JFrame implements ICategoryView, Initializable {
+public class CategoryView extends javax.swing.JFrame implements ICategoryView {
 
     private ICategoryViewModel viewModel;
     private CategoryUI categoryUI;
 
     public CategoryView() {
         this.categoryUI = new CategoryUI();
-    }
-
-    @Override
-    public void initialize() {
-        viewModel.showCategories();
     }
 
     @Override

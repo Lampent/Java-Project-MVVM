@@ -24,7 +24,7 @@ import org.jfree.data.general.DefaultPieDataset;
 /**
  * @author Birbal
  */
-public class PieChartView extends javax.swing.JFrame implements IPieChartView, Initializable {
+public class PieChartView extends javax.swing.JFrame implements IPieChartView {
 
 
     private IPieChartViewModel viewModel;
@@ -34,15 +34,9 @@ public class PieChartView extends javax.swing.JFrame implements IPieChartView, I
         this.pieChartUi = new PieChartUi();
     }
 
-
     @Override
     public void setViewModel(IPieChartViewModel vm) {
         this.viewModel = vm;
-    }
-
-    @Override
-    public void initialize() {
-        this.viewModel.showCategoriesData();
     }
 
     public void showCategoriesData(HashMap<String, Double> categoryMap) {

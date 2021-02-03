@@ -21,6 +21,21 @@ public class CategoryViewModel implements ICategoryViewModel {
     }
 
     @Override
+    public void setModel(IModel model) {
+        this.model = model;
+    }
+
+    @Override
+    public void setCategoryView(CategoryView categoryView) {
+        this.categoryView = categoryView;
+    }
+
+    @Override
+    public void initializeView() {
+        showCategories();
+    }
+
+    @Override
     public void showCategories() {
         pool.submit(() -> {
             try {
@@ -30,16 +45,6 @@ public class CategoryViewModel implements ICategoryViewModel {
                 Logger.getLogger(CategoryViewModel.class.getName()).log(Level.SEVERE, null, e);
             }
         });
-    }
-
-    @Override
-    public void setModel(IModel model) {
-        this.model = model;
-    }
-
-    @Override
-    public void setCategoryView(CategoryView categoryView) {
-        this.categoryView = categoryView;
     }
 
     @Override

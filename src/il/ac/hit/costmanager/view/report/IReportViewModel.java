@@ -8,6 +8,8 @@ public interface IReportViewModel {
 
     public void setReportView(IReportView reportView);
 
+    public void initializeView();
+
     public void showCosts();
 
     public void showCosts(String startDate, String endDate);

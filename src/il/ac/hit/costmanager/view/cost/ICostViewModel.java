@@ -6,11 +6,15 @@ import il.ac.hit.costmanager.model.category.Category;
 import java.util.ArrayList;
 
 public interface ICostViewModel {
-    public ArrayList<Category> showCategories();
-
-    public void InsertCost(double cost, String date, String dec, String catName);
 
     public void setModel(IModel model);
 
     public void setCostView(CostView costView);
+
+    public void initializeView();
+
+    public void InsertCost(double cost, String date, String dec, String catName);
+
+    public ArrayList<Category> showCategories();
+
 }

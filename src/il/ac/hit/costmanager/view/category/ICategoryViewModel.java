@@ -8,6 +8,8 @@ public interface ICategoryViewModel {
 
     public void setCategoryView(CategoryView costView);
 
+    public void initializeView();
+
     public void insertCategory(String categoryName);
 
     public void deleteCategory(int id);

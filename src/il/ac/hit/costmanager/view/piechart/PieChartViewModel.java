@@ -28,6 +28,11 @@ public class PieChartViewModel implements IPieChartViewModel {
     }
 
     @Override
+    public void initializeView() {
+        this.showCategoriesData();
+    }
+
+    @Override
     public void setPieChartView(IPieChartView pieChartView) {
         this.pieChartView = pieChartView;
     }

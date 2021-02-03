@@ -31,6 +31,11 @@ public class CostViewModel implements ICostViewModel {
     }
 
     @Override
+    public void initializeView() {
+        showCategories();
+    }
+
+    @Override
     public ArrayList<Category> showCategories() {
         pool.submit(() -> {
             try {
