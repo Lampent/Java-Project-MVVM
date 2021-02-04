@@ -39,7 +39,7 @@ public class Cost {
     public void setCategory(String category) throws CostManagerException {
         if (category == null) {
             throw new CostManagerException("Category can not be null");
-        } if (category.length() == 0) {
+        } else if (category.length() == 0) {
             throw new CostManagerException("Category can not be empty");
         }
         this.category = category;

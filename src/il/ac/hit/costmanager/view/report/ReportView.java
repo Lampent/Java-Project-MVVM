@@ -86,7 +86,7 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
             javax.swing.JLabel dateStartLabel = new LabelBuilder("From Data :").build();
 
             dateEnd = new datechooser.beans.DateChooserCombo();
-            javax.swing.JLabel dateEndLabel =  new LabelBuilder("To Data :").build();
+            javax.swing.JLabel dateEndLabel = new LabelBuilder("To Data :").build();
 
             javax.swing.JButton showButton = new ButtonBuilder("Show").build();
             showButton.addActionListener(event -> viewModel.showCosts(dateFormat.format(dateStart.getSelectedDate().getTime()),

@@ -19,9 +19,9 @@ import java.util.ArrayList;
 
 public class CostView extends javax.swing.JFrame implements ICostView {
 
+    private final DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
     private CostViewModel viewModel;
     private CostUI costUI;
-    private final DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
     public CostView() {
         this.costUI = new CostUI();
@@ -151,20 +151,20 @@ public class CostView extends javax.swing.JFrame implements ICostView {
         }
 
         private void submitCost() {
-                String selectedCategory = categoriesComboBox.getSelectedItem() != null ? categoriesComboBox.getSelectedItem().toString() : "";
-                if (costTextField.getText().trim().length() > 0 ) {
-                    try {
-                        double cost = Double.parseDouble(costTextField.getText().trim());
-                        Cost costItem = new Cost(selectedCategory, dateFormat.format(dateChooserCombo1.getSelectedDate().getTime()) + "", costTextArea.getText().trim(), cost);
-                        viewModel.insertCost(costItem);
-                    } catch (CostManagerException e) {
-                        showMessage(e.getMessage());
-                    } catch (Exception e) {
-                        showMessage("Cost entered is not valid, please enter a valid number");
-                    }
-                } else {
-                    showMessage("Please enter cost");
+            String selectedCategory = categoriesComboBox.getSelectedItem() != null ? categoriesComboBox.getSelectedItem().toString() : "";
+            if (costTextField.getText().trim().length() > 0) {
+                try {
+                    double cost = Double.parseDouble(costTextField.getText().trim());
+                    Cost costItem = new Cost(selectedCategory, dateFormat.format(dateChooserCombo1.getSelectedDate().getTime()) + "", costTextArea.getText().trim(), cost);
+                    viewModel.insertCost(costItem);
+                } catch (CostManagerException e) {
+                    showMessage(e.getMessage());
+                } catch (Exception e) {
+                    showMessage("Cost entered is not valid, please enter a valid number");
                 }
+            } else {
+                showMessage("Please enter cost");
+            }
         }
     }
 }

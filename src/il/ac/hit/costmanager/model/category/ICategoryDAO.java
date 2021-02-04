@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public interface ICategoryDAO {
 
     /**
+     *
      */
     void insertCategory(Category category) throws CostManagerException;
 

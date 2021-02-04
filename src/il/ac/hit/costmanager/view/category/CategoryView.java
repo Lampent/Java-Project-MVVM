@@ -100,7 +100,6 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
             scrollPanel.setViewportView(categoriesTable);
 
 
-
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
             layout.setHorizontalGroup(

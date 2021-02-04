@@ -1,7 +1,6 @@
 package il.ac.hit.costmanager.view.builders;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class TitleLayoutBuilder implements IBuilder<javax.swing.GroupLayout> {
 

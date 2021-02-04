@@ -55,7 +55,7 @@ public class PieChartView extends javax.swing.JFrame implements IPieChartView {
         private void initComponents() {
 
             javax.swing.JPanel titlePanel = new javax.swing.JPanel();
-            javax.swing.JLabel titleLabel =  new LabelBuilder("Chart Menu").setHorizontalAlignment(javax.swing.SwingConstants.CENTER)
+            javax.swing.JLabel titleLabel = new LabelBuilder("Chart Menu").setHorizontalAlignment(javax.swing.SwingConstants.CENTER)
                     .setFontSize(24).build();
 
             titlePanel.setBackground(new java.awt.Color(102, 102, 255));

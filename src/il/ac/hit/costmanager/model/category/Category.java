@@ -56,7 +56,7 @@ public class Category {
     public void setCategoryName(String categoryName) throws CostManagerException {
         if (categoryName == null) {
             throw new CostManagerException("Category name can not be null");
-        } if (categoryName.length() == 0) {
+        } else if (categoryName.length() == 0) {
             throw new CostManagerException("Category name can not be empty");
         }
         this.categoryName = categoryName;
