@@ -13,7 +13,6 @@ import il.ac.hit.costmanager.view.builders.TitleLayoutBuilder;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -38,6 +37,11 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
         this.categoryUI.showCategories(catModel);
     }
 
+    @Override
+    public void showMessage(String text) {
+        this.categoryUI.showMessage(text);
+    }
+
     public class CategoryUI {
         private javax.swing.JTable categoriesTable;
         private javax.swing.JTextField addCategoryTextField;
@@ -45,6 +49,10 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
 
         public CategoryUI() {
             initComponents();
+        }
+
+        public void showMessage(String text) {
+            JOptionPane.showMessageDialog(null, text);
         }
 
         private void initComponents() {
@@ -138,9 +146,8 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
             try {
                 viewModel.insertCategory(new Category(addCategoryTextField.getText().trim()));
                 addCategoryTextField.setText("");
-                JOptionPane.showMessageDialog(null, "Category Inserted Successfully");
             } catch (CostManagerException e) {
-                JOptionPane.showMessageDialog(null, e.getMessage());
+                showMessage(e.getMessage());
             }
         }
 
@@ -150,7 +157,7 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
                 int categoryId = Integer.parseInt(categoriesTable.getModel().getValueAt(row, 0).toString());
                 viewModel.deleteCategory(categoryId);
             } else {
-                JOptionPane.showMessageDialog(null, "Please select category to delete");
+                showMessage("Please select category to delete");
             }
         }
 

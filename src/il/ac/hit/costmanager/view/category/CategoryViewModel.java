@@ -7,8 +7,6 @@ import il.ac.hit.costmanager.model.category.Category;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class CategoryViewModel implements ICategoryViewModel {
 
@@ -42,7 +40,7 @@ public class CategoryViewModel implements ICategoryViewModel {
                 ArrayList<Category> categories = model.getCategories();
                 categoryView.showCategories(categories);
             } catch (CostManagerException e) {
-                Logger.getLogger(CategoryViewModel.class.getName()).log(Level.SEVERE, null, e);
+                this.categoryView.showMessage("Failed to get categories");
             }
         });
     }
@@ -52,9 +50,10 @@ public class CategoryViewModel implements ICategoryViewModel {
         pool.submit(() -> {
             try {
                 model.insertCategory(category);
-                categoryView.showCategories(model.getCategories());
+                this.categoryView.showMessage("Category crated Successfully");
+                this.showCategories();
             } catch (CostManagerException ex) {
-                Logger.getLogger(CategoryViewModel.class.getName()).log(Level.SEVERE, null, ex);
+                this.categoryView.showMessage("Failed to crate category");
             }
         });
     }
@@ -64,9 +63,10 @@ public class CategoryViewModel implements ICategoryViewModel {
         pool.submit(() -> {
             try {
                 model.deleteCategory(id);
-                categoryView.showCategories(model.getCategories());
+                this.categoryView.showMessage("Category deleted Successfully");
+                this.showCategories();
             } catch (CostManagerException ex) {
-                Logger.getLogger(CategoryViewModel.class.getName()).log(Level.SEVERE, null, ex);
+                this.categoryView.showMessage("Failed to delete category");
             }
         });
     }

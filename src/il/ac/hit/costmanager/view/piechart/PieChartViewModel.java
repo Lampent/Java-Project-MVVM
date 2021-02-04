@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class PieChartViewModel implements IPieChartViewModel {
 
@@ -48,7 +46,7 @@ public class PieChartViewModel implements IPieChartViewModel {
                 }
                 pieChartView.showCategoriesData(categoryMap);
             } catch (CostManagerException e) {
-                Logger.getLogger(PieChartViewModel.class.getName()).log(Level.SEVERE, null, e);
+                this.pieChartView.showMessage("Failed to get Categories");
             }
         });
     }

@@ -14,6 +14,7 @@ import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Random;
@@ -24,7 +25,6 @@ import java.util.Random;
 public class PieChartView extends javax.swing.JFrame implements IPieChartView {
 
 
-    private IPieChartViewModel viewModel;
     private PieChartUi pieChartUi;
 
     public PieChartView() {
@@ -32,12 +32,13 @@ public class PieChartView extends javax.swing.JFrame implements IPieChartView {
     }
 
     @Override
-    public void setViewModel(IPieChartViewModel vm) {
-        this.viewModel = vm;
-    }
-
     public void showCategoriesData(HashMap<String, Double> categoryMap) {
         this.pieChartUi.createChart(categoryMap);
+    }
+
+    @Override
+    public void showMessage(String text) {
+
     }
 
     public class PieChartUi {
@@ -45,6 +46,10 @@ public class PieChartView extends javax.swing.JFrame implements IPieChartView {
 
         public PieChartUi() {
             initComponents();
+        }
+
+        public void showMessage(String text) {
+            JOptionPane.showMessageDialog(null, text);
         }
 
         private void initComponents() {
@@ -131,7 +136,7 @@ public class PieChartView extends javax.swing.JFrame implements IPieChartView {
             chartPanel.setPreferredSize(new Dimension(300, 220));
 
             containerPanel.setLayout(new BorderLayout());
-            containerPanel.add(chartPanel, BorderLayout.CENTER); //BorderLayout.CENTER
+            containerPanel.add(chartPanel, BorderLayout.CENTER);
             containerPanel.validate();
         }
 

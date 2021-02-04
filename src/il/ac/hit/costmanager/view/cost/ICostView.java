@@ -9,4 +9,6 @@ public interface ICostView {
     void setViewModel(CostViewModel vm);
 
     void showCosts(ArrayList<Category> categories);
+
+    void showMessage(String text);
 }

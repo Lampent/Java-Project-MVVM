@@ -10,8 +10,8 @@ import il.ac.hit.costmanager.view.builders.ButtonBuilder;
 import il.ac.hit.costmanager.view.builders.LabelBuilder;
 import il.ac.hit.costmanager.view.builders.TitleLayoutBuilder;
 
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,6 +41,11 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
         this.reportUI.showCosts(costs);
     }
 
+    @Override
+    public void showMessage(String text) {
+        this.reportUI.showMessage(text);
+    }
+
     public class ReportUI {
 
         private datechooser.beans.DateChooserCombo dateStart;
@@ -51,6 +56,10 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
             initComponents();
             dateStart.setDateFormat(dateFormat);
             dateEnd.setDateFormat(dateFormat);
+        }
+
+        public void showMessage(String text) {
+            JOptionPane.showMessageDialog(null, text);
         }
 
         public void showCosts(ArrayList<Cost> costs) {

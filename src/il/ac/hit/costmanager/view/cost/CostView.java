@@ -13,7 +13,6 @@ import il.ac.hit.costmanager.view.builders.LabelBuilder;
 import il.ac.hit.costmanager.view.builders.TitleLayoutBuilder;
 
 import javax.swing.*;
-import java.awt.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -38,6 +37,11 @@ public class CostView extends javax.swing.JFrame implements ICostView {
         this.costUI.showCategories(categories);
     }
 
+    @Override
+    public void showMessage(String text) {
+        this.costUI.showMessage(text);
+    }
+
     public class CostUI {
         private javax.swing.JComboBox<String> categoriesComboBox;
         private datechooser.beans.DateChooserCombo dateChooserCombo1;
@@ -46,6 +50,10 @@ public class CostView extends javax.swing.JFrame implements ICostView {
 
         public CostUI() {
             initComponents();
+        }
+
+        public void showMessage(String text) {
+            JOptionPane.showMessageDialog(null, text);
         }
 
         private void initComponents() {
@@ -143,15 +151,20 @@ public class CostView extends javax.swing.JFrame implements ICostView {
         }
 
         private void submitCost() {
-            try {
                 String selectedCategory = categoriesComboBox.getSelectedItem() != null ? categoriesComboBox.getSelectedItem().toString() : "";
-                double cost =  costTextField.getText().trim().length() > 0 ? Double.parseDouble(costTextField.getText().trim()) : 0;
-                Cost costItem = new Cost(selectedCategory, dateFormat.format(dateChooserCombo1.getSelectedDate().getTime()) + "", costTextArea.getText().trim(), cost);
-                viewModel.insertCost(costItem);
-                JOptionPane.showMessageDialog(null, "Data Inserted Successfully");
-            } catch (CostManagerException e) {
-                JOptionPane.showMessageDialog(null, e.getMessage());
-            }
+                if (costTextField.getText().trim().length() > 0 ) {
+                    try {
+                        double cost = Double.parseDouble(costTextField.getText().trim());
+                        Cost costItem = new Cost(selectedCategory, dateFormat.format(dateChooserCombo1.getSelectedDate().getTime()) + "", costTextArea.getText().trim(), cost);
+                        viewModel.insertCost(costItem);
+                    } catch (CostManagerException e) {
+                        showMessage(e.getMessage());
+                    } catch (Exception e) {
+                        showMessage("Cost entered is not valid, please enter a valid number");
+                    }
+                } else {
+                    showMessage("Please enter cost");
+                }
         }
     }
 }

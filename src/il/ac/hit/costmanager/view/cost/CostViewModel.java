@@ -8,8 +8,6 @@ import il.ac.hit.costmanager.model.cost.Cost;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class CostViewModel implements ICostViewModel {
 
@@ -42,7 +40,7 @@ public class CostViewModel implements ICostViewModel {
             try {
                 costView.showCosts(model.getCategories());
             } catch (CostManagerException ex) {
-                Logger.getLogger(CostViewModel.class.getName()).log(Level.SEVERE, null, ex);
+                this.costView.showMessage("Error occurred when trying to get costs");
             }
         });
         return new ArrayList<>();
@@ -53,8 +51,9 @@ public class CostViewModel implements ICostViewModel {
         pool.submit(() -> {
             try {
                 model.insertCost(cost);
+                this.costView.showMessage("Cost created successfully");
             } catch (CostManagerException ex) {
-                Logger.getLogger(CostViewModel.class.getName()).log(Level.SEVERE, null, ex);
+                this.costView.showMessage("Failed to create cost");
             }
         });
     }

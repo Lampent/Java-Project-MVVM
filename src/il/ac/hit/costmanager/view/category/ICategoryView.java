@@ -10,4 +10,5 @@ public interface ICategoryView {
 
     void showCategories(ArrayList<Category> catModel);
 
+    void showMessage(String text);
 }

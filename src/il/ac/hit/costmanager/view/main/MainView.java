@@ -123,7 +123,6 @@ public class MainView extends javax.swing.JFrame {
             IPieChartViewModel viewModel = new PieChartViewModel();
             PieChartView view = new PieChartView();
 
-            view.setViewModel(viewModel);
             viewModel.setModel(new DerbyDBModel());
             viewModel.setPieChartView(view);
             viewModel.initializeView();

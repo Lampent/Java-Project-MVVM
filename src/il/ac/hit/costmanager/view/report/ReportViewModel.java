@@ -7,8 +7,6 @@ import il.ac.hit.costmanager.model.cost.Cost;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ReportViewModel implements IReportViewModel {
 
@@ -42,7 +40,7 @@ public class ReportViewModel implements IReportViewModel {
                 ArrayList<Cost> costs = model.getCosts();
                 reportView.showCosts(costs);
             } catch (CostManagerException ex) {
-                Logger.getLogger(ReportViewModel.class.getName()).log(Level.SEVERE, null, ex);
+                this.reportView.showMessage("Failed to get costs");
             }
         });
     }
@@ -54,7 +52,7 @@ public class ReportViewModel implements IReportViewModel {
                 ArrayList<Cost> costs = model.getCostDateRange(startDate, endDate);
                 reportView.showCosts(costs);
             } catch (CostManagerException ex) {
-                Logger.getLogger(ReportViewModel.class.getName()).log(Level.SEVERE, null, ex);
+                this.reportView.showMessage("Failed to get costs");
             }
         });
     }

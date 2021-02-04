@@ -10,4 +10,5 @@ public interface IReportView {
 
     void showCosts(ArrayList<Cost> costs);
 
+    void showMessage(String text);
 }
