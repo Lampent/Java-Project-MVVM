@@ -149,8 +149,13 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
         private void deleteCategory() {
             int row = categoriesTable.getSelectedRow();
             if (row >= 0) {
-                int categoryId = Integer.parseInt(categoriesTable.getModel().getValueAt(row, 0).toString());
-                viewModel.deleteCategory(categoryId);
+                Object categoryIdentifier = categoriesTable.getModel().getValueAt(row, 0);
+                if (categoryIdentifier != null) {
+                    int categoryId = Integer.parseInt(categoryIdentifier.toString());
+                    viewModel.deleteCategory(categoryId);
+                } else {
+                    showMessage("Can not delete empty row");
+                }
             } else {
                 showMessage("Please select category to delete");
             }
