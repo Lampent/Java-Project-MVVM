@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package il.ac.hit.costmanager.viewmodel;
 
 import il.ac.hit.costmanager.model.cost.Cost;
@@ -52,7 +48,7 @@ public class CostItemsTest {
 
     /**
      * Test of setCategory method, of class Cost.
-     * @throws exeptions.CostManagerExeption
+     * @throws CostManagerException
      */
     @Test
     public void testSetCategory() throws CostManagerException {
@@ -76,7 +72,7 @@ public class CostItemsTest {
 
     /**
      * Test of setDate method, of class Cost.
-     * @throws exeptions.CostManagerExeption
+     * @throws CostManagerException
      */
     @Test
     public void testSetDate() throws CostManagerException {
@@ -98,7 +94,7 @@ public class CostItemsTest {
 
     /**
      * Test of setDesc method, of class Cost.
-     * @throws exeptions.CostManagerExeption
+     * @throws CostManagerException
      */
     @Test
     public void testSetDesc() throws CostManagerException {
@@ -121,7 +117,7 @@ public class CostItemsTest {
 
     /**
      * Test of setCost method, of class Cost.
-     * @throws exeptions.CostManagerExeption
+     * @throws CostManagerException
      */
     @Test
     public void testSetCost() throws CostManagerException {

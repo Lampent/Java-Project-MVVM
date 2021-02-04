@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package il.ac.hit.costmanager.view.cost;
 
 import il.ac.hit.costmanager.exeptions.CostManagerException;
@@ -142,10 +138,10 @@ public class CostView extends javax.swing.JFrame implements ICostView {
             pack();
         }
 
-        private void showCategories(ArrayList<Category> catModel) {
+        private void showCategories(ArrayList<Category> categories) {
             dateChooserCombo1.setDateFormat(dateFormat);
             categoriesComboBox.removeAllItems();
-            for (Category category : catModel) {
+            for (Category category : categories) {
                 categoriesComboBox.addItem(category.getCategoryName());
             }
         }

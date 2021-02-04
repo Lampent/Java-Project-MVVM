@@ -7,7 +7,7 @@ public interface IMainViewModel extends ViewInitializer {
 
     void setModel(IModel model);
 
-    void setMainView(MainView mainView);
+    void setMainView(IMainView mainView);
 
     void navigateChartMenu();
 

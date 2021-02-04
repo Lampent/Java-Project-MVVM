@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package il.ac.hit.costmanager.model.category;
 
 import il.ac.hit.costmanager.exeptions.CostManagerException;
@@ -10,22 +5,26 @@ import il.ac.hit.costmanager.exeptions.CostManagerException;
 import java.util.ArrayList;
 
 /**
- * @author ron
+ * Interface of a category data access object.
+ * Includes insert, get and delete functions of the category object.
  */
 public interface ICategoryDAO {
 
     /**
-     *
+     * @param category the category to be inserted.
+     * @throws CostManagerException exception if failed to insert the category.
      */
     void insertCategory(Category category) throws CostManagerException;
 
     /**
-     * @return
+     * @return list of all categories
+     * @throws CostManagerException exception if failed to get all the categories.
      */
     ArrayList<Category> getCategories() throws CostManagerException;
 
     /**
-     * @param catId
+     * @param categoryId the id of the category to be deleted.
+     * @throws CostManagerException exception if failed to delete the category.
      */
-    void deleteCategory(int catId) throws CostManagerException;
+    void deleteCategory(int categoryId) throws CostManagerException;
 }

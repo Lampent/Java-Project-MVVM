@@ -40,8 +40,8 @@ public class ChartViewModel implements IChartViewModel {
         pool.submit(() -> {
             try {
                 HashMap<String, Double> categoryMap = new HashMap<>();
-                ArrayList<Category> catModel = model.getCategories();
-                for (Category category : catModel) {
+                ArrayList<Category> categories = model.getCategories();
+                for (Category category : categories) {
                     categoryMap.put(category.getCategoryName(), model.getTotalCost(category.getCategoryName()));
                 }
                 view.showCategoriesData(categoryMap);

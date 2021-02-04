@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package il.ac.hit.costmanager.view.category;
 
 import il.ac.hit.costmanager.exeptions.CostManagerException;
@@ -165,7 +161,7 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
             DefaultTableModel tabModel = (DefaultTableModel) categoriesTable.getModel();
             tabModel.getDataVector().removeAllElements();
             for (Category category : categories) {
-                data[0] = category.getCatId();
+                data[0] = category.getId();
                 data[1] = category.getCategoryName();
                 tabModel.addRow(data);
             }

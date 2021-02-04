@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package il.ac.hit.costmanager.view.report;
 
 import il.ac.hit.costmanager.model.cost.Cost;
@@ -17,16 +13,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
- * @author Birbal
+ *
  */
 public class ReportView extends javax.swing.JFrame implements IReportView {
     private final DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
     private IReportViewModel viewModel;
     private ReportUI reportUI;
 
-    /**
-     * Creates new form ReportGenerate
-     */
     public ReportView() {
         this.reportUI = new ReportUI();
     }

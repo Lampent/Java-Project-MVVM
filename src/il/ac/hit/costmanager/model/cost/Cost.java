@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package il.ac.hit.costmanager.model.cost;
-
 import il.ac.hit.costmanager.exeptions.CostManagerException;
 
-
 /**
- * @author Birbal
+ * Cost represents a real life cost
+ * The cost has category, date, desc and a cost
+ *
+ * Each Cost most have all off the properties mentioned above.
+ * It has one constrictor requiring all the properties.
  */
 public class Cost {
 
@@ -18,6 +15,14 @@ public class Cost {
     private String desc = "";
     private double cost = 0;
 
+    /**
+     * Constructs the cost.
+     * @param category the category of the cost.
+     * @param date the date the cost was created.
+     * @param desc the description of the cost.
+     * @param cost the cost itself represented as a double.
+     * @throws CostManagerException exception thrown when one of the provided properties is not valid.
+     */
     public Cost(String category, String date, String desc, double cost) throws CostManagerException {
         this.setCategory(category);
         this.setCost(cost);
@@ -26,15 +31,17 @@ public class Cost {
     }
 
     /**
-     * @return
+     * @return the category of the cost.
      */
     public String getCategory() {
         return category;
     }
 
     /**
-     * @param category
-     * @throws exeptions.CostManagerExeption
+     * Sets the category of the cost.
+     * If the category is null or it is an empty string then its not valid.
+     * @param category the received category to be set.
+     * @throws CostManagerException exception thrown when the category is not valid.
      */
     public void setCategory(String category) throws CostManagerException {
         if (category == null) {
@@ -46,15 +53,17 @@ public class Cost {
     }
 
     /**
-     * @return
+     * @return the cost date
      */
     public String getDate() {
         return date;
     }
 
     /**
-     * @param date
-     * @throws exeptions.CostManagerExeption
+     * Sets the category date of creation.
+     * If the date equals null it is not valid.
+     * @param date the category data to be set.
+     * @throws CostManagerException exception thrown when the category is not valid.
      */
     public void setDate(String date) throws CostManagerException {
         if (date == null) {
@@ -64,15 +73,17 @@ public class Cost {
     }
 
     /**
-     * @return
+     * @return the category description
      */
     public String getDesc() {
         return desc;
     }
 
     /**
-     * @param desc
-     * @throws exeptions.CostManagerExeption
+     * Sets the cost description.
+     * If the description equals null or empty it is not valid.
+     * @param desc the description to be set.
+     * @throws CostManagerException exception thrown when the description is not valid.
      */
     public void setDesc(String desc) throws CostManagerException {
         if (desc == null) {
@@ -84,15 +95,17 @@ public class Cost {
     }
 
     /**
-     * @return
+     * @return the cost of the cost
      */
     public double getCost() {
         return cost;
     }
 
     /**
-     * @param cost
-     * @throws exeptions.CostManagerExeption
+     * Sets the cost of the cost.
+     * If the cost is not a number  or lower then 0, it is not valid.
+     * @param cost the cost to be set.
+     * @throws CostManagerException exception thrown when the cost is not valid.
      */
     public void setCost(double cost) throws CostManagerException {
         if (Double.isNaN(cost)) {

@@ -9,7 +9,7 @@ import il.ac.hit.costmanager.view.report.ReportViewModel;
 public class MainViewModel implements IMainViewModel {
 
     private IModel model;
-    private MainView view;
+    private IMainView view;
 
     public MainViewModel() {
     }
@@ -20,7 +20,7 @@ public class MainViewModel implements IMainViewModel {
     }
 
     @Override
-    public void setMainView(MainView mainView) {
+    public void setMainView(IMainView mainView) {
         this.view = mainView;
     }
 

@@ -3,7 +3,9 @@ package il.ac.hit.costmanager.model;
 import il.ac.hit.costmanager.model.category.ICategoryDAO;
 import il.ac.hit.costmanager.model.cost.ICostDAO;
 
-
-// A simple form of Encapsulation for the DerbyDbModel
+/**
+ * Interface of the application model.
+ * Includes the functions of all the applications DAOs.
+ */
 public interface IModel extends ICostDAO, ICategoryDAO {
 }

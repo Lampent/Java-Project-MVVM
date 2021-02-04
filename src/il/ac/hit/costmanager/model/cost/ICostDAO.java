@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package il.ac.hit.costmanager.model.cost;
 
 import il.ac.hit.costmanager.exeptions.CostManagerException;
@@ -10,27 +5,34 @@ import il.ac.hit.costmanager.exeptions.CostManagerException;
 import java.util.ArrayList;
 
 /**
- * @author ron
+ * Interface of a cost data access object.
+ * Includes insert, get and delete functions of the cost object.
  */
 public interface ICostDAO {
 
+    /**
+     * @param cost the cost to be inserted.
+     * @throws CostManagerException exception if failed to insert the cost.
+     */
     void insertCost(Cost cost) throws CostManagerException;
 
     /**
-     * @param catName
-     * @return
+     * @param categoryName a category name
+     * @return the total cost of all the costs with the provided category.
+     * @throws CostManagerException exception if failed to get all costs.
      */
-    double getTotalCost(String catName) throws CostManagerException;
+    double getTotalCost(String categoryName) throws CostManagerException;
 
     /**
-     * @return
+     * @return list of all costs
+     * @throws CostManagerException exception if failed to get all costs.
      */
     ArrayList<Cost> getCosts() throws CostManagerException;
 
     /**
-     * @param startDate
-     * @param endDate
-     * @return
+     * @param startDate the starting date
+     * @param endDate the end date
+     * @return list of all the costs in between the starting date and the end date
      */
     ArrayList<Cost> getCostDateRange(String startDate, String endDate) throws CostManagerException;
 }

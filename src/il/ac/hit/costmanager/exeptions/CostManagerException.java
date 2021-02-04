@@ -1,19 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package il.ac.hit.costmanager.exeptions;
 
 /**
- * @author ron
+ * The only "exception" of the application
+ * The exception that should be thrown by the applications implemented methods
  */
 public class CostManagerException extends Exception {
 
+    /**
+     * Constructor of the exception
+     * @param message the method that will be passed on the thrown exaction
+     */
     public CostManagerException(String message) {
         super(message);
     }
 
+    /**
+     * Constructor of the exception
+     * @param message the method that will be passed on the thrown exaction
+     * @param cause the cause of the exception
+     */
     public CostManagerException(String message, Throwable cause) {
         super(message, cause);
     }
