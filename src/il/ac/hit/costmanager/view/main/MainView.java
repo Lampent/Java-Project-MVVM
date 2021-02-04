@@ -5,32 +5,55 @@
  */
 package il.ac.hit.costmanager.view.main;
 
-import il.ac.hit.costmanager.model.DerbyDBModel;
+import il.ac.hit.costmanager.model.IModel;
 import il.ac.hit.costmanager.view.builders.ButtonBuilder;
 import il.ac.hit.costmanager.view.category.CategoryView;
-import il.ac.hit.costmanager.view.category.CategoryViewModel;
 import il.ac.hit.costmanager.view.category.ICategoryViewModel;
 import il.ac.hit.costmanager.view.cost.CostView;
-import il.ac.hit.costmanager.view.cost.CostViewModel;
+import il.ac.hit.costmanager.view.cost.ICostViewModel;
 import il.ac.hit.costmanager.view.piechart.IPieChartViewModel;
 import il.ac.hit.costmanager.view.piechart.PieChartView;
-import il.ac.hit.costmanager.view.piechart.PieChartViewModel;
 import il.ac.hit.costmanager.view.report.IReportViewModel;
 import il.ac.hit.costmanager.view.report.ReportView;
-import il.ac.hit.costmanager.view.report.ReportViewModel;
 
 
 /**
  * @author Birbal
  */
-public class MainView extends javax.swing.JFrame {
+public class MainView extends javax.swing.JFrame implements IMainView {
 
+    private IMainViewModel viewModel;
     private ApplicationUI ui;
 
     public MainView() {
         this.ui = new ApplicationUI();
-        this.ui.navigateCostMenu();
     }
+
+    @Override
+    public void setViewModel(IMainViewModel viewModel) {
+        this.viewModel = viewModel;
+    }
+
+    @Override
+    public void navigateChartMenu(IModel model, IPieChartViewModel viewModel) {
+        this.ui.navigateChartMenu(model, viewModel);
+    }
+
+    @Override
+    public void navigateCostMenu(IModel model, ICostViewModel viewModel) {
+        this.ui.navigateCostMenu(model, viewModel);
+    }
+
+    @Override
+    public void navigateCategoriesMenu(IModel model, ICategoryViewModel viewModel) {
+        this.ui.navigateCategoriesMenu(model, viewModel);
+    }
+
+    @Override
+    public void navigateReportMenu(IModel model, IReportViewModel viewModel) {
+        this.ui.navigateReportMenu(model, viewModel);
+    }
+
 
     public class ApplicationUI {
 
@@ -45,16 +68,16 @@ public class MainView extends javax.swing.JFrame {
             containerPanel = new javax.swing.JPanel();
 
             javax.swing.JButton costMenuButton = new ButtonBuilder("Cost Menu").build();
-            costMenuButton.addActionListener(event -> navigateCostMenu());
+            costMenuButton.addActionListener(event -> viewModel.navigateCostMenu());
 
             javax.swing.JButton categoriesMenuButton = new ButtonBuilder("Categories Menu").build();
-            categoriesMenuButton.addActionListener(event -> navigateCategoriesMenu());
+            categoriesMenuButton.addActionListener(event -> viewModel.navigateCategoriesMenu());
 
             javax.swing.JButton reportMenuButton = new ButtonBuilder("Reports Menu").build();
-            reportMenuButton.addActionListener(event -> navigateReportMenu());
+            reportMenuButton.addActionListener(event -> viewModel.navigateReportMenu());
 
             javax.swing.JButton chartMenuButton = new ButtonBuilder("Chart Menu").build();
-            chartMenuButton.addActionListener(event -> navigateChartMenu());
+            chartMenuButton.addActionListener(event -> viewModel.navigateChartMenu());
 
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -115,15 +138,15 @@ public class MainView extends javax.swing.JFrame {
 
             pack();
             setLocationRelativeTo(null);
+            setVisible(true);
         }
 
-        private void navigateChartMenu() {
-            this.clearContainerPanel();
+        private void navigateChartMenu(IModel model, IPieChartViewModel viewModel) {
+            clearContainerPanel();
 
-            IPieChartViewModel viewModel = new PieChartViewModel();
             PieChartView view = new PieChartView();
 
-            viewModel.setModel(new DerbyDBModel());
+            viewModel.setModel(model);
             viewModel.setPieChartView(view);
             viewModel.initializeView();
 
@@ -132,30 +155,28 @@ public class MainView extends javax.swing.JFrame {
         }
 
         // this button click add Cost view add in container panel
-        private void navigateCostMenu() {
-            this.clearContainerPanel();
+        private void navigateCostMenu(IModel model, ICostViewModel viewModel) {
+            clearContainerPanel();
 
-            CostViewModel viewModel = new CostViewModel();
             CostView view = new CostView();
 
             view.setViewModel(viewModel);
-            viewModel.setModel(new DerbyDBModel());
+            viewModel.setModel(model);
             viewModel.setCostView(view);
             viewModel.initializeView();
 
             view.pack();
-            containerPanel.add(view.getContentPane());
+            this.containerPanel.add(view.getContentPane());
         }
 
         // this button click add Category view add in container panel
-        private void navigateCategoriesMenu() {
-            this.clearContainerPanel();
+        private void navigateCategoriesMenu(IModel model, ICategoryViewModel viewModel) {
+            clearContainerPanel();
 
-            ICategoryViewModel viewModel = new CategoryViewModel();
             CategoryView view = new CategoryView();
 
             view.setViewModel(viewModel);
-            viewModel.setModel(new DerbyDBModel());
+            viewModel.setModel(model);
             viewModel.setCategoryView(view);
             viewModel.initializeView();
 
@@ -164,14 +185,12 @@ public class MainView extends javax.swing.JFrame {
         }
 
         // this button click Report view add in container panel
-        private void navigateReportMenu() {
-            this.clearContainerPanel();
+        private void navigateReportMenu(IModel model, IReportViewModel viewModel) {
+            clearContainerPanel();
 
-            IReportViewModel viewModel = new ReportViewModel();
             ReportView view = new ReportView();
-
             view.setViewModel(viewModel);
-            viewModel.setModel(new DerbyDBModel());
+            viewModel.setModel(model);
             viewModel.setReportView(view);
             viewModel.initializeView();
 

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface ICostView {
 
-    void setViewModel(CostViewModel vm);
+    void setViewModel(ICostViewModel vm);
 
     void showCosts(ArrayList<Category> categories);
 

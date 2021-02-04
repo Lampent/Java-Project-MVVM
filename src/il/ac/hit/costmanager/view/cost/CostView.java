@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class CostView extends javax.swing.JFrame implements ICostView {
 
     private final DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-    private CostViewModel viewModel;
+    private ICostViewModel viewModel;
     private CostUI costUI;
 
     public CostView() {
@@ -28,7 +28,7 @@ public class CostView extends javax.swing.JFrame implements ICostView {
     }
 
     @Override
-    public void setViewModel(CostViewModel vm) {
+    public void setViewModel(ICostViewModel vm) {
         this.viewModel = vm;
     }
 
