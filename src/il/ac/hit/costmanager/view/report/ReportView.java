@@ -32,8 +32,8 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
     }
 
     @Override
-    public void setViewModel(IReportViewModel reportViewModel) {
-        this.viewModel = reportViewModel;
+    public void setViewModel(IReportViewModel viewModel) {
+        this.viewModel = viewModel;
     }
 
     @Override

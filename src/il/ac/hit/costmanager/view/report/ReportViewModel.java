@@ -11,7 +11,7 @@ import java.util.concurrent.Executors;
 public class ReportViewModel implements IReportViewModel {
 
     private IModel model;
-    private IReportView reportView;
+    private IReportView view;
     private ExecutorService pool;
 
     public ReportViewModel() {
@@ -29,8 +29,8 @@ public class ReportViewModel implements IReportViewModel {
     }
 
     @Override
-    public void setReportView(IReportView reportView) {
-        this.reportView = reportView;
+    public void setView(IReportView view) {
+        this.view = view;
     }
 
     @Override
@@ -38,9 +38,9 @@ public class ReportViewModel implements IReportViewModel {
         pool.submit(() -> {
             try {
                 ArrayList<Cost> costs = model.getCosts();
-                reportView.showCosts(costs);
+                view.showCosts(costs);
             } catch (CostManagerException ex) {
-                this.reportView.showMessage("Failed to get costs");
+                this.view.showMessage("Failed to get costs");
             }
         });
     }
@@ -50,9 +50,9 @@ public class ReportViewModel implements IReportViewModel {
         pool.submit(() -> {
             try {
                 ArrayList<Cost> costs = model.getCostDateRange(startDate, endDate);
-                reportView.showCosts(costs);
+                view.showCosts(costs);
             } catch (CostManagerException ex) {
-                this.reportView.showMessage("Failed to get costs");
+                this.view.showMessage("Failed to get costs");
             }
         });
     }

@@ -7,7 +7,7 @@ public interface IReportViewModel extends ViewInitializer {
 
     void setModel(IModel model);
 
-    void setReportView(IReportView reportView);
+    void setView(IReportView view);
 
     void showCosts();
 

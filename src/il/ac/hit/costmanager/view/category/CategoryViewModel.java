@@ -11,7 +11,7 @@ import java.util.concurrent.Executors;
 public class CategoryViewModel implements ICategoryViewModel {
 
     private IModel model;
-    private CategoryView categoryView;
+    private CategoryView view;
     private ExecutorService pool;
 
     public CategoryViewModel() {
@@ -24,8 +24,8 @@ public class CategoryViewModel implements ICategoryViewModel {
     }
 
     @Override
-    public void setCategoryView(CategoryView categoryView) {
-        this.categoryView = categoryView;
+    public void setView(CategoryView view) {
+        this.view = view;
     }
 
     @Override
@@ -38,9 +38,9 @@ public class CategoryViewModel implements ICategoryViewModel {
         pool.submit(() -> {
             try {
                 ArrayList<Category> categories = model.getCategories();
-                categoryView.showCategories(categories);
+                view.showCategories(categories);
             } catch (CostManagerException e) {
-                this.categoryView.showMessage("Failed to get categories");
+                this.view.showMessage("Failed to get categories");
             }
         });
     }
@@ -50,10 +50,10 @@ public class CategoryViewModel implements ICategoryViewModel {
         pool.submit(() -> {
             try {
                 model.insertCategory(category);
-                this.categoryView.showMessage("Category crated Successfully");
+                this.view.showMessage("Category crated Successfully");
                 this.showCategories();
             } catch (CostManagerException ex) {
-                this.categoryView.showMessage("Failed to crate category");
+                this.view.showMessage("Failed to crate category");
             }
         });
     }
@@ -63,10 +63,10 @@ public class CategoryViewModel implements ICategoryViewModel {
         pool.submit(() -> {
             try {
                 model.deleteCategory(id);
-                this.categoryView.showMessage("Category deleted Successfully");
+                this.view.showMessage("Category deleted Successfully");
                 this.showCategories();
             } catch (CostManagerException ex) {
-                this.categoryView.showMessage("Failed to delete category");
+                this.view.showMessage("Failed to delete category");
             }
         });
     }

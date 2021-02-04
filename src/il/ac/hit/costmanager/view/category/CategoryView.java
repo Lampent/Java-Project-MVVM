@@ -28,13 +28,13 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
     }
 
     @Override
-    public void setViewModel(ICategoryViewModel vm) {
-        this.viewModel = vm;
+    public void setViewModel(ICategoryViewModel viewModel) {
+        this.viewModel = viewModel;
     }
 
     @Override
-    public void showCategories(ArrayList<Category> catModel) {
-        this.categoryUI.showCategories(catModel);
+    public void showCategories(ArrayList<Category> categories) {
+        this.categoryUI.showCategories(categories);
     }
 
     @Override
@@ -160,11 +160,11 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
             }
         }
 
-        public void showCategories(ArrayList<Category> catModel) {
+        public void showCategories(ArrayList<Category> categories) {
             Object[] data = new Object[2];
             DefaultTableModel tabModel = (DefaultTableModel) categoriesTable.getModel();
             tabModel.getDataVector().removeAllElements();
-            for (Category category : catModel) {
+            for (Category category : categories) {
                 data[0] = category.getCatId();
                 data[1] = category.getCategoryName();
                 tabModel.addRow(data);

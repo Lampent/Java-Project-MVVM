@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package il.ac.hit.costmanager.view.piechart;
+package il.ac.hit.costmanager.view.chart;
 
 import il.ac.hit.costmanager.view.builders.LabelBuilder;
 import il.ac.hit.costmanager.view.builders.TitleLayoutBuilder;
@@ -22,18 +22,18 @@ import java.util.Random;
 /**
  * @author Birbal
  */
-public class PieChartView extends javax.swing.JFrame implements IPieChartView {
+public class ChartView extends javax.swing.JFrame implements IChartView {
 
 
-    private PieChartUi pieChartUi;
+    private ChartUi chartUi;
 
-    public PieChartView() {
-        this.pieChartUi = new PieChartUi();
+    public ChartView() {
+        this.chartUi = new ChartUi();
     }
 
     @Override
     public void showCategoriesData(HashMap<String, Double> categoryMap) {
-        this.pieChartUi.createChart(categoryMap);
+        this.chartUi.createChart(categoryMap);
     }
 
     @Override
@@ -41,10 +41,10 @@ public class PieChartView extends javax.swing.JFrame implements IPieChartView {
 
     }
 
-    public class PieChartUi {
+    public class ChartUi {
         private javax.swing.JPanel containerPanel;
 
-        public PieChartUi() {
+        public ChartUi() {
             initComponents();
         }
 

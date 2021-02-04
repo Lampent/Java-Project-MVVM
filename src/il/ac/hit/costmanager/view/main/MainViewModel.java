@@ -3,7 +3,7 @@ package il.ac.hit.costmanager.view.main;
 import il.ac.hit.costmanager.model.IModel;
 import il.ac.hit.costmanager.view.category.CategoryViewModel;
 import il.ac.hit.costmanager.view.cost.CostViewModel;
-import il.ac.hit.costmanager.view.piechart.PieChartViewModel;
+import il.ac.hit.costmanager.view.chart.ChartViewModel;
 import il.ac.hit.costmanager.view.report.ReportViewModel;
 
 public class MainViewModel implements IMainViewModel {
@@ -31,7 +31,7 @@ public class MainViewModel implements IMainViewModel {
 
     @Override
     public void navigateChartMenu() {
-        this.view.navigateChartMenu(model, new PieChartViewModel());
+        this.view.navigateChartMenu(model, new ChartViewModel());
     }
 
     @Override

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface IReportView {
 
-    void setViewModel(IReportViewModel reportViewModel);
+    void setViewModel(IReportViewModel viewModel);
 
     void showCosts(ArrayList<Cost> costs);
 

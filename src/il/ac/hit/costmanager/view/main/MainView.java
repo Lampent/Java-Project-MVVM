@@ -11,8 +11,8 @@ import il.ac.hit.costmanager.view.category.CategoryView;
 import il.ac.hit.costmanager.view.category.ICategoryViewModel;
 import il.ac.hit.costmanager.view.cost.CostView;
 import il.ac.hit.costmanager.view.cost.ICostViewModel;
-import il.ac.hit.costmanager.view.piechart.IPieChartViewModel;
-import il.ac.hit.costmanager.view.piechart.PieChartView;
+import il.ac.hit.costmanager.view.chart.IChartViewModel;
+import il.ac.hit.costmanager.view.chart.ChartView;
 import il.ac.hit.costmanager.view.report.IReportViewModel;
 import il.ac.hit.costmanager.view.report.ReportView;
 
@@ -35,7 +35,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
     }
 
     @Override
-    public void navigateChartMenu(IModel model, IPieChartViewModel viewModel) {
+    public void navigateChartMenu(IModel model, IChartViewModel viewModel) {
         this.ui.navigateChartMenu(model, viewModel);
     }
 
@@ -141,13 +141,13 @@ public class MainView extends javax.swing.JFrame implements IMainView {
             setVisible(true);
         }
 
-        private void navigateChartMenu(IModel model, IPieChartViewModel viewModel) {
+        private void navigateChartMenu(IModel model, IChartViewModel viewModel) {
             clearContainerPanel();
 
-            PieChartView view = new PieChartView();
+            ChartView view = new ChartView();
 
             viewModel.setModel(model);
-            viewModel.setPieChartView(view);
+            viewModel.setView(view);
             viewModel.initializeView();
 
             view.pack();
@@ -162,7 +162,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
 
             view.setViewModel(viewModel);
             viewModel.setModel(model);
-            viewModel.setCostView(view);
+            viewModel.setView(view);
             viewModel.initializeView();
 
             view.pack();
@@ -177,7 +177,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
 
             view.setViewModel(viewModel);
             viewModel.setModel(model);
-            viewModel.setCategoryView(view);
+            viewModel.setView(view);
             viewModel.initializeView();
 
             view.pack();
@@ -191,7 +191,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
             ReportView view = new ReportView();
             view.setViewModel(viewModel);
             viewModel.setModel(model);
-            viewModel.setReportView(view);
+            viewModel.setView(view);
             viewModel.initializeView();
 
             view.pack();

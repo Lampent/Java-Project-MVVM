@@ -1,4 +1,4 @@
-package il.ac.hit.costmanager.view.piechart;
+package il.ac.hit.costmanager.view.chart;
 
 import il.ac.hit.costmanager.exeptions.CostManagerException;
 import il.ac.hit.costmanager.model.IModel;
@@ -9,14 +9,14 @@ import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class PieChartViewModel implements IPieChartViewModel {
+public class ChartViewModel implements IChartViewModel {
 
 
     private IModel model;
-    private IPieChartView pieChartView;
+    private IChartView view;
     private ExecutorService pool;
 
-    public PieChartViewModel() {
+    public ChartViewModel() {
         pool = Executors.newFixedThreadPool(10);
     }
 
@@ -31,8 +31,8 @@ public class PieChartViewModel implements IPieChartViewModel {
     }
 
     @Override
-    public void setPieChartView(IPieChartView pieChartView) {
-        this.pieChartView = pieChartView;
+    public void setView(IChartView view) {
+        this.view = view;
     }
 
 
@@ -44,9 +44,9 @@ public class PieChartViewModel implements IPieChartViewModel {
                 for (Category category : catModel) {
                     categoryMap.put(category.getCategoryName(), model.getTotalCost(category.getCategoryName()));
                 }
-                pieChartView.showCategoriesData(categoryMap);
+                view.showCategoriesData(categoryMap);
             } catch (CostManagerException e) {
-                this.pieChartView.showMessage("Failed to get Categories");
+                this.view.showMessage("Failed to get Categories");
             }
         });
     }

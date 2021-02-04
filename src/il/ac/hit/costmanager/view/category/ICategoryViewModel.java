@@ -8,7 +8,7 @@ import il.ac.hit.costmanager.view.ViewInitializer;
 public interface ICategoryViewModel extends ViewInitializer {
     void setModel(IModel model);
 
-    void setCategoryView(CategoryView categoryView);
+    void setView(CategoryView view);
 
     void insertCategory(Category category);
 

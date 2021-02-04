@@ -11,7 +11,7 @@ public interface ICostViewModel extends ViewInitializer {
 
     void setModel(IModel model);
 
-    void setCostView(CostView costView);
+    void setView(CostView view);
 
     void insertCost(Cost cost);
 

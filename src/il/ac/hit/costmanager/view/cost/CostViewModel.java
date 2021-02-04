@@ -12,7 +12,7 @@ import java.util.concurrent.Executors;
 public class CostViewModel implements ICostViewModel {
 
     private IModel model;
-    private CostView costView;
+    private CostView view;
     private ExecutorService pool;
 
     public CostViewModel() {
@@ -25,8 +25,8 @@ public class CostViewModel implements ICostViewModel {
     }
 
     @Override
-    public void setCostView(CostView costView) {
-        this.costView = costView;
+    public void setView(CostView view) {
+        this.view = view;
     }
 
     @Override
@@ -38,9 +38,9 @@ public class CostViewModel implements ICostViewModel {
     public ArrayList<Category> showCategories() {
         pool.submit(() -> {
             try {
-                costView.showCosts(model.getCategories());
+                view.showCosts(model.getCategories());
             } catch (CostManagerException ex) {
-                this.costView.showMessage("Error occurred when trying to get costs");
+                this.view.showMessage("Error occurred when trying to get costs");
             }
         });
         return new ArrayList<>();
@@ -51,9 +51,9 @@ public class CostViewModel implements ICostViewModel {
         pool.submit(() -> {
             try {
                 model.insertCost(cost);
-                this.costView.showMessage("Cost created successfully");
+                this.view.showMessage("Cost created successfully");
             } catch (CostManagerException ex) {
-                this.costView.showMessage("Failed to create cost");
+                this.view.showMessage("Failed to create cost");
             }
         });
     }

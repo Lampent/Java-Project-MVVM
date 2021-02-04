@@ -1,8 +1,8 @@
-package il.ac.hit.costmanager.view.piechart;
+package il.ac.hit.costmanager.view.chart;
 
 import java.util.HashMap;
 
-public interface IPieChartView {
+public interface IChartView {
 
     void showCategoriesData(HashMap<String, Double> categoryMap);
 
