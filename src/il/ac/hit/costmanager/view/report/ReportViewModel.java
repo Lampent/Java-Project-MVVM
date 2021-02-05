@@ -8,29 +8,52 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * The report view model.
+ * Executing operations on a different thread for the view.
+ * Act as a layer separating the access from the view and model (database).
+ * Implements IReportViewModel interface.
+ */
 public class ReportViewModel implements IReportViewModel {
 
     private IModel model;
     private IReportView view;
     private ExecutorService pool;
 
+    /**
+     * Constructor of the report view model.
+     * Initializing a thread pool with a constant number of 10 threads.
+     */
     public ReportViewModel() {
         pool = Executors.newFixedThreadPool(10);
     }
 
-    @Override
-    public void initializeView() {
-        this.showCosts();
-    }
-
+    /**
+     * Sets the mode.
+     *
+     * @param model the model implementing IModel.
+     */
     @Override
     public void setModel(IModel model) {
         this.model = model;
     }
 
+    /**
+     * Sets the view.
+     *
+     * @param view the view implementing IReportView.
+     */
     @Override
     public void setView(IReportView view) {
         this.view = view;
+    }
+
+    /**
+     * Initializing the view.
+     */
+    @Override
+    public void initializeView() {
+        this.showCosts();
     }
 
     @Override

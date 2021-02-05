@@ -20,10 +20,18 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
     private IReportViewModel viewModel;
     private ReportUI reportUI;
 
+    /**
+     * The constructor of the report view.
+     * Initializing the report view ui.
+     */
     public ReportView() {
         this.reportUI = new ReportUI();
     }
 
+    /**
+     * Sets the view model
+     * @param viewModel the report view ViewModel.
+     */
     @Override
     public void setViewModel(IReportViewModel viewModel) {
         this.viewModel = viewModel;
@@ -34,23 +42,42 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
         this.reportUI.showCosts(costs);
     }
 
+    /**
+     * Shows a message to the user, mainly used to show feedback to the user on the different actions available to the user.
+     * Calls the reportUI method to show the message.
+     * @param text text to be show to the user.
+     */
     @Override
     public void showMessage(String text) {
         this.reportUI.showMessage(text);
     }
 
+    /**
+     * The user interface of the view.
+     * Communicating with the ViewModel for executing different operations on a separated thread.
+     */
     public class ReportUI {
 
         private datechooser.beans.DateChooserCombo dateStart;
         private datechooser.beans.DateChooserCombo dateEnd;
         private javax.swing.JTable costsTable;
 
+        /**
+         * The ui constructor.
+         * Initializing the user interface.
+         */
         public ReportUI() {
             initComponents();
+
+            // sets the comboboxes date format.
             dateStart.setDateFormat(dateFormat);
             dateEnd.setDateFormat(dateFormat);
         }
 
+        /**
+         * Shows the received text message to the user.
+         * @param text the received message to be shown.
+         */
         public void showMessage(String text) {
             JOptionPane.showMessageDialog(null, text);
         }
@@ -69,6 +96,10 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
             costsTable.setModel(tabModel);
         }
 
+        /**
+         * Initializing the user interface.
+         * Makes use of different builders such as the LabelBuilder, TitleBuilder and TittleBuilder to save lines of code.
+         */
         private void initComponents() {
 
             javax.swing.JPanel titlePanel = new javax.swing.JPanel();

@@ -9,6 +9,12 @@ import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * The chart view model.
+ * Executing operations on a different thread for the view.
+ * Act as a layer separating the access from the view and model (database).
+ * Implements IChartViewModel interface.
+ */
 public class ChartViewModel implements IChartViewModel {
 
 
@@ -16,25 +22,41 @@ public class ChartViewModel implements IChartViewModel {
     private IChartView view;
     private ExecutorService pool;
 
+    /**
+     * Constructor of the chart view model.
+     * Initializing a thread pool with a constant number of 10 threads.
+     */
     public ChartViewModel() {
         pool = Executors.newFixedThreadPool(10);
     }
 
+    /**
+     * Sets the mode.
+     *
+     * @param model the model implementing IModel.
+     */
     @Override
     public void setModel(IModel model) {
         this.model = model;
     }
 
-    @Override
-    public void initializeView() {
-        this.showCategoriesData();
-    }
-
+    /**
+     * Sets the view.
+     *
+     * @param view the view implementing IChartView.
+     */
     @Override
     public void setView(IChartView view) {
         this.view = view;
     }
 
+    /**
+     * Initializing the view.
+     */
+    @Override
+    public void initializeView() {
+        this.showCategoriesData();
+    }
 
     public void showCategoriesData() {
         pool.submit(() -> {

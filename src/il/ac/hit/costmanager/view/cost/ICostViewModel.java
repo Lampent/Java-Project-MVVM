@@ -7,11 +7,16 @@ import il.ac.hit.costmanager.view.ViewInitializer;
 
 import java.util.ArrayList;
 
+/**
+ * The interface of the cost view model.
+ * Includes the required methods that the view model should implement.
+ * Extends ViewInitializer interface.
+ */
 public interface ICostViewModel extends ViewInitializer {
 
     void setModel(IModel model);
 
-    void setView(CostView view);
+    void setView(ICostView view);
 
     void insertCost(Cost cost);
 

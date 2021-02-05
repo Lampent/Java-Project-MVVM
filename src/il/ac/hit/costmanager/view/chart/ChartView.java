@@ -1,4 +1,3 @@
-
 package il.ac.hit.costmanager.view.chart;
 
 import il.ac.hit.costmanager.view.builders.LabelBuilder;
@@ -16,38 +15,72 @@ import java.util.HashMap;
 import java.util.Random;
 
 /**
- * @author Birbal
+ * The view of the chart.
+ * Displays all the categories of the application with their total cost of costs in a chart.
+ * Allows comfort view of all the categories of the application with their total cost of costs.
+ *
+ * The view implements the IChartView interface.
  */
 public class ChartView extends javax.swing.JFrame implements IChartView {
 
 
     private ChartUi chartUi;
 
+    /**
+     * The constructor of the chart view.
+     * Initializing the chart view ui.
+     */
     public ChartView() {
         this.chartUi = new ChartUi();
     }
 
+    /**
+     * Shows categories with their total cost of costs in the user interface chart.
+     * Calls the chartUI method to show the categories with their total cost of costs.
+     * @param categoryMap a map, key represent the category name and the value represents the total cost of its costs.
+     */
     @Override
     public void showCategoriesData(HashMap<String, Double> categoryMap) {
         this.chartUi.createChart(categoryMap);
     }
 
+    /**
+     * Shows a message to the user, mainly used to show feedback of showing the chart data in the chart.
+     * Calls the chartUI method to show the message.
+     * @param text text to be show to the user.
+     */
     @Override
     public void showMessage(String text) {
-
+        chartUi.showMessage(text);
     }
 
+    /**
+     * The user interface of the view.
+     * Currently there are no actions to be preformed from the view, therefore it dose not communicate with a ViewModel.
+     */
     public class ChartUi {
         private javax.swing.JPanel containerPanel;
 
+        /**
+         * The ui constructor.
+         * Initializing the user interface.
+         */
         public ChartUi() {
             initComponents();
         }
 
+        /**
+         * Shows the received text message to the user.
+         * @param text the received message to be shown.
+         */
         public void showMessage(String text) {
             JOptionPane.showMessageDialog(null, text);
         }
 
+        /**
+         * Initializing the user interface.
+         * Makes use of different builders such as the LabelBuilder, TitleBuilder and TittleBuilder to save lines of code.
+         */
         private void initComponents() {
 
             javax.swing.JPanel titlePanel = new javax.swing.JPanel();

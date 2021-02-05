@@ -9,26 +9,49 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * The cost view model.
+ * Executing operations on a different thread for the view.
+ * Act as a layer separating the access from the view and model (database).
+ * Implements ICostViewModel interface.
+ */
 public class CostViewModel implements ICostViewModel {
 
     private IModel model;
-    private CostView view;
+    private ICostView view;
     private ExecutorService pool;
 
+    /**
+     * Constructor of the cost view model.
+     * Initializing a thread pool with a constant number of 10 threads.
+     */
     public CostViewModel() {
         pool = Executors.newFixedThreadPool(10);
     }
 
+    /**
+     * Sets the mode.
+     *
+     * @param model the model implementing IModel.
+     */
     @Override
     public void setModel(IModel model) {
         this.model = model;
     }
 
+    /**
+     * Sets the view.
+     *
+     * @param view the view implementing ICostView.
+     */
     @Override
-    public void setView(CostView view) {
+    public void setView(ICostView view) {
         this.view = view;
     }
 
+    /**
+     * Initializing the view.
+     */
     @Override
     public void initializeView() {
         showCategories();

@@ -19,13 +19,21 @@ public class CostView extends javax.swing.JFrame implements ICostView {
     private ICostViewModel viewModel;
     private CostUI costUI;
 
+    /**
+     * The constructor of the cost view.
+     * Initializing the cost view ui.
+     */
     public CostView() {
         this.costUI = new CostUI();
     }
 
+    /**
+     * Sets the view model
+     * @param viewModel the cost view ViewModel.
+     */
     @Override
-    public void setViewModel(ICostViewModel vm) {
-        this.viewModel = vm;
+    public void setViewModel(ICostViewModel viewModel) {
+        this.viewModel = viewModel;
     }
 
     @Override
@@ -33,25 +41,46 @@ public class CostView extends javax.swing.JFrame implements ICostView {
         this.costUI.showCategories(categories);
     }
 
+    /**
+     * Shows a message to the user, mainly used to show feedback to the user on the different actions available to the user.
+     * Calls the costUI method to show the message.
+     * @param text text to be show to the user.
+     */
     @Override
     public void showMessage(String text) {
         this.costUI.showMessage(text);
     }
 
+    /**
+     * The user interface of the view.
+     * Communicating with the ViewModel for executing different operations on a separated thread.
+     */
     public class CostUI {
         private javax.swing.JComboBox<String> categoriesComboBox;
         private datechooser.beans.DateChooserCombo dateChooserCombo1;
         private javax.swing.JTextField costTextField;
         private javax.swing.JTextArea costTextArea;
 
+        /**
+         * The ui constructor.
+         * Initializing the user interface.
+         */
         public CostUI() {
             initComponents();
         }
 
+        /**
+         * Shows the received text message to the user.
+         * @param text the received message to be shown.
+         */
         public void showMessage(String text) {
             JOptionPane.showMessageDialog(null, text);
         }
 
+        /**
+         * Initializing the user interface.
+         * Makes use of different builders such as the LabelBuilder, TitleBuilder and TittleBuilder to save lines of code.
+         */
         private void initComponents() {
 
             JPanel titlePanel = new JPanel();

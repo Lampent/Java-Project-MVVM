@@ -21,6 +21,10 @@ public class MainView extends javax.swing.JFrame implements IMainView {
     private IMainViewModel viewModel;
     private ApplicationUI ui;
 
+    /**
+     * The constructor of the main view.
+     * Initializing the view ui.
+     */
     public MainView() {
         this.ui = new ApplicationUI();
     }
