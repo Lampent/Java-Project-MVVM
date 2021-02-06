@@ -70,7 +70,6 @@ public class CostTest {
 
     /**
      * Test of setDesc method, of class Cost.
-     * @throws CostManagerException
      */
     @Test
     public void testSetDesc() throws CostManagerException {
