@@ -18,7 +18,7 @@ import java.util.Random;
  * The view of the chart.
  * Displays all the categories of the application with their total cost of costs in a chart.
  * Allows comfort view of all the categories of the application with their total cost of costs.
- *
+ * <p>
  * The view implements the IChartView interface.
  */
 public class ChartView extends javax.swing.JFrame implements IChartView {
@@ -37,6 +37,7 @@ public class ChartView extends javax.swing.JFrame implements IChartView {
     /**
      * Shows categories with their total cost of costs in the user interface chart.
      * Calls the chartUI method to show the categories with their total cost of costs.
+     *
      * @param categoryMap a map, key represent the category name and the value represents the total cost of its costs.
      */
     @Override
@@ -47,6 +48,7 @@ public class ChartView extends javax.swing.JFrame implements IChartView {
     /**
      * Shows a message to the user, mainly used to show feedback of showing the chart data in the chart.
      * Calls the chartUI method to show the message.
+     *
      * @param text text to be show to the user.
      */
     @Override
@@ -71,6 +73,7 @@ public class ChartView extends javax.swing.JFrame implements IChartView {
 
         /**
          * Shows the received text message to the user.
+         *
          * @param text the received message to be shown.
          */
         public void showMessage(String text) {
@@ -79,19 +82,23 @@ public class ChartView extends javax.swing.JFrame implements IChartView {
 
         /**
          * Initializing the user interface.
-         * Makes use of different builders such as the LabelBuilder, TitleBuilder and TittleBuilder to save lines of code.
+         * Makes use of different builders such as the LabelBuilder, TitleBuilder and TittleLayoutBuilder to save lines of code.
          */
         private void initComponents() {
+            // sets the close operation to exit when closed
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+
+            // creating title panel and title label using label builder
             javax.swing.JPanel titlePanel = new javax.swing.JPanel();
             javax.swing.JLabel titleLabel = new LabelBuilder("Chart Menu").setHorizontalAlignment(javax.swing.SwingConstants.CENTER)
                     .setFontSize(24).build();
-
             titlePanel.setBackground(new java.awt.Color(102, 102, 255));
-            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+            // creating the title layout using the title layout builder
             new TitleLayoutBuilder(titleLabel, titlePanel).build();
 
+            // creating the container panel for the chart
             containerPanel = new javax.swing.JPanel();
             javax.swing.GroupLayout containerPanelLayout = new javax.swing.GroupLayout(containerPanel);
             containerPanel.setLayout(containerPanelLayout);
@@ -104,6 +111,7 @@ public class ChartView extends javax.swing.JFrame implements IChartView {
                             .addGap(0, 281, Short.MAX_VALUE)
             );
 
+            // creating the layou of the container panel and the title panel
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
             layout.setHorizontalGroup(
@@ -122,11 +130,21 @@ public class ChartView extends javax.swing.JFrame implements IChartView {
             pack();
         }
 
+        /**
+         * Creates the chart itself.
+         * The method receives a map where each entry in it consists from key - category name and value - the total cost of the category costs.
+         * The map made of all the categories exists in the model.
+         * It then parse this data to be displayed in the chart, each category receives a random color.
+         *
+         * @param categoryMap a map where each entry in it consists from key - category name and value - the total cost of the category costs
+         */
         private void createChart(HashMap<String, Double> categoryMap) {
 
+            // initializing the chart dataset, a collection of all the categories with their total cost of costs
             final DefaultPieDataset chartDataset = new DefaultPieDataset();
             categoryMap.forEach(chartDataset::setValue);
 
+            // creating new JFreeChart of the dataset
             final JFreeChart chart = ChartFactory.createPieChart(
                     "Cost Pie Chart",
                     chartDataset,
@@ -135,23 +153,29 @@ public class ChartView extends javax.swing.JFrame implements IChartView {
                     true
             );
 
+            // setting noDataMessage in case there is no data available for display.
             final PiePlot chartPlot = (PiePlot) chart.getPlot();
             chartPlot.setNoDataMessage("No data available");
 
+            // sets an explode visual effect on the first category in the map.
             chartPlot.setExplodePercent(categoryMap.keySet().stream().findFirst().get(), 0.20);
-            Font font = new Font("Times New Roman", Font.PLAIN, 12);
-            chartPlot.setLabelFont(font);
 
+            // sets the pie chart font
+            chartPlot.setLabelFont(new Font("Times New Roman", Font.PLAIN, 12));
+
+            // providing each category in the chart a random color.
             categoryMap.keySet().forEach(categoryName -> {
                 Random randomGenerator = new Random();
                 Color randomColour = new Color(randomGenerator.nextInt(256), randomGenerator.nextInt(256), randomGenerator.nextInt(256));
                 chartPlot.setSectionPaint(categoryName, randomColour);
             });
 
+            // sets the chart plot background, outline and the method for displaying the lable.
             chartPlot.setBackgroundPaint(Color.WHITE);
             chartPlot.setOutlinePaint(Color.WHITE);
             chartPlot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0}" + " " + "{2}"));
 
+            // sets charts parameters
             chart.setBorderVisible(true);
             chart.setBorderPaint(new Color(145, 141, 62));
             chart.setBackgroundPaint(Color.WHITE);
@@ -161,9 +185,11 @@ public class ChartView extends javax.swing.JFrame implements IChartView {
             chart.getTitle().setBackgroundPaint(new Color(45, 181, 209));
             chart.getTitle().setFont(new Font("Times New Roman", Font.BOLD, 22));
 
+            // creating new panel for the created chart
             ChartPanel chartPanel = new ChartPanel(chart);
             chartPanel.setPreferredSize(new Dimension(300, 220));
 
+            // sets the new chart panel in the container panel
             containerPanel.setLayout(new BorderLayout());
             containerPanel.add(chartPanel, BorderLayout.CENTER);
             containerPanel.validate();

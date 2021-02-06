@@ -8,6 +8,11 @@ import java.util.HashMap;
  */
 public interface IChartView {
 
+    /**
+     * Shows categories with their total cost of costs in the user interface chart.
+     *
+     * @param categoryMap a map, key represent the category name and the value represents the total cost of its costs.
+     */
     void showCategoriesData(HashMap<String, Double> categoryMap);
 
     /**

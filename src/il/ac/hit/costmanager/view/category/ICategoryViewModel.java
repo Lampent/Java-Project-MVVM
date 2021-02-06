@@ -12,7 +12,7 @@ import il.ac.hit.costmanager.view.ViewInitializer;
 public interface ICategoryViewModel extends ViewInitializer {
 
     /**
-     * Sets the mode.
+     * Sets the model.
      *
      * @param model the model implementing IModel.
      */

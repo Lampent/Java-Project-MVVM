@@ -29,6 +29,7 @@ public class CostView extends javax.swing.JFrame implements ICostView {
 
     /**
      * Sets the view model
+     *
      * @param viewModel the cost view ViewModel.
      */
     @Override
@@ -36,14 +37,21 @@ public class CostView extends javax.swing.JFrame implements ICostView {
         this.viewModel = viewModel;
     }
 
+    /**
+     * Shows the categories names in the user interface.
+     * Calls the costUI method to show the categories names.
+     *
+     * @param categories categories names to be shown.
+     */
     @Override
-    public void showCosts(ArrayList<Category> categories) {
+    public void showCategories(ArrayList<Category> categories) {
         this.costUI.showCategories(categories);
     }
 
     /**
      * Shows a message to the user, mainly used to show feedback to the user on the different actions available to the user.
      * Calls the costUI method to show the message.
+     *
      * @param text text to be show to the user.
      */
     @Override
@@ -57,7 +65,7 @@ public class CostView extends javax.swing.JFrame implements ICostView {
      */
     public class CostUI {
         private javax.swing.JComboBox<String> categoriesComboBox;
-        private datechooser.beans.DateChooserCombo dateChooserCombo1;
+        private datechooser.beans.DateChooserCombo dateChooserCombo;
         private javax.swing.JTextField costTextField;
         private javax.swing.JTextArea costTextArea;
 
@@ -71,6 +79,7 @@ public class CostView extends javax.swing.JFrame implements ICostView {
 
         /**
          * Shows the received text message to the user.
+         *
          * @param text the received message to be shown.
          */
         public void showMessage(String text) {
@@ -82,40 +91,45 @@ public class CostView extends javax.swing.JFrame implements ICostView {
          * Makes use of different builders such as the LabelBuilder, TitleBuilder and TittleBuilder to save lines of code.
          */
         private void initComponents() {
+            // sets the close operation to exit when closed
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+            // creating title panel and title label using label builder
             JPanel titlePanel = new JPanel();
             titlePanel.setBackground(new java.awt.Color(102, 102, 255));
-
             JLabel titleLabel = new LabelBuilder("Cost Menu").setHorizontalAlignment(javax.swing.SwingConstants.CENTER)
-                    .setFontSize(24)
-                    .build();
+                    .setFontSize(24).build();
 
+            // creating the title layout using the title layout builder
+            new TitleLayoutBuilder(titleLabel, titlePanel).build();
+
+            // initializing the category combobox and creating its label
             categoriesComboBox = new javax.swing.JComboBox<>();
+            categoriesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{}));
             JLabel comboBoxLabel = new LabelBuilder("Select Cost Categories :").build();
 
+            // initializing the cost text field and creating its label
             costTextField = new javax.swing.JTextField();
             JLabel costTextFieldLabel = new LabelBuilder("Enter Cost :").build();
 
-            JLabel costTextAreaLabel = new LabelBuilder("Enter Cost Description :").build();
-            JScrollPane costTextAreaScrollPane = new JScrollPane();
-
+            // creating the submit button that creates a new entered cost
             JButton btnSubmit = new ButtonBuilder("Submit").build();
             btnSubmit.addActionListener(event -> submitCost());
 
+            // initializing the date chooser combobox and creating its label
             JLabel selectDateLabel = new LabelBuilder("Select Date :").build();
-            dateChooserCombo1 = new datechooser.beans.DateChooserCombo();
+            dateChooserCombo = new datechooser.beans.DateChooserCombo();
 
-            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-            new TitleLayoutBuilder(titleLabel, titlePanel).build();
-
-            categoriesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
-
+            // creating the cost text area label, and initializing it
+            JLabel costTextAreaLabel = new LabelBuilder("Enter Cost Description :").build();
+            JScrollPane costTextAreaScrollPane = new JScrollPane();
             costTextArea = new javax.swing.JTextArea();
             costTextArea.setColumns(20);
             costTextArea.setRows(5);
             costTextAreaScrollPane.setViewportView(costTextArea);
 
 
+            // creating and setting the main layout of the view
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
             layout.setHorizontalGroup(
@@ -136,7 +150,7 @@ public class CostView extends javax.swing.JFrame implements ICostView {
                                                             .addComponent(categoriesComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                             .addComponent(costTextField)
                                                             .addComponent(costTextAreaScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
-                                                            .addComponent(dateChooserCombo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                                            .addComponent(dateChooserCombo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                     .addContainerGap(44, Short.MAX_VALUE))
             );
             layout.setVerticalGroup(
@@ -154,7 +168,7 @@ public class CostView extends javax.swing.JFrame implements ICostView {
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(selectDateLabel)
-                                            .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(dateChooserCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(costTextAreaScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,24 +177,39 @@ public class CostView extends javax.swing.JFrame implements ICostView {
                                     .addComponent(btnSubmit)
                                     .addContainerGap())
             );
-
             pack();
         }
 
+        /**
+         * Shows the categories names received in the category combobox.
+         * When a user creates a cost he needs to select its category from the category combobox.
+         *
+         * @param categories categories names to be shown.
+         */
         private void showCategories(ArrayList<Category> categories) {
-            dateChooserCombo1.setDateFormat(dateFormat);
+            dateChooserCombo.setDateFormat(dateFormat);
             categoriesComboBox.removeAllItems();
             for (Category category : categories) {
                 categoriesComboBox.addItem(category.getCategoryName());
             }
         }
 
+        /**
+         * Submits the new cost.
+         * It gatherers the details needed for the creation of the new cost.
+         * It takes the new cost category from the category combobox, the description from the cost text area,
+         * and the cost from the cost text filed.
+         * If one of the details are invalid it displays a feedback to the user.
+         *
+         * After all of the details from the ui are check to be valid, it sent the cost to the viewModel.
+         * Thus inserting the new cost to the model on a different thread.
+         */
         private void submitCost() {
             String selectedCategory = categoriesComboBox.getSelectedItem() != null ? categoriesComboBox.getSelectedItem().toString() : "";
             if (costTextField.getText().trim().length() > 0) {
                 try {
                     double cost = Double.parseDouble(costTextField.getText().trim());
-                    Cost costItem = new Cost(selectedCategory, dateFormat.format(dateChooserCombo1.getSelectedDate().getTime()) + "", costTextArea.getText().trim(), cost);
+                    Cost costItem = new Cost(selectedCategory, dateFormat.format(dateChooserCombo.getSelectedDate().getTime()) + "", costTextArea.getText().trim(), cost);
                     viewModel.insertCost(costItem);
                 } catch (CostManagerException e) {
                     showMessage(e.getMessage());

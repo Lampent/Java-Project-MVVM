@@ -30,6 +30,7 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
 
     /**
      * Sets the view model
+     *
      * @param viewModel the report view ViewModel.
      */
     @Override
@@ -37,6 +38,13 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
         this.viewModel = viewModel;
     }
 
+    /**
+     * Shows costs in the user interface.
+     * Calls the reportUI method to show the costs.
+     * The main use cases of this method is to show all the costs of the application and show specific costs.
+     *
+     * @param costs costs to be shown.
+     */
     @Override
     public void showCosts(ArrayList<Cost> costs) {
         this.reportUI.showCosts(costs);
@@ -45,6 +53,7 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
     /**
      * Shows a message to the user, mainly used to show feedback to the user on the different actions available to the user.
      * Calls the reportUI method to show the message.
+     *
      * @param text text to be show to the user.
      */
     @Override
@@ -69,22 +78,33 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
         public ReportUI() {
             initComponents();
 
-            // sets the comboboxes date format.
+            // sets the comboboxes date format
             dateStart.setDateFormat(dateFormat);
             dateEnd.setDateFormat(dateFormat);
         }
 
         /**
          * Shows the received text message to the user.
+         *
          * @param text the received message to be shown.
          */
         public void showMessage(String text) {
             JOptionPane.showMessageDialog(null, text);
         }
 
+        /**
+         * Shows the received costs in the cost table.
+         * The method first clears the costs table.
+         * Afterwords, it parses the costs objects in to a format to be displayed in the costs table.
+         *
+         * @param costs costs to be shown.
+         */
         public void showCosts(ArrayList<Cost> costs) {
+            // gets the table model reference and clean the table from previous data
             DefaultTableModel tabModel = (DefaultTableModel) costsTable.getModel();
             tabModel.getDataVector().removeAllElements();
+
+            // parsing the costs objects to the required format and add a new row to the table, one by one
             Object[] data = new Object[4];
             for (Cost cost : costs) {
                 data[0] = cost.getCost();
@@ -93,6 +113,8 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
                 data[3] = cost.getCategory();
                 tabModel.addRow(data);
             }
+
+            // sets the model again to the table
             costsTable.setModel(tabModel);
         }
 

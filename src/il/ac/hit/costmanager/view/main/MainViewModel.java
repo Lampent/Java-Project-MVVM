@@ -21,7 +21,7 @@ public class MainViewModel implements IMainViewModel {
     }
 
     /**
-     * Sets the mode.
+     * Sets the model.
      *
      * @param model the model implementing IModel.
      */

@@ -29,7 +29,7 @@ public class ReportViewModel implements IReportViewModel {
     }
 
     /**
-     * Sets the mode.
+     * Sets the model.
      *
      * @param model the model implementing IModel.
      */

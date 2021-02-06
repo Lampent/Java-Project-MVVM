@@ -2,10 +2,8 @@ package il.ac.hit.costmanager.view.cost;
 
 import il.ac.hit.costmanager.exeptions.CostManagerException;
 import il.ac.hit.costmanager.model.IModel;
-import il.ac.hit.costmanager.model.category.Category;
 import il.ac.hit.costmanager.model.cost.Cost;
 
-import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -30,7 +28,7 @@ public class CostViewModel implements ICostViewModel {
     }
 
     /**
-     * Sets the mode.
+     * Sets the model.
      *
      * @param model the model implementing IModel.
      */
@@ -57,18 +55,31 @@ public class CostViewModel implements ICostViewModel {
         showCategories();
     }
 
+    /**
+     * Shows all the existing categories in the model.
+     * Gets the categories from the model, and send them to the view.
+     * This operation preformed on a dedicated thread.
+     *
+     * Shows feedback in case failed to fetch the data from the model.
+     */
     @Override
-    public ArrayList<Category> showCategories() {
+    public void showCategories() {
         pool.submit(() -> {
             try {
-                view.showCosts(model.getCategories());
+                view.showCategories(model.getCategories());
             } catch (CostManagerException ex) {
                 this.view.showMessage("Error occurred when trying to get costs");
             }
         });
-        return new ArrayList<>();
     }
 
+    /**
+     * Inserting a new cost to the model.
+     * This operation preformed on a dedicated thread.
+     * Shows feedback in case failed to insert cost to the model.
+     *
+     * @param cost the cost to be inserted to the model.
+     */
     @Override
     public void insertCost(Cost cost) {
         pool.submit(() -> {

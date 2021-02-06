@@ -14,9 +14,9 @@ import org.junit.Test;
  *
  * @author Birbal
  */
-public class CostItemsTest {
+public class CostTest {
 
-    public CostItemsTest() {
+    public CostTest() {
     }
 
     @BeforeClass

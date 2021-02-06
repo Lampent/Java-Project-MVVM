@@ -31,7 +31,7 @@ public class ChartViewModel implements IChartViewModel {
     }
 
     /**
-     * Sets the mode.
+     * Sets the model.
      *
      * @param model the model implementing IModel.
      */
@@ -58,6 +58,14 @@ public class ChartViewModel implements IChartViewModel {
         this.showCategoriesData();
     }
 
+    /**
+     * Shows all the existing categories in the model.
+     * Gets the categories from the model, and build suitable map to be sent to the view.
+     * The map consists from key - category name and value - the total cost of the category costs
+     * This operation preformed on a dedicated thread.
+     *
+     * Shows feedback in case failed to fetch the data from the model.
+     */
     public void showCategoriesData() {
         pool.submit(() -> {
             try {

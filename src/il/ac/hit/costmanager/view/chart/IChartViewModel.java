@@ -10,9 +10,22 @@ import il.ac.hit.costmanager.view.ViewInitializer;
  */
 public interface IChartViewModel extends ViewInitializer {
 
+    /**
+     * Sets the model.
+     *
+     * @param model the model implementing IModel.
+     */
     void setModel(IModel model);
 
+    /**
+     * Sets the view.
+     *
+     * @param view the view implementing IChartView.
+     */
     void setView(IChartView view);
 
+    /**
+     * Shows all the existing categories in the model in the view.
+     */
     void showCategoriesData();
 }

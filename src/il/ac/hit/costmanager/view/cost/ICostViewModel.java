@@ -1,11 +1,8 @@
 package il.ac.hit.costmanager.view.cost;
 
 import il.ac.hit.costmanager.model.IModel;
-import il.ac.hit.costmanager.model.category.Category;
 import il.ac.hit.costmanager.model.cost.Cost;
 import il.ac.hit.costmanager.view.ViewInitializer;
-
-import java.util.ArrayList;
 
 /**
  * The interface of the cost view model.
@@ -14,12 +11,29 @@ import java.util.ArrayList;
  */
 public interface ICostViewModel extends ViewInitializer {
 
+    /**
+     * Sets the model.
+     *
+     * @param model the model implementing IModel.
+     */
     void setModel(IModel model);
 
+    /**
+     * Sets the view.
+     *
+     * @param view the view implementing ICostView.
+     */
     void setView(ICostView view);
 
+    /**
+     * Shows all the existing categories in the model.
+     */
+    void showCategories();
+
+    /**
+     * Inserting a new cost to the model.
+     *
+     * @param cost the cost to be inserted to the model.
+     */
     void insertCost(Cost cost);
-
-    ArrayList<Category> showCategories();
-
 }

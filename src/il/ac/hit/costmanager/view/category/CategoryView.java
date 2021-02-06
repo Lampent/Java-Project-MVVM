@@ -94,7 +94,7 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
         private void initComponents() {
 
 
-            // seths the close operation to exit when closed
+            // sets the close operation to exit when closed
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
             // Creating the title label using the lableBuilder and creates new tile layout

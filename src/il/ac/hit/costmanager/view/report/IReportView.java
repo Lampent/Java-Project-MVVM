@@ -16,6 +16,11 @@ public interface IReportView {
      */
     void setViewModel(IReportViewModel viewModel);
 
+    /**
+     * Shows costs in the user interface.
+     *
+     * @param costs costs to be shown.
+     */
     void showCosts(ArrayList<Cost> costs);
 
     /**

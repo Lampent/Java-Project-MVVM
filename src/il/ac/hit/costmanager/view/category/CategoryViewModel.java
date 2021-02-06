@@ -29,7 +29,7 @@ public class CategoryViewModel implements ICategoryViewModel {
     }
 
     /**
-     * Sets the mode.
+     * Sets the model.
      *
      * @param model the model implementing IModel.
      */

@@ -16,7 +16,12 @@ public interface ICostView {
      */
     void setViewModel(ICostViewModel viewModel);
 
-    void showCosts(ArrayList<Category> categories);
+    /**
+     * Shows the categories names in the user interface.
+     *
+     * @param categories categories names to be shown.
+     */
+    void showCategories(ArrayList<Category> categories);
 
     /**
      * Shows a message to the user, mainly used to show feedback to the user on the different actions available to the user.
