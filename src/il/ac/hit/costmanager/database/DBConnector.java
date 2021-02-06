@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 
 /**
  * DBConnector in charge of opening a connection to the database, and return it to those who need it.
- * No one can access the credential of the DB user.
+ * No one can access the credential of the DB user, has its specify in the connect method implementation.
  * Contains a single function to return the connection.
  */
 public class DBConnector {
@@ -20,6 +20,7 @@ public class DBConnector {
 
     /**
      * Opens a new connection to the the database with the currect credentials and return it.
+     *
      * @return Connection the Connection to the database.
      * @throws CostManagerException in case of it failed to open the connection to the database.
      */

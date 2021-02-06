@@ -1,4 +1,3 @@
-
 package il.ac.hit.costmanager.view.report;
 
 import il.ac.hit.costmanager.model.cost.Cost;

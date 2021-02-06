@@ -18,6 +18,7 @@ public class LabelBuilder implements IBuilder<JLabel> {
 
     /**
      * Constructor of the label builder
+     *
      * @param text the text of the label. Every labelzas most provide it,
      *             therefor we provide it in the constructor and not in setter.
      */
@@ -32,6 +33,7 @@ public class LabelBuilder implements IBuilder<JLabel> {
 
     /**
      * Sets the horizontalAlignment of the label.
+     *
      * @param alignment the alignment option.
      * @return the LabelBuilder.
      */
@@ -42,6 +44,7 @@ public class LabelBuilder implements IBuilder<JLabel> {
 
     /**
      * Sets the label font size.
+     *
      * @param size the label font size.
      * @return the LabelBuilder.
      */
@@ -52,6 +55,7 @@ public class LabelBuilder implements IBuilder<JLabel> {
 
     /**
      * The build function returns the built label.
+     *
      * @return the built label.
      */
     @Override

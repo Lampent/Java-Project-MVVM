@@ -59,7 +59,7 @@ public class CostViewModel implements ICostViewModel {
      * Shows all the existing categories in the model.
      * Gets the categories from the model, and send them to the view.
      * This operation preformed on a dedicated thread.
-     *
+     * <p>
      * Shows feedback in case failed to fetch the data from the model.
      */
     @Override

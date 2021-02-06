@@ -21,6 +21,7 @@ public class CategoryDAO implements ICategoryDAO {
 
     /**
      * Inserts category into the database.
+     *
      * @param category the category to insert.
      * @throws CostManagerException exception if failed to insert category.
      */
@@ -45,6 +46,7 @@ public class CategoryDAO implements ICategoryDAO {
 
     /**
      * Gets all the categories in the database
+     *
      * @return returns a list of all the categories in the database
      * @throws CostManagerException exception if failed to get categories from database.
      */
@@ -66,6 +68,7 @@ public class CategoryDAO implements ICategoryDAO {
 
     /**
      * Deletes a category from the database by its identifier.
+     *
      * @param categoryId the id of the category to be deleted.
      * @throws CostManagerException exception if failed to delete the category.
      */

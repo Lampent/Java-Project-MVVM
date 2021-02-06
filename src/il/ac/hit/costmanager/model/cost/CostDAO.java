@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 
-
 /**
  * The cost Data Access Object, wraps the access to the database for costs as a separate layer.
  * Implementing and exposing the insert,get and delete functionality of the cost object.
@@ -23,6 +22,7 @@ public class CostDAO implements ICostDAO {
 
     /**
      * Inserts a cost into the database.
+     *
      * @param cost the cost to be inserted.
      * @throws CostManagerException exception if failed to insert the cost.
      */
@@ -46,6 +46,7 @@ public class CostDAO implements ICostDAO {
 
     /**
      * Gets the total cost of all the cost from the database with the same category name as provided from.
+     *
      * @param categoryName a category name.
      * @return the total cost of all the costs with the provided category.
      * @throws CostManagerException exception if failed to get all costs.
@@ -67,6 +68,7 @@ public class CostDAO implements ICostDAO {
 
     /**
      * Gets all the costs from the database.
+     *
      * @return list of all costs
      * @throws CostManagerException exception if failed to get all costs.
      */
@@ -88,8 +90,9 @@ public class CostDAO implements ICostDAO {
 
     /**
      * Gets all the costs from the database between two provided dates.
+     *
      * @param startDate the starting date
-     * @param endDate the end date
+     * @param endDate   the end date
      * @return list of all the costs in between the starting date and the end date
      */
     @Override

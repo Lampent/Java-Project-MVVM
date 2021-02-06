@@ -31,7 +31,7 @@ public interface ICostDAO {
 
     /**
      * @param startDate the starting date
-     * @param endDate the end date
+     * @param endDate   the end date
      * @return list of all the costs in between the starting date and the end date
      */
     ArrayList<Cost> getCostDateRange(String startDate, String endDate) throws CostManagerException;

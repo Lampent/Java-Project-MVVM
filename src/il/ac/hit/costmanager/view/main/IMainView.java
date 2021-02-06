@@ -1,11 +1,11 @@
 package il.ac.hit.costmanager.view.main;
 
 import il.ac.hit.costmanager.model.IModel;
-import il.ac.hit.costmanager.view.category.ICategoryViewModel;
-import il.ac.hit.costmanager.view.cost.ICostViewModel;
-import il.ac.hit.costmanager.view.chart.IChartViewModel;
-import il.ac.hit.costmanager.view.report.IReportViewModel;
 
+/**
+ * The interface of the main view.
+ * Includes the required methods that the main view should implement.
+ */
 public interface IMainView {
 
     /**
@@ -15,11 +15,31 @@ public interface IMainView {
      */
     void setViewModel(IMainViewModel viewModel);
 
-    void navigateChartMenu(IModel model, IChartViewModel viewModel);
+    /**
+     * Displays the chart menu in the container.
+     *
+     * @param model the IModel for the use of the chart viewModel
+     */
+    void navigateChartMenu(IModel model);
 
-    void navigateCostMenu(IModel model, ICostViewModel viewModel);
+    /**
+     * Displays the cost menu in the container.
+     *
+     * @param model the IModel for the use of the cost viewModel
+     */
+    void navigateCostMenu(IModel model);
 
-    void navigateCategoriesMenu(IModel model, ICategoryViewModel viewModel);
+    /**
+     * Displays the categories menu in the container.
+     *
+     * @param model the IModel for the use of the categories viewModel
+     */
+    void navigateCategoriesMenu(IModel model);
 
-    void navigateReportMenu(IModel model, IReportViewModel viewModel);
+    /**
+     * Displays the report menu in the container.
+     *
+     * @param model the IModel for the use of the report viewModel
+     */
+    void navigateReportMenu(IModel model);
 }

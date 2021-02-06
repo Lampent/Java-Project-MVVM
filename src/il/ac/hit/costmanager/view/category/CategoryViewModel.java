@@ -60,7 +60,7 @@ public class CategoryViewModel implements ICategoryViewModel {
      * Shows all the existing categories in the model.
      * Gets the categories from the model, and send them to the view.
      * This operation preformed on a dedicated thread.
-     * 
+     * <p>
      * Shows feedback in case failed to fetch the data from the model.
      */
     @Override
@@ -81,7 +81,7 @@ public class CategoryViewModel implements ICategoryViewModel {
      * This operation preformed on a dedicated thread.
      * Shows feedback in case failed to insert category to the model.
      *
-     * @param category the category to be inserted to the model. 
+     * @param category the category to be inserted to the model.
      */
     @Override
     public void insertCategory(Category category) {
@@ -101,7 +101,7 @@ public class CategoryViewModel implements ICategoryViewModel {
      * Afterwords, Shows all the existing categories in the model.
      * This operation preformed on a dedicated thread.
      * Shows feedback in case failed to delete category from the model.
-     * 
+     *
      * @param id the id of the category to be deleted.
      */
     @Override

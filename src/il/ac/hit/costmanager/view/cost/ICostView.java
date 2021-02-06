@@ -12,6 +12,7 @@ public interface ICostView {
 
     /**
      * Sets the view model
+     *
      * @param viewModel the cost view ViewModel.
      */
     void setViewModel(ICostViewModel viewModel);
@@ -25,6 +26,7 @@ public interface ICostView {
 
     /**
      * Shows a message to the user, mainly used to show feedback to the user on the different actions available to the user.
+     *
      * @param text text to be show to the user.
      */
     void showMessage(String text);

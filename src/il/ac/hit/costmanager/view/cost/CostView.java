@@ -1,4 +1,3 @@
-
 package il.ac.hit.costmanager.view.cost;
 
 import il.ac.hit.costmanager.exeptions.CostManagerException;

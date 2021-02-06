@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * The model of the application, exposing interface of the functionality available on each object stored in the database.
  * This Class acts like hides the direct access to each object DAO, by doing so we add an additional layer between the application and its objects DAOs.
  * This layer allow us to make changes in the objects DAOs without necessarily changing those that use it.
- *
+ * <p>
  * Another advantage is the single source of truth of the data that stored in the database, the application talks only with this class instead of X DAO classes.
  * Includes insert, get and delete functions of the cost object.
  */
@@ -25,6 +25,7 @@ public class DerbyDBModel implements IModel {
 
     /**
      * Call the category DAO insert method to insert a category.
+     *
      * @param category the category to be inserted.
      * @throws CostManagerException exception of the category DAO insert method.
      */
@@ -35,8 +36,9 @@ public class DerbyDBModel implements IModel {
 
     /**
      * Call the category DAO get method to get a list of all the categories.
-     * @throws CostManagerException exception of the category DAO get method.
+     *
      * @return a list of all the categories.
+     * @throws CostManagerException exception of the category DAO get method.
      */
     @Override
     public ArrayList<Category> getCategories() throws CostManagerException {
@@ -45,6 +47,7 @@ public class DerbyDBModel implements IModel {
 
     /**
      * Call the category DAO delete method to delete a category by its id.
+     *
      * @param id the category id.
      * @throws CostManagerException exception of the category DAO delete method.
      */
@@ -55,6 +58,7 @@ public class DerbyDBModel implements IModel {
 
     /**
      * Call the cost DAO insert method to insert a category.
+     *
      * @param cost the cost to be inserted.
      * @throws CostManagerException exception of the cost DAO insert method.
      */
@@ -65,6 +69,7 @@ public class DerbyDBModel implements IModel {
 
     /**
      * Call the cost DAO getTotalCost method to get the total cost of all the cots with the inputted category name.
+     *
      * @param categoryName a category name.
      * @return the total cost of all the cots with the inputted category name.
      * @throws CostManagerException exception of the cost DAO getTotalCost method.
@@ -76,8 +81,9 @@ public class DerbyDBModel implements IModel {
 
     /**
      * Call the cost DAO get method to get a list of all the costs.
-     * @throws CostManagerException exception of the cost DAO get method.
+     *
      * @return a list of all the costs.
+     * @throws CostManagerException exception of the cost DAO get method.
      */
     @Override
     public ArrayList<Cost> getCosts() throws CostManagerException {
@@ -86,10 +92,11 @@ public class DerbyDBModel implements IModel {
 
     /**
      * Call a cost DAO get method to get a list of all the costs created between the two inputted dates.
+     *
      * @param startDate the start date
-     * @param endDate the end date
-     * @throws CostManagerException exception of the cost DAO get method.
+     * @param endDate   the end date
      * @return a list of all the costs that created between the two inputted dates.
+     * @throws CostManagerException exception of the cost DAO get method.
      */
     @Override
     public ArrayList<Cost> getCostDateRange(String startDate, String endDate) throws CostManagerException {

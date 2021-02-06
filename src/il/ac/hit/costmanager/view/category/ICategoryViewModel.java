@@ -27,12 +27,14 @@ public interface ICategoryViewModel extends ViewInitializer {
 
     /**
      * Inserting a new category to the model.
+     *
      * @param category the new category to be inserted.
      */
     void insertCategory(Category category);
 
     /**
      * Deletes an existing category from the model.
+     *
      * @param id the id of the category to be deleted.
      */
     void deleteCategory(int id);

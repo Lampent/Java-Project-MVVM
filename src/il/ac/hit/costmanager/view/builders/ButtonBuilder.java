@@ -15,6 +15,7 @@ public class ButtonBuilder implements IBuilder<javax.swing.JButton> {
 
     /**
      * Constructor of the button builder.
+     *
      * @param buttonText The text of the button. Every button most provide it,
      *                   therefor we provide it in the constructor and not in setter.
      */
@@ -33,6 +34,7 @@ public class ButtonBuilder implements IBuilder<javax.swing.JButton> {
     /**
      * Sets the button text with validation.
      * If the text provided is null then sets the button text with empty string.
+     *
      * @param text the button text.
      * @return the ButtonBuilder.
      */
@@ -47,6 +49,7 @@ public class ButtonBuilder implements IBuilder<javax.swing.JButton> {
 
     /**
      * Sets the default capable of the button.
+     *
      * @param capable boolean value represents the capable.
      * @return the ButtonBuilder.
      */
@@ -57,6 +60,7 @@ public class ButtonBuilder implements IBuilder<javax.swing.JButton> {
 
     /**
      * Returned the built button.
+     *
      * @return the built button.
      */
     public javax.swing.JButton build() {

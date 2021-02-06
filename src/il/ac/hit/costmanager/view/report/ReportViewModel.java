@@ -60,7 +60,7 @@ public class ReportViewModel implements IReportViewModel {
      * Shows all the existing costs in the model.
      * Gets the costs from the model, and send them to the view.
      * This operation preformed on a dedicated thread.
-     *
+     * <p>
      * Shows feedback in case failed to fetch the data from the model.
      */
     @Override
@@ -79,7 +79,7 @@ public class ReportViewModel implements IReportViewModel {
      * Shows all the existing costs that created between two dates.
      * Gets the costs that created between two dates from the model, and send them to the view.
      * This operation preformed on a dedicated thread.
-     *
+     * <p>
      * Shows feedback in case failed to fetch the data from the model.
      */
     @Override

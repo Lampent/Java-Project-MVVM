@@ -1,10 +1,6 @@
 package il.ac.hit.costmanager.view.main;
 
 import il.ac.hit.costmanager.model.IModel;
-import il.ac.hit.costmanager.view.category.CategoryViewModel;
-import il.ac.hit.costmanager.view.cost.CostViewModel;
-import il.ac.hit.costmanager.view.chart.ChartViewModel;
-import il.ac.hit.costmanager.view.report.ReportViewModel;
 
 /**
  * The main view view model.
@@ -50,21 +46,21 @@ public class MainViewModel implements IMainViewModel {
 
     @Override
     public void navigateChartMenu() {
-        this.view.navigateChartMenu(model, new ChartViewModel());
+        this.view.navigateChartMenu(model);
     }
 
     @Override
     public void navigateCostMenu() {
-        this.view.navigateCostMenu(model, new CostViewModel());
+        this.view.navigateCostMenu(model);
     }
 
     @Override
     public void navigateCategoriesMenu() {
-        this.view.navigateCategoriesMenu(model, new CategoryViewModel());
+        this.view.navigateCategoriesMenu(model);
     }
 
     @Override
     public void navigateReportMenu() {
-        this.view.navigateReportMenu(model, new ReportViewModel());
+        this.view.navigateReportMenu(model);
     }
 }

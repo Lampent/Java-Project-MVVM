@@ -63,7 +63,7 @@ public class ChartViewModel implements IChartViewModel {
      * Gets the categories from the model, and build suitable map to be sent to the view.
      * The map consists from key - category name and value - the total cost of the category costs
      * This operation preformed on a dedicated thread.
-     *
+     * <p>
      * Shows feedback in case failed to fetch the data from the model.
      */
     public void showCategoriesData() {
