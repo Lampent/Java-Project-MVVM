@@ -14,7 +14,19 @@ import il.ac.hit.costmanager.view.report.ReportView;
 
 
 /**
- * @author Birbal
+ * The main view view, display the navigation bar and a container panel for the selected view view.
+ * <p>
+ * The navigation bar consists from four button, chart menu, cost menu, report menu , categories menu.
+ * When clicked on a button its then presents its represented view in the container.
+ * <p>
+ * The container will show the selected view, and will be cleared when navigated to a different view.
+ * <p>
+ * When navigated to a certain view, a call to the main view view model is made to initialize the navigation.
+ * The main view view model posses the IModel which required for each view model, thus the navigation will occur from the
+ * main view view model.
+ * <p>
+ * Moreover, each view has its own view and viewModel implementing the MVVM methodology.
+ * The view implements the IMainView interface.
  */
 public class MainView extends javax.swing.JFrame implements IMainView {
 
@@ -29,11 +41,22 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         this.ui = new ApplicationUI();
     }
 
+    /**
+     * Sets the view model
+     *
+     * @param viewModel the main view ViewModel.
+     */
     @Override
     public void setViewModel(IMainViewModel viewModel) {
         this.viewModel = viewModel;
     }
 
+    /**
+     * Displays the chart view in the container.
+     *
+     * @param model IModel ;,
+     * @param viewModel
+     */
     @Override
     public void navigateChartMenu(IModel model, IChartViewModel viewModel) {
         this.ui.navigateChartMenu(model, viewModel);

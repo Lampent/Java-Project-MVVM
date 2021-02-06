@@ -56,6 +56,13 @@ public class ReportViewModel implements IReportViewModel {
         this.showCosts();
     }
 
+    /**
+     * Shows all the existing costs in the model.
+     * Gets the costs from the model, and send them to the view.
+     * This operation preformed on a dedicated thread.
+     *
+     * Shows feedback in case failed to fetch the data from the model.
+     */
     @Override
     public void showCosts() {
         pool.submit(() -> {
@@ -68,6 +75,13 @@ public class ReportViewModel implements IReportViewModel {
         });
     }
 
+    /**
+     * Shows all the existing costs that created between two dates.
+     * Gets the costs that created between two dates from the model, and send them to the view.
+     * This operation preformed on a dedicated thread.
+     *
+     * Shows feedback in case failed to fetch the data from the model.
+     */
     @Override
     public void showCosts(String startDate, String endDate) {
         pool.submit(() -> {

@@ -13,6 +13,15 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+/**
+ * The view of the costs.
+ * Allows comfort interface for the creation of a new cost.
+ * The user can choose the category of the cost from a categories combobox and fill the needed details in text filed and text area.
+ * The cost view will also provide feedback on the action of creating a new cost and fetching the required data for that;
+ * for example, when opened if failed to get the categories from the model, it will inform the user.
+ * <p>
+ * The view implements the ICostView interface.
+ */
 public class CostView extends javax.swing.JFrame implements ICostView {
 
     private final DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -200,7 +209,7 @@ public class CostView extends javax.swing.JFrame implements ICostView {
          * It takes the new cost category from the category combobox, the description from the cost text area,
          * and the cost from the cost text filed.
          * If one of the details are invalid it displays a feedback to the user.
-         *
+         * <p>
          * After all of the details from the ui are check to be valid, it sent the cost to the viewModel.
          * Thus inserting the new cost to the model on a different thread.
          */

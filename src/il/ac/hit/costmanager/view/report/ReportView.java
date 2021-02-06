@@ -13,7 +13,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
- *
+ * The report view, display all the costs exists.
+ * Displays all the costs of the application in a dedicated table.
+ * Allows comfort view of all the costs of the application.
+ * Allows to show all the costs created between two selected dates.
+ * <p>
+ * The view implements the IReportView interface.
  */
 public class ReportView extends javax.swing.JFrame implements IReportView {
     private final DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -123,31 +128,31 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
          * Makes use of different builders such as the LabelBuilder, TitleBuilder and TittleBuilder to save lines of code.
          */
         private void initComponents() {
+            // sets the close operation to exit when closed
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+            // Creating the title label using the labelBuilder and creates new tile layout
             javax.swing.JPanel titlePanel = new javax.swing.JPanel();
             javax.swing.JLabel titleLabel = new LabelBuilder("Report Menu").setFontSize(24)
                     .setHorizontalAlignment(javax.swing.SwingConstants.CENTER).build();
+            titlePanel.setBackground(new java.awt.Color(102, 102, 255));
+            new TitleLayoutBuilder(titleLabel, titlePanel).build();
 
+            // initializing the start date data chooser and creating its label
             dateStart = new datechooser.beans.DateChooserCombo();
             javax.swing.JLabel dateStartLabel = new LabelBuilder("From Data :").build();
 
+            // initializing the end date data chooser and creating its label
             dateEnd = new datechooser.beans.DateChooserCombo();
             javax.swing.JLabel dateEndLabel = new LabelBuilder("To Data :").build();
 
+            // creating the show button, that will show all the costs between the start date and the end date.
             javax.swing.JButton showButton = new ButtonBuilder("Show").build();
             showButton.addActionListener(event -> viewModel.showCosts(dateFormat.format(dateStart.getSelectedDate().getTime()),
                     dateFormat.format(dateEnd.getSelectedDate().getTime())));
 
-            javax.swing.JSeparator separator = new javax.swing.JSeparator();
-            javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane();
+            // initializing the cost table with default value of four empty rows.
             costsTable = new javax.swing.JTable();
-
-            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-            titlePanel.setBackground(new java.awt.Color(102, 102, 255));
-
-            new TitleLayoutBuilder(titleLabel, titlePanel).build();
-
             costsTable.setModel(new javax.swing.table.DefaultTableModel(
                     new Object[][]{
                             {null, null, null, null},
@@ -155,20 +160,26 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
                             {null, null, null, null},
                             {null, null, null, null}
                     },
+
+                    // the columns headers
                     new String[]{
                             "Cost", "Date", "Description", "Category Name"
                     }
             ) {
-                boolean[] canEdit = new boolean[]{
-                        false, false, true, false
-                };
-
+                // return the state of the given column index edit mode, always false (not editable).
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit[columnIndex];
+                    return false;
                 }
             });
+
+            // creating scroll panel and attaches it to the viewport
+            javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane();
             scrollPane.setViewportView(costsTable);
 
+            // creating separator for the view
+            javax.swing.JSeparator separator = new javax.swing.JSeparator();
+
+            // creating and setting the main layout of the view
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
             layout.setHorizontalGroup(
@@ -209,7 +220,6 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
                                     .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
                                     .addContainerGap())
             );
-
             pack();
         }
     }

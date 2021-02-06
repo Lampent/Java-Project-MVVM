@@ -18,6 +18,7 @@ import java.util.Random;
  * The view of the chart.
  * Displays all the categories of the application with their total cost of costs in a chart.
  * Allows comfort view of all the categories of the application with their total cost of costs.
+ * The view dose not preform any actions but acts as a display view only, therefore it dose not call function from its viewModel.
  * <p>
  * The view implements the IChartView interface.
  */

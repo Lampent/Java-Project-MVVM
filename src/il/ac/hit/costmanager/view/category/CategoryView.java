@@ -15,10 +15,10 @@ import java.util.ArrayList;
  * Displays all the categories of the application in a table.
  * Allows comfort view of all the categories of the application.
  * Allows to delete and create categories.
- *
+ * <p>
  * The category view will also provide feedback on each it can preform;
  * for example, when a category will be deleted a message will be displayed to the user.
- *
+ * <p>
  * The view implements the ICategoryViw interface.
  */
 public class CategoryView extends javax.swing.JFrame implements ICategoryView {
@@ -36,6 +36,7 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
 
     /**
      * Sets the view model
+     *
      * @param viewModel the category view ViewModel.
      */
     @Override
@@ -46,6 +47,7 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
     /**
      * Shows categories in the user interface.
      * Calls the categoryUI method to show the categories.
+     *
      * @param categories categories to be shown.
      */
     @Override
@@ -56,6 +58,7 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
     /**
      * Shows a message to the user, mainly used to show feedback to the user on the different actions available to the user.
      * Calls the categoryUI method to show the message.
+     *
      * @param text text to be show to the user.
      */
     @Override
@@ -81,6 +84,7 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
 
         /**
          * Shows the received text message to the user.
+         *
          * @param text the received message to be shown.
          */
         public void showMessage(String text) {
@@ -92,12 +96,10 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
          * Makes use of different builders such as the LabelBuilder, TitleBuilder and TittleBuilder to save lines of code.
          */
         private void initComponents() {
-
-
             // sets the close operation to exit when closed
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-            // Creating the title label using the lableBuilder and creates new tile layout
+            // Creating the title label using the labelBuilder and creates new tile layout
             JPanel titlePanel = new JPanel();
             JLabel titleLabel = new LabelBuilder("Categories Menu").setHorizontalAlignment(javax.swing.SwingConstants.CENTER)
                     .setFontSize(24).build();
@@ -223,6 +225,7 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
         /**
          * Shows the recived categories in the view table.
          * Parse the category class to a object that can be displayed on the table.
+         *
          * @param categories the categories to be displayed on the table.
          */
         public void showCategories(ArrayList<Category> categories) {

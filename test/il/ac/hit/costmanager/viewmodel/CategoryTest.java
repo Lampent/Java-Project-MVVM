@@ -14,9 +14,9 @@ import org.junit.Test;
  *
  * @author Birbal
  */
-public class CategoryItemsTest {
+public class CategoryTest {
 
-    public CategoryItemsTest() {
+    public CategoryTest() {
     }
 
     @BeforeClass
@@ -37,7 +37,6 @@ public class CategoryItemsTest {
 
     /**
      * Test of setCategoryName method, of class Category.
-     * @throws CostManagerException
      */
     @Test
     public void testSetCategoryName() throws CostManagerException {

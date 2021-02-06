@@ -8,6 +8,11 @@ import il.ac.hit.costmanager.view.report.IReportViewModel;
 
 public interface IMainView {
 
+    /**
+     * Sets the view model
+     *
+     * @param viewModel the main view ViewModel.
+     */
     void setViewModel(IMainViewModel viewModel);
 
     void navigateChartMenu(IModel model, IChartViewModel viewModel);
