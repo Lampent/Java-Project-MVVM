@@ -161,6 +161,9 @@ public class MainView extends javax.swing.JFrame implements IMainView {
                                     .addContainerGap(27, Short.MAX_VALUE))
             );
 
+            // initializing the container panel
+            containerPanel = new javax.swing.JPanel();
+
             // creating the container panel layout
             javax.swing.GroupLayout ContainerPanelLayout = new javax.swing.GroupLayout(containerPanel);
             ContainerPanelLayout.setHorizontalGroup(
@@ -172,8 +175,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
                             .addGap(0, 370, Short.MAX_VALUE)
             );
 
-            // initializing the container panel and sets its layout
-            containerPanel = new javax.swing.JPanel();
+            // sets the container panel its layout
             containerPanel.setLayout(ContainerPanelLayout);
 
             // creating and setting the main layout of the view

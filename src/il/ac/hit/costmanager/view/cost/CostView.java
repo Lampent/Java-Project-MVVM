@@ -23,7 +23,7 @@ import java.util.ArrayList;
  */
 public class CostView extends javax.swing.JFrame implements ICostView {
 
-    private final DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    private final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private ICostViewModel viewModel;
     private CostUI costUI;
 

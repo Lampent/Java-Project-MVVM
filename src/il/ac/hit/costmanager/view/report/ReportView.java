@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * The view implements the IReportView interface.
  */
 public class ReportView extends javax.swing.JFrame implements IReportView {
-    private final DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    private final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private IReportViewModel viewModel;
     private ReportUI reportUI;
 
