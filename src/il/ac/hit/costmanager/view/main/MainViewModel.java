@@ -48,21 +48,33 @@ public class MainViewModel implements IMainViewModel {
         this.navigateCostMenu();
     }
 
+    /**
+     * Navigates the user interface to display the chart menu.
+     */
     @Override
     public void navigateChartMenu() {
         this.view.navigateChartMenu(model);
     }
 
+    /**
+     * Navigates the user interface to display the cost menu.
+     */
     @Override
     public void navigateCostMenu() {
         this.view.navigateCostMenu(model);
     }
 
+    /**
+     * Navigates the user interface to display the category menu.
+     */
     @Override
     public void navigateCategoryMenu() {
         this.view.navigateCategoryMenu(model);
     }
 
+    /**
+     * Navigates the user interface to display the report menu.
+     */
     @Override
     public void navigateReportMenu() {
         this.view.navigateReportMenu(model);

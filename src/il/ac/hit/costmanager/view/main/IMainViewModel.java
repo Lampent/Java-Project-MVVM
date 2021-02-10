@@ -14,16 +14,38 @@ import il.ac.hit.costmanager.view.ViewInitializer;
  */
 public interface IMainViewModel extends ViewInitializer {
 
+    /**
+     * Sets the model.
+     *
+     * @param model the model implementing IModel.
+     */
     void setModel(IModel model);
 
-    void setMainView(IMainView mainView);
+    /**
+     * Sets the view.
+     *
+     * @param view the view implementing IMainView.
+     */
+    void setMainView(IMainView view);
 
+    /**
+     * Navigates the user interface to display the chart menu.
+     */
     void navigateChartMenu();
 
+    /**
+     * Navigates the user interface to display the cost menu.
+     */
     void navigateCostMenu();
 
+    /**
+     * Navigates the user interface to display the category menu.
+     */
     void navigateCategoryMenu();
 
+    /**
+     * Navigates the user interface to display the report menu.
+     */
     void navigateReportMenu();
 
 }
