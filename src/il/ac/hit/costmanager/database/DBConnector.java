@@ -11,16 +11,12 @@ import java.sql.DriverManager;
 
 /**
  * DBConnector in charge of opening a connection to the database, and return it to those who need it.
- * No one can access the credential of the DB user, has its specify in the connect method implementation.
  * Contains a single function to return the connection.
  */
 public class DBConnector {
 
-    /**
-     * The DBConnector constructor
-     */
-    public DBConnector() {
-    }
+    private static final String EMBEDDED_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
+    private static final String PROTOCOL = "jdbc:derby:";
 
     /**
      * Opens a new connection to the the database with the currect credentials and return it.
@@ -31,16 +27,10 @@ public class DBConnector {
     public static Connection connect() throws CostManagerException {
         Connection connection = null;
         try {
-            // DB user credentials
-            String username = "root";
-            String password = " ";
-            String url = "jdbc:derby://localhost:1527/costManagement";
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-
-            // connection to the DB
-            connection = DriverManager.getConnection(url, username, password);
+            Class.forName(EMBEDDED_DRIVER);
+            connection = DriverManager.getConnection(PROTOCOL + "costManagement;create=true");
         } catch (Exception e) {
-            throw new CostManagerException("Failed to connect into the database");
+            throw new CostManagerException("Failed to connect to the database");
         }
         return connection;
     }

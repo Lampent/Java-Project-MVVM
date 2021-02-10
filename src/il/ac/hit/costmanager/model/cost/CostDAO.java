@@ -6,6 +6,7 @@ package il.ac.hit.costmanager.model.cost;
 
 import il.ac.hit.costmanager.database.DBAdapter;
 import il.ac.hit.costmanager.exeptions.CostManagerException;
+import il.ac.hit.costmanager.model.CostManagerDAO;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -16,12 +17,18 @@ import java.util.ArrayList;
  * Implementing and exposing the insert,get and delete functionality of the cost object.
  * Implements the ICostDAO interface
  */
-public class CostDAO implements ICostDAO {
+public class CostDAO extends CostManagerDAO implements ICostDAO {
 
     /**
      * The cost DAO constructor
+     * Sets the tableName variable thorough CostManagerDAO constructor.
+     * Calls the initializeTable method that creates the table with the provided schema in case not already exists.
+     * The Cost id is auto generated integer.
      */
     public CostDAO() {
+        super("cost");
+        this.initializeTable("(costId INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)" +
+                " ,catName VARCHAR(255) ,cost DOUBLE ,date DATE ,description VARCHAR(255), PRIMARY KEY (costId))");
     }
 
     /**
@@ -33,15 +40,8 @@ public class CostDAO implements ICostDAO {
     @Override
     public void insertCost(Cost cost) throws CostManagerException {
         try {
-            int costId = 0;
-            String query = "Select * from APP.Cost";
-            ResultSet res = DBAdapter.executeQuery(query);
-            while (res.next()) {
-                costId = (res.getInt("costId"));
-            }
-            costId = costId + 1;
-            String sql = "INSERT INTO APP.Cost (costId,catName,cost,date,description) "
-                    + "VALUES (" + costId + ",'" + cost.getCategory() + "'," + cost.getCost() + ",'" + cost.getDate() + "','" + cost.getDesc() + "')";
+            String sql = "INSERT INTO APP.Cost (catName,cost,date,description) "
+                    + "VALUES ('" + cost.getCategory() + "'," + cost.getCost() + ",'" + cost.getDate() + "','" + cost.getDesc() + "')";
             DBAdapter.executeUpdate(sql);
         } catch (Exception e) {
             throw new CostManagerException("Failed to insert cost to DB");
