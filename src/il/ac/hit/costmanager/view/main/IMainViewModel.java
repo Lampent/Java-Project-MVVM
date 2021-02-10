@@ -22,7 +22,7 @@ public interface IMainViewModel extends ViewInitializer {
 
     void navigateCostMenu();
 
-    void navigateCategoriesMenu();
+    void navigateCategoryMenu();
 
     void navigateReportMenu();
 

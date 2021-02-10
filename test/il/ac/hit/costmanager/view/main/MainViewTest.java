@@ -30,12 +30,12 @@ public class MainViewTest {
     }
 
     /**
-     * Test of navigateCategoriesMenu method.
+     * Test of navigateCategoryMenu method.
      */
     @Test
-    public void testNavigateCategoriesMenu() {
+    public void testNavigateCategoryMenu() {
         MainView mainView = new MainView();
-        mainView.navigateCategoriesMenu(null);
+        mainView.navigateCategoryMenu(null);
     }
 
     /**

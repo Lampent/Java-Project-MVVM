@@ -59,8 +59,8 @@ public class MainViewModel implements IMainViewModel {
     }
 
     @Override
-    public void navigateCategoriesMenu() {
-        this.view.navigateCategoriesMenu(model);
+    public void navigateCategoryMenu() {
+        this.view.navigateCategoryMenu(model);
     }
 
     @Override

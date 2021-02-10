@@ -34,11 +34,11 @@ public interface IMainView {
     void navigateCostMenu(IModel model);
 
     /**
-     * Displays the categories menu in the container.
+     * Displays the category menu in the container.
      *
      * @param model the IModel for the use of the categories viewModel
      */
-    void navigateCategoriesMenu(IModel model);
+    void navigateCategoryMenu(IModel model);
 
     /**
      * Displays the report menu in the container.

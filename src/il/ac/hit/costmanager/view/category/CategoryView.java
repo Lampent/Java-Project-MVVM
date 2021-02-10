@@ -105,7 +105,7 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
 
             // Creating the title label using the labelBuilder and creates new tile layout
             JPanel titlePanel = new JPanel();
-            JLabel titleLabel = new LabelBuilder("Categories Menu").setHorizontalAlignment(javax.swing.SwingConstants.CENTER)
+            JLabel titleLabel = new LabelBuilder("Category Menu").setHorizontalAlignment(javax.swing.SwingConstants.CENTER)
                     .setFontSize(24).build();
             titlePanel.setBackground(new java.awt.Color(102, 102, 255));
             new TitleLayoutBuilder(titleLabel, titlePanel).build();

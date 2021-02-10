@@ -23,7 +23,7 @@ import il.ac.hit.costmanager.view.report.ReportViewModel;
 /**
  * The main view, display the navigation bar and a container panel for the navigated view.
  * <p>
- * The navigation bar consists from four buttons and each button represent a view, chart menu, cost menu, report menu, categories menu.
+ * The navigation bar consists from four buttons and each button represent a view, chart menu, cost menu, report menu, category menu.
  * When clicked on a button its then presents its represented view in the container (navigates to it).
  * <p>
  * The container will be cleared and display the relevant view each time a button is pressed.
@@ -76,13 +76,13 @@ public class MainView extends javax.swing.JFrame implements IMainView {
     }
 
     /**
-     * Displays the categories menu in the container.
+     * Displays the category menu in the container.
      *
      * @param model the IModel for the use of the categories viewModel
      */
     @Override
-    public void navigateCategoriesMenu(IModel model) {
-        this.ui.navigateCategoriesMenu(model);
+    public void navigateCategoryMenu(IModel model) {
+        this.ui.navigateCategoryMenu(model);
     }
 
     /**
@@ -121,9 +121,9 @@ public class MainView extends javax.swing.JFrame implements IMainView {
             javax.swing.JButton costMenuButton = new ButtonBuilder("Cost Menu").build();
             costMenuButton.addActionListener(event -> viewModel.navigateCostMenu());
 
-            // creating the categories menu button and attaches method to navigate when clicked
-            javax.swing.JButton categoriesMenuButton = new ButtonBuilder("Categories Menu").build();
-            categoriesMenuButton.addActionListener(event -> viewModel.navigateCategoriesMenu());
+            // creating the category menu button and attaches method to navigate when clicked
+            javax.swing.JButton categoryMenuButton = new ButtonBuilder("Category Menu").build();
+            categoryMenuButton.addActionListener(event -> viewModel.navigateCategoryMenu());
 
             // creating the reports menu button and attaches method to navigate when clicked
             javax.swing.JButton reportMenuButton = new ButtonBuilder("Reports Menu").build();
@@ -146,7 +146,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
                                     .addGap(25, 25, 25)
                                     .addComponent(costMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(categoriesMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(categoryMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(reportMenuButton)
                                     .addGap(18, 18, 18)
@@ -159,7 +159,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
                                     .addGap(20, 20, 20)
                                     .addGroup(navigatorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(costMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(categoriesMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(categoryMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(reportMenuButton)
                                             .addComponent(chartMenuButton))
                                     .addContainerGap(27, Short.MAX_VALUE))
@@ -250,7 +250,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         }
 
         /**
-         * Navigates to the categories menu.
+         * Navigates to the category menu.
          * <p>
          * Clears the container panel from previous view.
          * Receives the IModel instance and initializing the category MVVM.
@@ -258,7 +258,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
          *
          * @param model the IModel instance.
          */
-        private void navigateCategoriesMenu(IModel model) {
+        private void navigateCategoryMenu(IModel model) {
             clearContainerPanel();
 
             ICategoryViewModel viewModel = new CategoryViewModel();
