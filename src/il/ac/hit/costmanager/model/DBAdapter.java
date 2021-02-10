@@ -2,7 +2,7 @@
  * Ron Yosef 318466711
  * Eyal Stolov 324827328
  */
-package il.ac.hit.costmanager.database;
+package il.ac.hit.costmanager.model;
 
 import il.ac.hit.costmanager.exeptions.CostManagerException;
 

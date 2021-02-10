@@ -4,7 +4,7 @@
  */
 package il.ac.hit.costmanager.model.cost;
 
-import il.ac.hit.costmanager.database.DBAdapter;
+import il.ac.hit.costmanager.model.DBAdapter;
 import il.ac.hit.costmanager.exeptions.CostManagerException;
 import il.ac.hit.costmanager.model.CostManagerDAO;
 

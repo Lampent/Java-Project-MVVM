@@ -4,8 +4,6 @@
  */
 package il.ac.hit.costmanager.model;
 
-import il.ac.hit.costmanager.database.DBConnector;
-
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;

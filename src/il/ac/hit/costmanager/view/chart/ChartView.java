@@ -16,6 +16,7 @@ import org.jfree.data.general.DefaultPieDataset;
 import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.Random;
 
 /**
@@ -162,8 +163,11 @@ public class ChartView extends javax.swing.JFrame implements IChartView {
             final PiePlot chartPlot = (PiePlot) chart.getPlot();
             chartPlot.setNoDataMessage("No data available");
 
-            // sets an explode visual effect on the first category in the map.
-            chartPlot.setExplodePercent(categoryMap.keySet().stream().findFirst().get(), 0.20);
+            // sets an explode visual effect on the first category in the map if exists.
+            Optional<String> firstKey = categoryMap.keySet().stream().findFirst();
+            if (firstKey.isPresent()) {
+                chartPlot.setExplodePercent(categoryMap.keySet().stream().findFirst().get(), 0.20);
+            }
 
             // sets the pie chart font
             chartPlot.setLabelFont(new Font("Times New Roman", Font.PLAIN, 12));

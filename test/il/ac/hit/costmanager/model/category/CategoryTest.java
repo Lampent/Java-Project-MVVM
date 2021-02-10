@@ -2,15 +2,13 @@
  * Ron Yosef 318466711
  * Eyal Stolov 324827328
  */
-package il.ac.hit.costmanager.tests;
+package il.ac.hit.costmanager.model.category;
 
-import il.ac.hit.costmanager.model.category.Category;
 import il.ac.hit.costmanager.exeptions.CostManagerException;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-
-import org.junit.Test;
 
 /**
  * Test for the category class.

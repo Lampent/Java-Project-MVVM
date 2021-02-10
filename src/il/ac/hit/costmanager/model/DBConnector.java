@@ -2,7 +2,7 @@
  * Ron Yosef 318466711
  * Eyal Stolov 324827328
  */
-package il.ac.hit.costmanager.database;
+package il.ac.hit.costmanager.model;
 
 import il.ac.hit.costmanager.exeptions.CostManagerException;
 
@@ -25,7 +25,7 @@ public class DBConnector {
      * @throws CostManagerException in case of it failed to open the connection to the database.
      */
     public static Connection connect() throws CostManagerException {
-        Connection connection = null;
+        Connection connection;
         try {
             Class.forName(EMBEDDED_DRIVER);
             connection = DriverManager.getConnection(PROTOCOL + "costManagement;create=true");

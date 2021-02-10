@@ -2,14 +2,13 @@
  * Ron Yosef 318466711
  * Eyal Stolov 324827328
  */
-package il.ac.hit.costmanager.tests;
 
-import il.ac.hit.costmanager.model.cost.Cost;
+package il.ac.hit.costmanager.model.cost;
+
 import il.ac.hit.costmanager.exeptions.CostManagerException;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
 
 /**
  * Tests for the cost class.
@@ -20,7 +19,7 @@ public class CostTest {
     }
 
     /**
-     * Test of getCategory method, of class Cost.
+     * Test of getCategory method.
      */
     @Test
     public void testGetCategory() throws CostManagerException {
@@ -30,7 +29,7 @@ public class CostTest {
     }
 
     /**
-     * Test of setCategory method, of class Cost.
+     * Test of setCategory method.
      */
     @Test
     public void testSetCategory() throws CostManagerException {
@@ -41,7 +40,7 @@ public class CostTest {
     }
 
     /**
-     * Test of getDate method, of class Cost.
+     * Test of getDate method.
      */
     @Test
     public void testGetDate() throws CostManagerException {
@@ -51,7 +50,7 @@ public class CostTest {
     }
 
     /**
-     * Test of setDate method, of class Cost.
+     * Test of setDate method.
      */
     @Test
     public void testSetDate() throws CostManagerException {
@@ -62,17 +61,17 @@ public class CostTest {
     }
 
     /**
-     * Test of getDesc method, of class Cost.
+     * Test of getDesc method.
      */
     @Test
     public void testGetDesc() throws CostManagerException {
         String description = "Description test";
-        Cost cost = new Cost("test category", "1997-10-30", description,1);
+        Cost cost = new Cost("test category", "1997-10-30", description, 1);
         assertEquals(cost.getDesc(), description);
     }
 
     /**
-     * Test of setDesc method, of class Cost.
+     * Test of setDesc method.
      */
     @Test
     public void testSetDesc() throws CostManagerException {
@@ -83,7 +82,7 @@ public class CostTest {
     }
 
     /**
-     * Test of getCost method, of class Cost.
+     * Test of getCost method.
      */
     @Test
     public void testGetCost() throws CostManagerException {
@@ -93,7 +92,7 @@ public class CostTest {
     }
 
     /**
-     * Test of setCost method, of class Cost.
+     * Test of setCost method.
      */
     @Test
     public void testSetCost() throws CostManagerException {
