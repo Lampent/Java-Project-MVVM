@@ -134,7 +134,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
             chartMenuButton.addActionListener(event -> viewModel.navigateChartMenu());
 
             // sets the title of the view
-            setTitle("Cost Management");
+            setTitle("Cost Manager");
 
             // creating the navigator panel, includes all the button created above for the navigation
             javax.swing.JPanel navigatorPanel = new javax.swing.JPanel();

@@ -10,7 +10,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 /**
- * DBConnector in charge of opening a connection to the database, and return it to those who need it.
+ * DBConnector in charge of opening a connection to the database and return it.
  * Contains a single function to return the connection.
  */
 public class DBConnector {
@@ -19,7 +19,7 @@ public class DBConnector {
     private static final String PROTOCOL = "jdbc:derby:";
 
     /**
-     * Opens a new connection to the the database with the currect credentials and return it.
+     * Opens a new connection to the the database.
      *
      * @return Connection the Connection to the database.
      * @throws CostManagerException in case of it failed to open the connection to the database.
