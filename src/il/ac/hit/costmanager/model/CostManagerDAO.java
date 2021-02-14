@@ -54,7 +54,7 @@ public abstract class CostManagerDAO {
             if (!isTableExists(connection)) {
                 statement.execute("create table " + tableName + tableSchema);
             }
-        } catch (SQLException | CostManagerException  exception) {
+        } catch (SQLException | CostManagerException exception) {
             Logger.getLogger(CostManagerDAO.class.getName()).log(Level.SEVERE, "Table " + tableName + " may have not been created properly");
         }
     }
