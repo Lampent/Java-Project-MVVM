@@ -110,7 +110,13 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
         public void showCosts(ArrayList<Cost> costs) {
             // gets the table model reference and clean the table from previous data
             DefaultTableModel tabModel = (DefaultTableModel) costsTable.getModel();
-            tabModel.getDataVector().removeAllElements();
+            tabModel.setNumRows(0);
+
+            // remove previous rows
+            int rowCount = tabModel.getRowCount();
+            for (int rowIndex = rowCount - 1; rowIndex >= 0; rowIndex--) {
+                tabModel.removeRow(rowIndex);
+            }
 
             // parsing the costs objects to the required format and add a new row to the table, one by one
             Object[] data = new Object[4];
@@ -157,13 +163,7 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
             // initializing the cost table with default value of four empty rows.
             costsTable = new javax.swing.JTable();
             costsTable.setModel(new javax.swing.table.DefaultTableModel(
-                    new Object[][]{
-                            {null, null, null, null},
-                            {null, null, null, null},
-                            {null, null, null, null},
-                            {null, null, null, null}
-                    },
-
+                    new Object[][]{},
                     // the columns headers
                     new String[]{
                             "Cost", "Date", "Description", "Category Name"

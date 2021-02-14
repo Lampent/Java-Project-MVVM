@@ -4,7 +4,7 @@
  */
 package il.ac.hit.costmanager.model.category;
 
-import il.ac.hit.costmanager.exeptions.CostManagerException;
+import il.ac.hit.costmanager.exceptions.CostManagerException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -28,7 +28,7 @@ public class CategoryTest {
         // tests that cannot create category with empty name
         try {
             category = new Category("", 100);
-        } catch (CostManagerException e) {
+        } catch (CostManagerException exception) {
 
         }
         assertNull(category);
@@ -36,7 +36,7 @@ public class CategoryTest {
         // tests that cannot create category with negative id
         try {
             category = new Category("", -200);
-        } catch (CostManagerException e) {
+        } catch (CostManagerException exception) {
 
         }
         assertNull(category);

@@ -4,7 +4,7 @@
  */
 package il.ac.hit.costmanager.model.category;
 
-import il.ac.hit.costmanager.exeptions.CostManagerException;
+import il.ac.hit.costmanager.exceptions.CostManagerException;
 
 /**
  * Category represents a real life category of costs.

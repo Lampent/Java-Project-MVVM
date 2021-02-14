@@ -198,6 +198,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
             );
 
             pack();
+            setResizable(false);
             setLocationRelativeTo(null);
             setVisible(true);
         }
@@ -221,7 +222,6 @@ public class MainView extends javax.swing.JFrame implements IMainView {
             viewModel.setView(view);
             viewModel.initializeView();
 
-            view.pack();
             containerPanel.add(view.getContentPane());
         }
 
@@ -245,7 +245,6 @@ public class MainView extends javax.swing.JFrame implements IMainView {
             viewModel.setView(view);
             viewModel.initializeView();
 
-            view.pack();
             this.containerPanel.add(view.getContentPane());
         }
 
@@ -269,7 +268,6 @@ public class MainView extends javax.swing.JFrame implements IMainView {
             viewModel.setView(view);
             viewModel.initializeView();
 
-            view.pack();
             containerPanel.add(view.getContentPane());
         }
 
@@ -293,7 +291,6 @@ public class MainView extends javax.swing.JFrame implements IMainView {
             viewModel.setView(view);
             viewModel.initializeView();
 
-            view.pack();
             containerPanel.add(view.getContentPane());
         }
 

@@ -4,7 +4,7 @@
  */
 package il.ac.hit.costmanager.model;
 
-import il.ac.hit.costmanager.exeptions.CostManagerException;
+import il.ac.hit.costmanager.exceptions.CostManagerException;
 import il.ac.hit.costmanager.model.category.Category;
 import il.ac.hit.costmanager.model.category.CategoryDAO;
 import il.ac.hit.costmanager.model.category.ICategoryDAO;

@@ -11,6 +11,8 @@ import il.ac.hit.costmanager.view.main.IMainViewModel;
 import il.ac.hit.costmanager.view.main.MainView;
 import il.ac.hit.costmanager.view.main.MainViewModel;
 
+import javax.swing.*;
+
 /**
  * The CostManager program implements an application that manage costs.
  * It will offer four different views.
@@ -32,18 +34,20 @@ public class CostManager {
      * @param args
      */
     public static void main(String[] args) {
-        java.awt.EventQueue.invokeLater(() -> {
-            // initializing IModel, MainView and IMainViewModel
-            IModel model = new DerbyDBModel();
+        // initializing IModel, MainView and IMainViewModel
+        IModel model = new DerbyDBModel();
+
+        IMainViewModel viewModel = new MainViewModel();
+        viewModel.setModel(model);
+
+        SwingUtilities.invokeLater(() -> {
             IMainView view = new MainView();
-            IMainViewModel viewModel = new MainViewModel();
 
             // setting the required dependencies
             view.setViewModel(viewModel);
             viewModel.setMainView(view);
-            viewModel.setModel(model);
 
-            // initializing the view after all dependencies were solved
+            // initializing the view
             viewModel.initializeView();
         });
     }

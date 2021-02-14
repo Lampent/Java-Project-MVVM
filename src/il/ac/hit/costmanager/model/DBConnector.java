@@ -4,10 +4,11 @@
  */
 package il.ac.hit.costmanager.model;
 
-import il.ac.hit.costmanager.exeptions.CostManagerException;
+import il.ac.hit.costmanager.exceptions.CostManagerException;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  * DBConnector in charge of opening a connection to the database and return it.
@@ -29,7 +30,7 @@ public class DBConnector {
         try {
             Class.forName(EMBEDDED_DRIVER);
             connection = DriverManager.getConnection(PROTOCOL + "costManagement;create=true");
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException exception) {
             throw new CostManagerException("Failed to connect to the database");
         }
         return connection;

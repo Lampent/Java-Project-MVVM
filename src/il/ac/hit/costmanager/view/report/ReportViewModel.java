@@ -4,7 +4,7 @@
  */
 package il.ac.hit.costmanager.view.report;
 
-import il.ac.hit.costmanager.exeptions.CostManagerException;
+import il.ac.hit.costmanager.exceptions.CostManagerException;
 import il.ac.hit.costmanager.model.IModel;
 import il.ac.hit.costmanager.model.cost.Cost;
 

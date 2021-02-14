@@ -4,7 +4,7 @@
  */
 package il.ac.hit.costmanager.view.cost;
 
-import il.ac.hit.costmanager.exeptions.CostManagerException;
+import il.ac.hit.costmanager.exceptions.CostManagerException;
 import il.ac.hit.costmanager.model.category.Category;
 import il.ac.hit.costmanager.model.cost.Cost;
 import il.ac.hit.costmanager.view.builders.ButtonBuilder;
@@ -223,10 +223,8 @@ public class CostView extends javax.swing.JFrame implements ICostView {
                     double cost = Double.parseDouble(costTextField.getText().trim());
                     Cost costItem = new Cost(selectedCategory, dateFormat.format(dateChooserCombo.getSelectedDate().getTime()) + "", costTextArea.getText().trim(), cost);
                     viewModel.insertCost(costItem);
-                } catch (CostManagerException e) {
-                    showMessage(e.getMessage());
-                } catch (Exception e) {
-                    showMessage("Cost entered is not valid, please enter a valid number");
+                } catch (CostManagerException exception) {
+                    showMessage(exception.getMessage());
                 }
             } else {
                 showMessage("Please enter cost");

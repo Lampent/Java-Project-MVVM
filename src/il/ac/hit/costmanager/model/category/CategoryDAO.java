@@ -5,10 +5,11 @@
 package il.ac.hit.costmanager.model.category;
 
 import il.ac.hit.costmanager.model.DBAdapter;
-import il.ac.hit.costmanager.exeptions.CostManagerException;
+import il.ac.hit.costmanager.exceptions.CostManagerException;
 import il.ac.hit.costmanager.model.CostManagerDAO;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -40,11 +41,12 @@ public class CategoryDAO extends CostManagerDAO implements ICategoryDAO {
     @Override
     public void insertCategory(Category category) throws CostManagerException {
         try {
-            String sql = "INSERT INTO APP." + tableName + " (catName) "
+            DBAdapter dbAdapter = new DBAdapter();
+            String query = "INSERT INTO APP." + tableName + " (catName) "
                     + "VALUES ('" + category.getCategoryName() + "')";
-            DBAdapter.executeUpdate(sql);
-
-        } catch (Exception e) {
+            dbAdapter.executeUpdate(query);
+            dbAdapter.closeConnection();
+        } catch (CostManagerException exception) {
             throw new CostManagerException("Failed to insert category to DB");
         }
     }
@@ -59,13 +61,15 @@ public class CategoryDAO extends CostManagerDAO implements ICategoryDAO {
     public ArrayList<Category> getCategories() throws CostManagerException {
         ArrayList<Category> categories = new ArrayList<>();
         try {
+            DBAdapter dbAdapter = new DBAdapter();
             String query = "SELECT * FROM App." + tableName;
-            ResultSet res = DBAdapter.executeQuery(query);
+            ResultSet res = dbAdapter.executeQuery(query);
             while (res.next()) {
                 Category ad = new Category(res.getString("catName"), res.getInt("catId"));
                 categories.add(ad);
             }
-        } catch (Exception e) {
+            dbAdapter.closeConnection();
+        } catch (SQLException | CostManagerException exception) {
             throw new CostManagerException("Failed to get categories from DB");
         }
         return categories;
@@ -80,9 +84,11 @@ public class CategoryDAO extends CostManagerDAO implements ICategoryDAO {
     @Override
     public void deleteCategory(int categoryId) throws CostManagerException {
         try {
+            DBAdapter dbAdapter = new DBAdapter();
             String query = "DELETE FROM APP." + tableName + " WHERE catId=" + categoryId + "";
-            DBAdapter.executeUpdate(query);
-        } catch (Exception e) {
+            dbAdapter.executeUpdate(query);
+            dbAdapter.closeConnection();
+        } catch (CostManagerException exception) {
             throw new CostManagerException("Failed to delete category from DB");
         }
     }

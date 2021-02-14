@@ -4,7 +4,7 @@
  */
 package il.ac.hit.costmanager.view.chart;
 
-import il.ac.hit.costmanager.exeptions.CostManagerException;
+import il.ac.hit.costmanager.exceptions.CostManagerException;
 import il.ac.hit.costmanager.model.IModel;
 import il.ac.hit.costmanager.model.category.Category;
 
@@ -79,7 +79,7 @@ public class ChartViewModel implements IChartViewModel {
                     categoryMap.put(category.getCategoryName(), model.getTotalCost(category.getCategoryName()));
                 }
                 view.showCategoriesData(categoryMap);
-            } catch (CostManagerException e) {
+            } catch (CostManagerException exception) {
                 this.view.showMessage("Failed to get Categories");
             }
         });

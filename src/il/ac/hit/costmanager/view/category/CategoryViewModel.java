@@ -4,7 +4,7 @@
  */
 package il.ac.hit.costmanager.view.category;
 
-import il.ac.hit.costmanager.exeptions.CostManagerException;
+import il.ac.hit.costmanager.exceptions.CostManagerException;
 import il.ac.hit.costmanager.model.IModel;
 import il.ac.hit.costmanager.model.category.Category;
 
@@ -73,7 +73,7 @@ public class CategoryViewModel implements ICategoryViewModel {
             try {
                 ArrayList<Category> categories = model.getCategories();
                 view.showCategories(categories);
-            } catch (CostManagerException e) {
+            } catch (CostManagerException exception) {
                 this.view.showMessage("Failed to get categories");
             }
         });

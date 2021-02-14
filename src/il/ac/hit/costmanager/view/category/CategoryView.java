@@ -4,7 +4,7 @@
  */
 package il.ac.hit.costmanager.view.category;
 
-import il.ac.hit.costmanager.exeptions.CostManagerException;
+import il.ac.hit.costmanager.exceptions.CostManagerException;
 import il.ac.hit.costmanager.model.category.Category;
 import il.ac.hit.costmanager.view.builders.ButtonBuilder;
 import il.ac.hit.costmanager.view.builders.LabelBuilder;
@@ -200,8 +200,8 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
             try {
                 viewModel.insertCategory(new Category(addCategoryTextField.getText().trim()));
                 addCategoryTextField.setText("");
-            } catch (CostManagerException e) {
-                showMessage(e.getMessage());
+            } catch (CostManagerException exception) {
+                showMessage(exception.getMessage());
             }
         }
 

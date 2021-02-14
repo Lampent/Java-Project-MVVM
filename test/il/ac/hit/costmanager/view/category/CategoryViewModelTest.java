@@ -5,7 +5,7 @@
  */
 package il.ac.hit.costmanager.view.category;
 
-import il.ac.hit.costmanager.exeptions.CostManagerException;
+import il.ac.hit.costmanager.exceptions.CostManagerException;
 import il.ac.hit.costmanager.model.category.Category;
 import org.junit.Test;
 

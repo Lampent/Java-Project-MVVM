@@ -2,7 +2,7 @@
  * Ron Yosef 318466711
  * Eyal Stolov 324827328
  */
-package il.ac.hit.costmanager.exeptions;
+package il.ac.hit.costmanager.exceptions;
 
 /**
  * The only "exception" of the application

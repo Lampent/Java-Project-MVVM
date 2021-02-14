@@ -5,7 +5,7 @@
 
 package il.ac.hit.costmanager.model.cost;
 
-import il.ac.hit.costmanager.exeptions.CostManagerException;
+import il.ac.hit.costmanager.exceptions.CostManagerException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

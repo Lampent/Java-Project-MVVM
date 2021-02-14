@@ -23,7 +23,7 @@ public class TitleLayoutBuilder implements IBuilder<javax.swing.GroupLayout> {
         titlePanel.setLayout(titleLayout);
         titleLayout.setHorizontalGroup(
                 titleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
+                        .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
         );
         titleLayout.setVerticalGroup(
                 titleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
