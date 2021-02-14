@@ -13,6 +13,8 @@ import java.sql.Statement;
 
 /**
  * DBAdapter exposing an api for accessing the database.
+ * <b> It is important to create new instance of this class for every query. </b>
+ *
  * It accomplish two main things.
  * 1. Hides the business logic of executing queries; create a connection, execute the query, and close connection.
  * 2. It save many liens of codes, since the calls to this functions are from more then one place in the application.
@@ -21,6 +23,7 @@ import java.sql.Statement;
 public class DBAdapter {
     // connection to the database
     private Connection connection;
+    private Statement statement;
 
     /**
      * @param query query to be execute to the database.
@@ -30,8 +33,8 @@ public class DBAdapter {
     public ResultSet executeQuery(String query) throws CostManagerException {
         try {
             connection = DBConnector.connect();
-            Statement stmt = connection.createStatement();
-            ResultSet resultSet = stmt.executeQuery(query);
+            statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
             return resultSet;
         } catch (SQLException ex) {
             throw new CostManagerException("Error occurred when executing a query");
@@ -45,8 +48,8 @@ public class DBAdapter {
     public void executeUpdate(String query) throws CostManagerException {
         try {
             connection = DBConnector.connect();
-            Statement stmt1 = connection.createStatement();
-            stmt1.executeUpdate(query);
+            statement = connection.createStatement();
+            statement.executeUpdate(query);
         } catch (SQLException ex) {
             throw new CostManagerException("Error occurred when executing an update query");
         }
@@ -54,6 +57,7 @@ public class DBAdapter {
 
     public void closeConnection() throws CostManagerException {
         try {
+            statement.close();
             connection.close();
         } catch (SQLException ex) {
             throw new CostManagerException("Error when closing the connection");

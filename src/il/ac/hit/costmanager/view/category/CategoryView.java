@@ -129,13 +129,7 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
             // initializing the categories table with default value of four empty rows.
             categoriesTable = new javax.swing.JTable();
             categoriesTable.setModel(new javax.swing.table.DefaultTableModel(
-                    new Object[][]{
-                            {null, null},
-                            {null, null},
-                            {null, null},
-                            {null, null}
-                    },
-
+                    new Object[][]{},
                     // the columns headers
                     new String[]{
                             "Category Id", "Category Name"
@@ -227,7 +221,7 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
         }
 
         /**
-         * Shows the recived categories in the view table.
+         * Shows the received categories in the view table.
          * Parse the category class to a object that can be displayed on the table.
          *
          * @param categories the categories to be displayed on the table.
@@ -235,8 +229,13 @@ public class CategoryView extends javax.swing.JFrame implements ICategoryView {
         public void showCategories(ArrayList<Category> categories) {
             Object[] data = new Object[2];
             DefaultTableModel tabModel = (DefaultTableModel) categoriesTable.getModel();
-            // clears the table
-            tabModel.getDataVector().removeAllElements();
+
+            // removing previous rows
+            int rowCount = tabModel.getRowCount();
+            for (int rowIndex = rowCount - 1; rowIndex >= 0; rowIndex--) {
+                tabModel.removeRow(rowIndex);
+            }
+
             // parsing the categories to the accepted format of the table.
             for (Category category : categories) {
                 data[0] = category.getId();
