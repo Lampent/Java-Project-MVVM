@@ -24,6 +24,7 @@ public class DBAdapter {
     // connection to the database
     private Connection connection;
     private Statement statement;
+    private ResultSet resultSet;
 
     /**
      * @param query query to be execute to the database.
@@ -34,7 +35,7 @@ public class DBAdapter {
         try {
             connection = DBConnector.connect();
             statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
+            resultSet = statement.executeQuery(query);
             return resultSet;
         } catch (SQLException ex) {
             throw new CostManagerException("Error occurred when executing a query");
@@ -55,8 +56,15 @@ public class DBAdapter {
         }
     }
 
+    /**
+     * The function closes the connection properly
+     * @throws CostManagerException informing that error occurred when closing the connection.
+     */
     public void closeConnection() throws CostManagerException {
         try {
+            if (resultSet != null) {
+                resultSet.close();
+            }
             statement.close();
             connection.close();
         } catch (SQLException ex) {
