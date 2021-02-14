@@ -4,13 +4,15 @@
  */
 package il.ac.hit.costmanager.model;
 
+import il.ac.hit.costmanager.exceptions.CostManagerException;
+
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * The base Data Access Object class of all DAOs in the application.
- * Provides a method for creating the DAO table with a provided schema if not exists,
+ * Provides a method for creating the DAO table with a provided schema if table dose not exist,
  * and a variable of tableName a single source of trues for the table name, used in all of the queries.
  */
 public abstract class CostManagerDAO {
@@ -52,7 +54,7 @@ public abstract class CostManagerDAO {
             if (!isTableExists(connection)) {
                 statement.execute("create table " + tableName + tableSchema);
             }
-        } catch (Exception exception) {
+        } catch (SQLException | CostManagerException  exception) {
             Logger.getLogger(CostManagerDAO.class.getName()).log(Level.SEVERE, "Table " + tableName + " may have not been created properly");
         }
     }
