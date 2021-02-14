@@ -4,9 +4,9 @@
  */
 package il.ac.hit.costmanager.model.cost;
 
-import il.ac.hit.costmanager.model.DBAdapter;
 import il.ac.hit.costmanager.exceptions.CostManagerException;
 import il.ac.hit.costmanager.model.CostManagerDAO;
+import il.ac.hit.costmanager.model.DBAdapter;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
