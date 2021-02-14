@@ -6,7 +6,7 @@ package il.ac.hit.costmanager.model.cost;
 
 import il.ac.hit.costmanager.exceptions.CostManagerException;
 import il.ac.hit.costmanager.model.CostManagerDAO;
-import il.ac.hit.costmanager.model.DBAdapter;
+import il.ac.hit.costmanager.model.QueryExecutor;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -41,11 +41,10 @@ public class CostDAO extends CostManagerDAO implements ICostDAO {
     @Override
     public void insertCost(Cost cost) throws CostManagerException {
         try {
-            DBAdapter dbAdapter = new DBAdapter();
-            String query = "INSERT INTO APP.Cost (catName,cost,date,description) "
-                    + "VALUES ('" + cost.getCategory() + "'," + cost.getCost() + ",'" + cost.getDate() + "','" + cost.getDesc() + "')";
-            dbAdapter.executeUpdate(query);
-            dbAdapter.closeConnection();
+            QueryExecutor queryExecutor = new QueryExecutor("INSERT INTO " + tableName + " (catName,cost,date,description)"
+                    + "VALUES ('" + cost.getCategory() + "'," + cost.getCost() + ",'" + cost.getDate() + "','" + cost.getDesc() + "')");
+            queryExecutor.executeUpdateQuery();
+            queryExecutor.closeQuery();
         } catch (CostManagerException exception) {
             throw new CostManagerException("Failed to insert cost to DB");
         }
@@ -62,13 +61,12 @@ public class CostDAO extends CostManagerDAO implements ICostDAO {
     public double getTotalCost(String categoryName) throws CostManagerException {
         double catTotal = 0;
         try {
-            DBAdapter dbAdapter = new DBAdapter();
-            String query = "SELECT * FROM App.Cost WHERE catName='" + categoryName + "'";
-            ResultSet res = dbAdapter.executeQuery(query);
+            QueryExecutor queryExecutor = new QueryExecutor("SELECT * FROM " + tableName + " WHERE catName='" + categoryName + "'");
+            ResultSet res = queryExecutor.executeQuery();
             while (res.next()) {
                 catTotal = catTotal + (res.getDouble("cost"));
             }
-            dbAdapter.closeConnection();
+            queryExecutor.closeQuery();
         } catch (SQLException | CostManagerException exception) {
             throw new CostManagerException("Failed to get the total cost of category from DB");
         }
@@ -85,14 +83,13 @@ public class CostDAO extends CostManagerDAO implements ICostDAO {
     public ArrayList<Cost> getCosts() throws CostManagerException {
         ArrayList<Cost> costs = new ArrayList<>();
         try {
-            DBAdapter dbAdapter = new DBAdapter();
-            String query = "SELECT * FROM App.Cost";
-            ResultSet res = dbAdapter.executeQuery(query);
+            QueryExecutor queryExecutor = new QueryExecutor("SELECT * FROM " + tableName);
+            ResultSet res = queryExecutor.executeQuery();
             while (res.next()) {
                 Cost ad = new Cost(res.getString("catName"), res.getString("date"), res.getString("description"), res.getDouble("cost"));
                 costs.add(ad);
             }
-            dbAdapter.closeConnection();
+            queryExecutor.closeQuery();
         } catch (SQLException | CostManagerException ex) {
             throw new CostManagerException("Failed to get costs from DB");
         }
@@ -110,14 +107,13 @@ public class CostDAO extends CostManagerDAO implements ICostDAO {
     public ArrayList<Cost> getCostDateRange(String startDate, String endDate) throws CostManagerException {
         ArrayList<Cost> costs = new ArrayList<>();
         try {
-            DBAdapter dbAdapter = new DBAdapter();
-            String query = "SELECT * FROM App.Cost WHERE date BETWEEN '" + startDate + "' and '" + endDate + "'";
-            ResultSet res = dbAdapter.executeQuery(query);
+            QueryExecutor queryExecutor = new QueryExecutor("SELECT * FROM " + tableName + " WHERE date BETWEEN '" + startDate + "' and '" + endDate + "'");
+            ResultSet res = queryExecutor.executeQuery();
             while (res.next()) {
                 Cost ad = new Cost(res.getString("catName"), res.getString("date"), res.getString("description"), res.getDouble("cost"));
                 costs.add(ad);
             }
-            dbAdapter.closeConnection();
+            queryExecutor.closeQuery();
         } catch (SQLException | CostManagerException exception) {
             throw new CostManagerException("Failed to get costs by date range from DB");
         }

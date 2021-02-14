@@ -12,26 +12,39 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * DBAdapter exposing an api for accessing the database.
- * <b> It is important to create new instance of this class for every query. </b>
- *
- * It accomplish two main things.
+ * QueryExecutor a class for executing a query.
+ * To use it simply create new instance of it (passing the query in the constructor), and execute it and finish it.
+ * <b> It is important to create new instance of this class for every query! </b>
+ * <p>
+ * It accomplish three main things.
  * 1. Hides the business logic of executing queries; create a connection, execute the query, and close connection.
  * 2. It save many liens of codes, since the calls to this functions are from more then one place in the application.
- * 3. Wrapping the sql exceptions with custom CostManagerExceptions
+ * 3. Wrapping the database exceptions with suitable custom CostManagerExceptions.
  */
-public class DBAdapter {
-    // connection to the database
+public class QueryExecutor {
+    private final String query;
     private Connection connection;
     private Statement statement;
     private ResultSet resultSet;
 
     /**
-     * @param query query to be execute to the database.
+     * The constructor of QueryExecutor, receive the query to be executed.
+     * The query is then set to a final global variable to be used in the execution.
+     * The query variable is final because it is can not change, each instance of QueryExecutor is for a single query.
+     *
+     * @param query the query to be executed.
+     */
+    public QueryExecutor(String query) {
+        this.query = query;
+    }
+
+    /**
+     * Opens a connection and executing the query.
+     *
      * @return ResultSet sets of the the query.
      * @throws CostManagerException informing that error occurred when executing the query.
      */
-    public ResultSet executeQuery(String query) throws CostManagerException {
+    public ResultSet executeQuery() throws CostManagerException {
         try {
             connection = DBConnector.connect();
             statement = connection.createStatement();
@@ -43,10 +56,11 @@ public class DBAdapter {
     }
 
     /**
-     * @param query update query to be execute to the database.
+     * Opens a connection and executing the query as an update query.
+     *
      * @throws CostManagerException informing that error occurred when executing the query.
      */
-    public void executeUpdate(String query) throws CostManagerException {
+    public void executeUpdateQuery() throws CostManagerException {
         try {
             connection = DBConnector.connect();
             statement = connection.createStatement();
@@ -58,9 +72,10 @@ public class DBAdapter {
 
     /**
      * The function closes the connection properly
+     *
      * @throws CostManagerException informing that error occurred when closing the connection.
      */
-    public void closeConnection() throws CostManagerException {
+    public void closeQuery() throws CostManagerException {
         try {
             if (resultSet != null) {
                 resultSet.close();
