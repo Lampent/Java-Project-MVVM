@@ -78,7 +78,7 @@ public class ChartView extends javax.swing.JFrame implements IChartView {
 
     /**
      * The user interface of the view.
-     * Currently there are no actions to be preformed from the view, therefore it dose not communicate with a ViewModel.
+     * Communicating with the ViewModel for executing different operations on a separated thread.
      */
     public class ChartUi {
         private final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
