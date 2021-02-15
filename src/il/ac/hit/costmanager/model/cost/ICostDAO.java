@@ -29,8 +29,8 @@ public interface ICostDAO {
 
     /**
      * @param categoryName a category name
-     * @param startDate the date from which the cost will be summed
-     * @param endDate the end date of the cost that will be summed.
+     * @param startDate    the date from which the cost will be summed
+     * @param endDate      the end date of the cost that will be summed.
      * @return total cost of all the costs of a category between the provided dates.
      * @throws CostManagerException exception if failed to get calculate the total cost.
      */

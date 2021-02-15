@@ -75,9 +75,10 @@ public class CostDAO extends CostManagerDAO implements ICostDAO {
 
     /**
      * Gets the total cost of all the cost from the database between the provided start date and end date, with the provided category name.
+     *
      * @param categoryName a category name.
-     * @param startDate the date from which the costs will be summed.
-     * @param endDate the end date of the costs that will be summed.
+     * @param startDate    the date from which the costs will be summed.
+     * @param endDate      the end date of the costs that will be summed.
      * @return total cost of all the costs of a category between the provided dates.
      * @throws CostManagerException exception if failed to calculate the total cost.
      */
@@ -86,7 +87,7 @@ public class CostDAO extends CostManagerDAO implements ICostDAO {
         double catTotal = 0;
         try {
             QueryExecutor queryExecutor = new QueryExecutor("SELECT * FROM " + tableName + " WHERE catName='" + categoryName
-                    + "' AND date BETWEEN '" + startDate +"' and '" + endDate + "' ");
+                    + "' AND date BETWEEN '" + startDate + "' and '" + endDate + "' ");
             ResultSet res = queryExecutor.executeQuery();
             while (res.next()) {
                 catTotal = catTotal + (res.getDouble("cost"));

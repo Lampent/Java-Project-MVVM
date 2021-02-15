@@ -35,8 +35,9 @@ public interface IChartViewModel extends ViewInitializer {
 
     /**
      * Shows all the categories with their cost of costs with a date between start date and end date.
+     *
      * @param startDate the date from which the costs will be summed
-     * @param endDate the end date of the costs that will be summed.
+     * @param endDate   the end date of the costs that will be summed.
      */
     void showCategoriesData(String startDate, String endDate);
 }
