@@ -118,7 +118,7 @@ public class CostView extends javax.swing.JFrame implements ICostView {
             // initializing the category combobox and creating its label
             categoriesComboBox = new javax.swing.JComboBox<>();
             categoriesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{}));
-            JLabel comboBoxLabel = new LabelBuilder("Select Cost Categories :").build();
+            JLabel categoriesComboBoxLabel = new LabelBuilder("Select Cost Categories :").build();
 
             // initializing the cost text field and creating its label
             costTextField = new javax.swing.JTextField();
@@ -153,35 +153,35 @@ public class CostView extends javax.swing.JFrame implements ICostView {
                                             .addComponent(btnSubmit)
                                             .addGroup(layout.createSequentialGroup()
                                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(comboBoxLabel)
+                                                            .addComponent(categoriesComboBoxLabel)
                                                             .addComponent(costTextFieldLabel)
                                                             .addComponent(costTextAreaLabel)
                                                             .addComponent(selectDateLabel))
                                                     .addGap(69, 69, 69)
                                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                            .addComponent(categoriesComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                            .addComponent(costTextField)
-                                                            .addComponent(costTextAreaScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
-                                                            .addComponent(dateChooserCombo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                    .addContainerGap(44, Short.MAX_VALUE))
+                                                            .addComponent(categoriesComboBox, 250, 250, 250)
+                                                            .addComponent(costTextField, 250, 250, 250)
+                                                            .addComponent(costTextAreaScrollPane, 390, 390, 390)
+                                                            .addComponent(dateChooserCombo, 100, 100, 100))))
+                                    .addContainerGap(10, Short.MAX_VALUE))
             );
             layout.setVerticalGroup(
                     layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                     .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGap(50, 50, 50)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(selectDateLabel)
+                                            .addComponent(dateChooserCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(comboBoxLabel)
+                                            .addComponent(categoriesComboBoxLabel)
                                             .addComponent(categoriesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(costTextFieldLabel)
                                             .addComponent(costTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(selectDateLabel)
-                                            .addComponent(dateChooserCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(costTextAreaScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(costTextAreaLabel))
