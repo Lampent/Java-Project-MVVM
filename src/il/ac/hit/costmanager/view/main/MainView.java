@@ -218,6 +218,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
             IChartViewModel viewModel = new ChartViewModel();
             ChartView view = new ChartView();
 
+            view.setViewModel(viewModel);
             viewModel.setModel(model);
             viewModel.setView(view);
             viewModel.initializeView();

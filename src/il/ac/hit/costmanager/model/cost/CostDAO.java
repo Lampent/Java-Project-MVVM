@@ -51,17 +51,42 @@ public class CostDAO extends CostManagerDAO implements ICostDAO {
     }
 
     /**
-     * Gets the total cost of all the cost from the database with the same category name as provided from.
+     * Gets the total cost of all the costs from the database with the same category name as provided from.
      *
      * @param categoryName a category name.
      * @return the total cost of all the costs with the provided category.
-     * @throws CostManagerException exception if failed to get all costs.
+     * @throws CostManagerException exception if failed to calculate the total cost.
      */
     @Override
     public double getTotalCost(String categoryName) throws CostManagerException {
         double catTotal = 0;
         try {
             QueryExecutor queryExecutor = new QueryExecutor("SELECT * FROM " + tableName + " WHERE catName='" + categoryName + "'");
+            ResultSet res = queryExecutor.executeQuery();
+            while (res.next()) {
+                catTotal = catTotal + (res.getDouble("cost"));
+            }
+            queryExecutor.closeQuery();
+        } catch (SQLException | CostManagerException exception) {
+            throw new CostManagerException("Failed to get the total cost of category from DB");
+        }
+        return catTotal;
+    }
+
+    /**
+     * Gets the total cost of all the cost from the database between the provided start date and end date, with the provided category name.
+     * @param categoryName a category name.
+     * @param startDate the date from which the costs will be summed.
+     * @param endDate the end date of the costs that will be summed.
+     * @return total cost of all the costs of a category between the provided dates.
+     * @throws CostManagerException exception if failed to calculate the total cost.
+     */
+    @Override
+    public double getTotalCost(String categoryName, String startDate, String endDate) throws CostManagerException {
+        double catTotal = 0;
+        try {
+            QueryExecutor queryExecutor = new QueryExecutor("SELECT * FROM " + tableName + " WHERE catName='" + categoryName
+                    + "' AND date BETWEEN '" + startDate +"' and '" + endDate + "' ");
             ResultSet res = queryExecutor.executeQuery();
             while (res.next()) {
                 catTotal = catTotal + (res.getDouble("cost"));

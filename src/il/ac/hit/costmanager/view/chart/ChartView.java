@@ -25,14 +25,14 @@ import java.util.Random;
 /**
  * The view of the chart.
  * Displays all the categories of the application with their total cost of costs in a chart.
- * Allows comfort view of all the categories of the application with their total cost of costs.
- * The view dose not preform any actions but acts as a display view only, therefore it dose not call function from its viewModel.
+ * Allows comfort view of all the categories of the application with their total cost of costs,
+ * by a specific time to be choose by the user.
  * <p>
  * The view implements the IChartView interface.
  */
 public class ChartView extends javax.swing.JFrame implements IChartView {
 
-
+    private IChartViewModel viewModel;
     private ChartUi chartUi;
 
     /**
@@ -42,6 +42,17 @@ public class ChartView extends javax.swing.JFrame implements IChartView {
     public ChartView() {
         this.chartUi = new ChartUi();
     }
+
+    /**
+     * Sets the view model
+     *
+     * @param viewModel the chart view ViewModel.
+     */
+    @Override
+    public void setViewModel(IChartViewModel viewModel) {
+        this.viewModel = viewModel;
+    }
+
 
     /**
      * Shows categories with their total cost of costs in the user interface chart.
@@ -124,6 +135,8 @@ public class ChartView extends javax.swing.JFrame implements IChartView {
 
             // creating the show button, that will show all the costs between the start date and the end date.
             javax.swing.JButton showButton = new ButtonBuilder("Show").build();
+            showButton.addActionListener(event -> viewModel.showCategoriesData(dateFormat.format(dateStart.getSelectedDate().getTime()),
+                    dateFormat.format(dateEnd.getSelectedDate().getTime())));
 
             // creating the container panel for the chart
             containerPanel = new javax.swing.JPanel();
@@ -187,6 +200,8 @@ public class ChartView extends javax.swing.JFrame implements IChartView {
          * @param categoryMap a map where each entry in it consists from key - category name and value - the total cost of the category costs
          */
         private void createChart(HashMap<String, Double> categoryMap) {
+            // clears container panel
+            containerPanel.removeAll();
 
             // initializing the chart dataset, a collection of all the categories with their total cost of costs
             final DefaultPieDataset chartDataset = new DefaultPieDataset();

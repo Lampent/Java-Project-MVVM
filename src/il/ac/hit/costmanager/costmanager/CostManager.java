@@ -18,8 +18,8 @@ import javax.swing.*;
  * It will offer four different views.
  * Cost - For adding a new cost.
  * Category - For adding and deleting categories.
- * Report -  For displaying all the costs or some of them by date.
- * Chart - Visualising all the categories in a chart according to the total sum of their costs.
+ * Report -  For displaying all the costs or some of them with their details by a selected date range.
+ * Chart - Visualising all the costs or some of them ,by a selected date range, in a chart according to the total sum of their costs.
  * <p>
  * The CostManager program is based on MVVM architectural pattern.
  * In its current implementation its posses a main view that can display in it a selected view from the four mentioned above.

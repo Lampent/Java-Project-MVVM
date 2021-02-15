@@ -23,9 +23,18 @@ public interface ICostDAO {
     /**
      * @param categoryName a category name
      * @return the total cost of all the costs with the provided category.
-     * @throws CostManagerException exception if failed to get all costs.
+     * @throws CostManagerException exception if failed to calculate the total cost.
      */
     double getTotalCost(String categoryName) throws CostManagerException;
+
+    /**
+     * @param categoryName a category name
+     * @param startDate the date from which the cost will be summed
+     * @param endDate the end date of the cost that will be summed.
+     * @return total cost of all the costs of a category between the provided dates.
+     * @throws CostManagerException exception if failed to get calculate the total cost.
+     */
+    double getTotalCost(String categoryName, String startDate, String endDate) throws CostManagerException;
 
     /**
      * @return list of all costs

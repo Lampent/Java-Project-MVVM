@@ -63,7 +63,8 @@ public class ChartViewModel implements IChartViewModel {
     }
 
     /**
-     * Shows all the existing categories in the model.
+     * Shows all the existing categories in the model with their total cost of costs.
+     * <p>
      * Gets the categories from the model, and build suitable map to be sent to the view.
      * The map consists from key - category name and value - the total cost of the category costs
      * This operation preformed on a dedicated thread.
@@ -84,5 +85,31 @@ public class ChartViewModel implements IChartViewModel {
             }
         });
     }
+
+    /**
+     * Shows all the existing categories in the model with their total cost of costs,
+     * that posses a date between the provided start date and end date.
+     * <p>
+     * Gets the categories from the model, and build suitable map to be sent to the view.
+     * The map consists from key - category name and value - the total cost of the category costs
+     * This operation preformed on a dedicated thread.
+     * <p>
+     * Shows feedback in case failed to fetch the data from the model.
+     */
+    public void showCategoriesData(String startDate, String endDate) {
+        pool.submit(() -> {
+            try {
+                HashMap<String, Double> categoryMap = new HashMap<>();
+                ArrayList<Category> categories = model.getCategories();
+                for (Category category : categories) {
+                    categoryMap.put(category.getCategoryName(), model.getTotalCost(category.getCategoryName(), startDate, endDate));
+                }
+                view.showCategoriesData(categoryMap);
+            } catch (CostManagerException exception) {
+                this.view.showMessage("Failed to get Categories");
+            }
+        });
+    }
+
 
 }

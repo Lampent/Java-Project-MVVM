@@ -22,7 +22,7 @@ public class Category {
 
     /**
      * Construct the category by name.
-     * The constructor sets the name of the category through setter function, throwing exception if inputted name is invalid.
+     * The constructor sets the name of the category through setter function, throwing exception if provided name is invalid.
      * This constructor dose not require an identifier, its serves the implementation of setting identifier after the creation.
      *
      * @param categoryName the category name.

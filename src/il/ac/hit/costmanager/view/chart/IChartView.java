@@ -13,6 +13,13 @@ import java.util.HashMap;
 public interface IChartView {
 
     /**
+     * Sets the view model
+     *
+     * @param viewModel the chart view ViewModel.
+     */
+    void setViewModel(IChartViewModel viewModel);
+
+    /**
      * Shows categories with their total cost of costs in the user interface chart.
      *
      * @param categoryMap a map, key represent the category name and the value represents the total cost of its costs.

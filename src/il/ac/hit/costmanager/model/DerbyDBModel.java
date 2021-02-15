@@ -72,15 +72,30 @@ public class DerbyDBModel implements IModel {
     }
 
     /**
-     * Call the cost DAO getTotalCost method to get the total cost of all the cots with the inputted category name.
+     * Call the cost DAO getTotalCost method to get the total cost of all the cots with the provided category name.
      *
      * @param categoryName a category name.
-     * @return the total cost of all the cots with the inputted category name.
+     * @return the total cost of all the cots with the provided category name.
      * @throws CostManagerException exception of the cost DAO getTotalCost method.
      */
     @Override
     public double getTotalCost(String categoryName) throws CostManagerException {
         return costDAO.getTotalCost(categoryName);
+    }
+
+    /**
+     * Call the cost DAO getTotalCost method to get the total cost of all the costs,
+     * between the provided start date and end date with the provided category name.
+     *
+     * @param categoryName a category name.
+     * @param startDate    the date from which the costs will be summed
+     * @param endDate      the end date of the costs that will be summed.
+     * @return the total cost of all the cots between the provided dates with the provided category name.
+     * @throws CostManagerException exception of the cost DAO getTotalCost method.
+     */
+    @Override
+    public double getTotalCost(String categoryName, String startDate, String endDate) throws CostManagerException {
+        return costDAO.getTotalCost(categoryName, startDate, endDate);
     }
 
     /**
@@ -95,11 +110,11 @@ public class DerbyDBModel implements IModel {
     }
 
     /**
-     * Call a cost DAO get method to get a list of all the costs created between the two inputted dates.
+     * Call the cost DAO get method to get a list of all the costs created between the two provided dates.
      *
      * @param startDate the start date
      * @param endDate   the end date
-     * @return a list of all the costs that created between the two inputted dates.
+     * @return a list of all the costs that created between the two provided dates.
      * @throws CostManagerException exception of the cost DAO get method.
      */
     @Override
