@@ -31,7 +31,7 @@ public class CostManager {
      * The main method
      * Creates the model class and the MainView and the MainViewModel, and starting the application.
      *
-     * @param args
+     * @param args supplies command-line arguments as an array of String objects
      */
     public static void main(String[] args) {
         // initializing IModel, MainView and IMainViewModel
