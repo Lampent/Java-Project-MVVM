@@ -98,7 +98,7 @@ public class Cost {
         if (desc == null) {
             throw new CostManagerException("Description can not be null");
         } else if (desc.length() == 0) {
-            throw new CostManagerException("Description can not empty");
+            throw new CostManagerException("Description can not be empty");
         }
         this.desc = desc;
     }

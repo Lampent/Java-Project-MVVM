@@ -225,6 +225,8 @@ public class CostView extends javax.swing.JFrame implements ICostView {
                     viewModel.insertCost(costItem);
                 } catch (CostManagerException exception) {
                     showMessage(exception.getMessage());
+                } catch (NumberFormatException exception) {
+                    showMessage("Cost must be a number");
                 }
             } else {
                 showMessage("Please enter cost");
