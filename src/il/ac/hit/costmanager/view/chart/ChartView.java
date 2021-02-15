@@ -4,6 +4,7 @@
  */
 package il.ac.hit.costmanager.view.chart;
 
+import il.ac.hit.costmanager.view.builders.ButtonBuilder;
 import il.ac.hit.costmanager.view.builders.LabelBuilder;
 import il.ac.hit.costmanager.view.builders.TitleLayoutBuilder;
 import org.jfree.chart.ChartFactory;
@@ -15,6 +16,8 @@ import org.jfree.data.general.DefaultPieDataset;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Optional;
 import java.util.Random;
@@ -67,6 +70,9 @@ public class ChartView extends javax.swing.JFrame implements IChartView {
      * Currently there are no actions to be preformed from the view, therefore it dose not communicate with a ViewModel.
      */
     public class ChartUi {
+        private final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        private datechooser.beans.DateChooserCombo dateStart;
+        private datechooser.beans.DateChooserCombo dateEnd;
         private javax.swing.JPanel containerPanel;
 
         /**
@@ -75,6 +81,10 @@ public class ChartView extends javax.swing.JFrame implements IChartView {
          */
         public ChartUi() {
             initComponents();
+            // sets the comboboxes date format
+
+            dateStart.setDateFormat(dateFormat);
+            dateEnd.setDateFormat(dateFormat);
         }
 
         /**
@@ -104,6 +114,17 @@ public class ChartView extends javax.swing.JFrame implements IChartView {
             // creating the title layout using the title layout builder
             new TitleLayoutBuilder(titleLabel, titlePanel).build();
 
+            // initializing the start date data chooser and creating its label
+            dateStart = new datechooser.beans.DateChooserCombo();
+            javax.swing.JLabel dateStartLabel = new LabelBuilder("From Data :").build();
+
+            // initializing the end date data chooser and creating its label
+            dateEnd = new datechooser.beans.DateChooserCombo();
+            javax.swing.JLabel dateEndLabel = new LabelBuilder("To Data :").build();
+
+            // creating the show button, that will show all the costs between the start date and the end date.
+            javax.swing.JButton showButton = new ButtonBuilder("Show").build();
+
             // creating the container panel for the chart
             containerPanel = new javax.swing.JPanel();
             javax.swing.GroupLayout containerPanelLayout = new javax.swing.GroupLayout(containerPanel);
@@ -123,12 +144,33 @@ public class ChartView extends javax.swing.JFrame implements IChartView {
             layout.setHorizontalGroup(
                     layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(titlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                    .addComponent(dateStartLabel)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(dateStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(dateEndLabel)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(showButton)
+                                    .addGap(30, 30, 30))
                             .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             );
             layout.setVerticalGroup(
                     layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                     .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                            .addComponent(dateStart, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                                                            .addComponent(dateStartLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                            .addComponent(dateEnd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                            .addComponent(dateEndLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(showButton))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addContainerGap())
@@ -152,7 +194,7 @@ public class ChartView extends javax.swing.JFrame implements IChartView {
 
             // creating new JFreeChart of the dataset
             final JFreeChart chart = ChartFactory.createPieChart(
-                    "Cost Pie Chart",
+                    "",
                     chartDataset,
                     true,
                     true,

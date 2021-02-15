@@ -176,7 +176,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
             );
             ContainerPanelLayout.setVerticalGroup(
                     ContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGap(0, 370, Short.MAX_VALUE)
+                            .addGap(0, 378, Short.MAX_VALUE)
             );
 
             // sets the container panel its layout

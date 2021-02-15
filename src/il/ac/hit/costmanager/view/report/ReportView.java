@@ -24,7 +24,6 @@ import java.util.ArrayList;
  * The view implements the IReportView interface.
  */
 public class ReportView extends javax.swing.JFrame implements IReportView {
-    private final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private IReportViewModel viewModel;
     private ReportUI reportUI;
 
@@ -74,6 +73,8 @@ public class ReportView extends javax.swing.JFrame implements IReportView {
      * Communicating with the ViewModel for executing different operations on a separated thread.
      */
     public class ReportUI {
+        private final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
 
         private datechooser.beans.DateChooserCombo dateStart;
         private datechooser.beans.DateChooserCombo dateEnd;
